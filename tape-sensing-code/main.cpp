@@ -1,28 +1,49 @@
 #include <Arduino.h>
-#include <PID_v1.h>
 #include <Wire.h>
 #include <Adafruit_SSD1306.h>
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define OLED_RESET 	-1 // This display does not have a reset pin accessible
+#define OLED_RESET -1    // This display does not have a reset pin accessible
 Adafruit_SSD1306 display_handler(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-#define TAPE_LEFT PA0	// analog read pin
-#define TAPE_RIGHT PA1   // analog read pin 2
+#define TAPE_LEFT PA0  // analog read pin
+#define TAPE_RIGHT PA1 // analog read pin 2
 #define TUNE_P PA4
 #define TUNE_I PA5
-#define TINE_D PA6
+#define TUNE_D PA6
 #define INTERNAL_LED PB2
+#define ON 1
+#define OFF 0
+
+#define SPEED 512
+#define CLK_FREQ 100
+#define PWM_PIN PA_8
+#define PWM_PIN2 PA_9
 
 float reflectance_left = 0;
 float reflectance_right = 0;
-float reflectance_diff;
-double Setpoint, Input, Output;
+double Setpoint = 0;
+double Input, Output;
+int pid_in = 0, last_pid = 0;
+int counter = 0;
 
-PID myPID(&Input, &Output, &Setpoint, 0, 0, 0, DIRECT);
+// PID constants
+double kp;
+double ki;
+double kd;
 
-void setupDisplay() {
+unsigned long currentTime, flagTime;
+double elapsedTime;
+int error;
+int lastError;
+int lastState;
+
+double input, output, setPoint;
+double cumError, rateError;
+
+void setupDisplay()
+{
   // Displays Adafruit logo by default. call clearDisplay immediately if you don't want this.
   display_handler.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display_handler.display();
@@ -32,70 +53,128 @@ void setupDisplay() {
   display_handler.clearDisplay();
   display_handler.setTextSize(1);
   display_handler.setTextColor(SSD1306_WHITE);
-  display_handler.setCursor(0,0);
+  display_handler.setCursor(0, 0);
   display_handler.println("Hello world!");
   display_handler.display();
 }
 
-void loopDisplay() {
-  display_handler.print(reflectance_diff);
-  if (reflectance_diff > 50) {
-    display_handler.println("very right");
-  } else if (reflectance_diff < -50) {
-    display_handler.println("very left");
-  } else if (reflectance_diff > 30) {
-    display_handler.println("med right");
-  } else if (reflectance_diff < -30) {
-    display_handler.println("med left");
-  } else if (reflectance_diff > 10) {
-    display_handler.println("slight right");
-  } else if (reflectance_diff < -10) {
-    display_handler.println("slight left");
-  } else {
-    display_handler.println("stright (mostly)");
+double computePID(int inp)
+{
+  currentTime = millis();                         // get current time
+  elapsedTime = (double)(currentTime - flagTime); // compute time elapsed from previous computation
+
+  error = inp;                                   // determine error
+  cumError += error * elapsedTime;               // compute integral
+  rateError = (error - lastState) / elapsedTime; // compute derivative
+
+  double out = kp * error + ki * cumError * 0 - kd * rateError; // PID output
+
+  if (error != lastError)
+  {
+    lastState = lastError;
+    flagTime = currentTime;
   }
 
-  display_handler.print("left read: ");
-  display_handler.println(reflectance_left);
-  display_handler.print("right read: ");
-  display_handler.println(reflectance_right);
-  display_handler.print("PID: ");
-  display_handler.println(myPID.GetKp());
-  display_handler.println(" ");
-  display_handler.println(myPID.GetKi());
-  display_handler.println(" ");
-  display_handler.println(myPID.GetKd());
+  lastError = error; // remember current error
+
+  return out; // have function return the PID output
 }
 
-void setup() {
+void loopDisplay()
+{
+
+  display_handler.clearDisplay();
+  display_handler.setCursor(0, 0);
+
+  display_handler.print("L: ");
+  display_handler.print(reflectance_left);
+  display_handler.print(" R: ");
+  display_handler.println(reflectance_right);
+  display_handler.print("PID: ");
+  display_handler.print(kp);
+  display_handler.print(" ");
+  display_handler.println(kd);
+  display_handler.print(pid_in);
+  display_handler.print(" ");
+  display_handler.print(Output);
+}
+
+int PIDInput(double left_sensor, double right_sensor, double last)
+{
+  bool left = OFF, right = OFF;
+
+  if (left_sensor > 200.0)
+  {
+    left = ON;
+  }
+
+  if (right_sensor > 200.0)
+  {
+    right = ON;
+  }
+
+  if (left == OFF && right == OFF && last <= 0)
+  {
+    return -3;
+  }
+  else if (left == OFF && right == OFF && last > 0)
+  {
+    return 3;
+  }
+  else if (left == OFF && right == ON)
+  {
+    return -1;
+  }
+  else if (left == ON && right == OFF)
+  {
+    return 1;
+  }
+  return 0;
+}
+
+void setup()
+{
+
   pinMode(INTERNAL_LED, OUTPUT);
   pinMode(TAPE_LEFT, INPUT_ANALOG);
   pinMode(TAPE_RIGHT, INPUT_ANALOG);
-  
-  digitalWrite(INTERNAL_LED, HIGH);
+  pinMode(TUNE_P, INPUT_ANALOG);
+  pinMode(TUNE_I, INPUT_ANALOG);
+  pinMode(TUNE_D, INPUT_ANALOG);
+
+  digitalWrite(INTERNAL_LED, LOW);
+  setupDisplay();
 
   reflectance_left = analogRead(TAPE_LEFT);
   reflectance_right = analogRead(TAPE_RIGHT);
 
   Setpoint = 0;
-  myPID.SetMode(AUTOMATIC);
-  myPID.SetSampleTime(10);
-  }
 
-void loop() {
-  display_handler.clearDisplay();
-  display_handler.setCursor(0,0);
+  pwm_start(PWM_PIN, CLK_FREQ, SPEED, RESOLUTION_12B_COMPARE_FORMAT);
+  pwm_start(PWM_PIN2, CLK_FREQ, SPEED, RESOLUTION_12B_COMPARE_FORMAT);
+}
+
+void loop()
+{
+
+  kp = analogRead(TUNE_P) / 10.0;
+  ki = analogRead(TUNE_I) / 10.0;
+  kd = analogRead(TUNE_D) / 10.0;
 
   reflectance_left = analogRead(TAPE_LEFT);
   reflectance_right = analogRead(TAPE_RIGHT);
-  reflectance_diff = reflectance_left - reflectance_right;
-  Input = reflectance_diff;
-  
-  loopDisplay();
 
-  display_handler.display();
-  myPID.Compute();
-  
+  last_pid = pid_in;
+  pid_in = PIDInput(reflectance_left, reflectance_right, last_pid);
 
-  delay(10);
+  Output = computePID(pid_in);
+  pwm_start(PWM_PIN, CLK_FREQ, SPEED + Output, RESOLUTION_12B_COMPARE_FORMAT);
+  pwm_start(PWM_PIN, CLK_FREQ, SPEED - Output, RESOLUTION_12B_COMPARE_FORMAT);
+
+  if (counter % 100 == 0)
+  {
+    loopDisplay();
+    display_handler.display();
   }
+  counter += 1;
+}
