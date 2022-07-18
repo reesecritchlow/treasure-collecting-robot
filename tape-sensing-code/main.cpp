@@ -17,6 +17,7 @@ Adafruit_SSD1306 display_handler(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
 #define OFF 0
 
 #define SPEED 512
+#define TAPE_THRESHOLD 650.0
 #define CLK_FREQ 100
 #define PWM_PIN PA_8
 #define PWM_PIN2 PA_9
@@ -41,6 +42,7 @@ int lastState;
 
 double input, output, setPoint;
 double cumError, rateError;
+double clawMult = 1;
 
 void setupDisplay()
 {
@@ -99,16 +101,16 @@ void loopDisplay()
   display_handler.print(Output);
 }
 
-int PIDInput(double left_sensor, double right_sensor, double last)
+int TapeSensingInput(double left_sensor, double right_sensor, double last)
 {
   bool left = OFF, right = OFF;
 
-  if (left_sensor > 200.0)
+  if (left_sensor > TAPE_THRESHOLD)
   {
     left = ON;
   }
 
-  if (right_sensor > 200.0)
+  if (right_sensor > TAPE_THRESHOLD)
   {
     right = ON;
   }
@@ -150,8 +152,8 @@ void setup()
 
   Setpoint = 0;
 
-  pwm_start(PWM_PIN, CLK_FREQ, SPEED, RESOLUTION_12B_COMPARE_FORMAT);
-  pwm_start(PWM_PIN2, CLK_FREQ, SPEED, RESOLUTION_12B_COMPARE_FORMAT);
+  pwm_start(PWM_PIN, CLK_FREQ, SPEED*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
+  pwm_start(PWM_PIN2, CLK_FREQ, SPEED*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
 }
 
 void loop()
@@ -165,11 +167,11 @@ void loop()
   reflectance_right = analogRead(TAPE_RIGHT);
 
   last_pid = pid_in;
-  pid_in = PIDInput(reflectance_left, reflectance_right, last_pid);
+  pid_in = TapeSensingInput(reflectance_left, reflectance_right, last_pid);
 
   Output = computePID(pid_in);
-  pwm_start(PWM_PIN, CLK_FREQ, SPEED + Output, RESOLUTION_12B_COMPARE_FORMAT);
-  pwm_start(PWM_PIN, CLK_FREQ, SPEED - Output, RESOLUTION_12B_COMPARE_FORMAT);
+  pwm_start(PWM_PIN, CLK_FREQ, (SPEED + Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
+  pwm_start(PWM_PIN, CLK_FREQ, (SPEED - Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
 
   if (counter % 100 == 0)
   {
