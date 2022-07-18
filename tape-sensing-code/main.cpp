@@ -9,6 +9,10 @@ Adafruit_SSD1306 display_handler(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET)
 
 #define TAPE_LEFT PA0  // analog read pin
 #define TAPE_RIGHT PA1 // analog read pin 2
+//#define IR_LEFT
+//#define IR_RIGHT
+//#define EDGE_LEFT
+//#define EDGE_RIGHT
 #define TUNE_P PA4
 #define TUNE_I PA5
 #define TUNE_D PA6
@@ -30,9 +34,9 @@ int pid_in = 0, last_pid = 0;
 int counter = 0;
 
 // PID constants
-double kp;
-double ki;
-double kd;
+double kp = 80;
+double ki = 0;
+double kd = 20;
 
 unsigned long currentTime, flagTime;
 double elapsedTime;
@@ -43,6 +47,7 @@ int lastState;
 double input, output, setPoint;
 double cumError, rateError;
 double clawMult = 1;
+bool tapeSensing = true;
 
 void setupDisplay()
 {
@@ -82,7 +87,7 @@ double computePID(int inp)
   return out; // have function return the PID output
 }
 
-void loopDisplay()
+void loopDisplay() // to be changed and updated
 {
 
   display_handler.clearDisplay();
@@ -102,6 +107,39 @@ void loopDisplay()
 }
 
 int TapeSensingInput(double left_sensor, double right_sensor, double last)
+{
+  bool left = OFF, right = OFF;
+
+  if (left_sensor > TAPE_THRESHOLD)
+  {
+    left = ON;
+  }
+
+  if (right_sensor > TAPE_THRESHOLD)
+  {
+    right = ON;
+  }
+
+  if (left == OFF && right == OFF && last <= 0)
+  {
+    return -3;
+  }
+  else if (left == OFF && right == OFF && last > 0)
+  {
+    return 3;
+  }
+  else if (left == OFF && right == ON)
+  {
+    return -1;
+  }
+  else if (left == ON && right == OFF)
+  {
+    return 1;
+  }
+  return 0;
+}
+
+int IRSensingInput(double left_sensor, double right_sensor, double last)
 {
   bool left = OFF, right = OFF;
 
@@ -159,22 +197,38 @@ void setup()
 void loop()
 {
 
-  kp = analogRead(TUNE_P) / 10.0;
-  ki = analogRead(TUNE_I) / 10.0;
-  kd = analogRead(TUNE_D) / 10.0;
-
-  reflectance_left = analogRead(TAPE_LEFT);
-  reflectance_right = analogRead(TAPE_RIGHT);
-
-  last_pid = pid_in;
-  pid_in = TapeSensingInput(reflectance_left, reflectance_right, last_pid);
-
-  Output = computePID(pid_in);
-  pwm_start(PWM_PIN, CLK_FREQ, (SPEED + Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
-  pwm_start(PWM_PIN, CLK_FREQ, (SPEED - Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
-
   if (counter % 100 == 0)
   {
+    //kp = analogRead(TUNE_P) / 10.0; *** Now defined at the top, uncomment for retuning
+    //ki = analogRead(TUNE_I) / 10.0;
+    //kd = analogRead(TUNE_D) / 10.0;
+    
+    if (tapeSensing) {
+
+      reflectance_left = analogRead(TAPE_LEFT);
+      reflectance_right = analogRead(TAPE_RIGHT);
+
+      last_pid = pid_in;
+      pid_in = TapeSensingInput(reflectance_left, reflectance_right, last_pid);
+
+      Output = computePID(pid_in);
+      pwm_start(PWM_PIN, CLK_FREQ, (SPEED + Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
+      pwm_start(PWM_PIN, CLK_FREQ, (SPEED - Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
+
+    } else { // IR sensing
+
+      //reflectance_left = analogRead(IR_LEFT); 
+      //reflectance_right = analogRead(IR_RIGHT);
+
+      last_pid = pid_in;
+      pid_in = IRSensingInput(reflectance_left, reflectance_right, last_pid);
+
+      Output = computePID(pid_in);
+      pwm_start(PWM_PIN, CLK_FREQ, (SPEED + Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
+      pwm_start(PWM_PIN, CLK_FREQ, (SPEED - Output)*clawMult, RESOLUTION_12B_COMPARE_FORMAT);
+    }
+
+  
     loopDisplay();
     display_handler.display();
   }
