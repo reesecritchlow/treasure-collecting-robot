@@ -1,0 +1,4 @@
+"/Users/reesecritchlow/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/221.5591.52/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=bluepill_f103c8 -G "CodeBlocks - Unix Makefiles" -S /Users/reesecritchlow/Robot/robot-summer -B /Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8

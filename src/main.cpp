@@ -1,9 +1,20 @@
 #include <Arduino.h>
+#include "tape-navigator.h"
+#include "infrared-navigator.h"
+#include "encoder-navigator.h"
+#include "config.h"
+#include "display-manager.h"
+#include "state-machine.h"
 
 void setup() {
-  // put your setup code here, to run once:
+  pinMode(INTERNAL_LED, OUTPUT);
+  Tape::setupTapeTracking();
+  Infrared::setupInfrared();
+  Display::setupDisplay();
+  Encoders::setupEncoders();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  StateMachine::StateHandler();
+  StateMachine::cycleCounter++;
 }

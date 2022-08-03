@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="robot-summer" targetName="Z_DUMMY_TARGET" />
+      <config projectName="robot-summer" targetName="Production" />
+      <config projectName="robot-summer" targetName="Debug" />
+    </generated>
+  </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="bluepill_f103c8" ENABLED="true" CONFIG_NAME="bluepill_f103c8" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="" />
+    <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/include/arm.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/claw.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/config.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/display-manager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/drivetrain.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/encoder-navigator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/infrared-navigator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/pid-system.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/sonar-manager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/state-machine.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/tape-navigator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arm.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/claw.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/display-manager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/drivetrain.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/encoder-navigator.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/infrared-navigator.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pid-system.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sonar-manager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tape-navigator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/robot-summer-repo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +51,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:bluepill_f103c8" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -32,17 +69,50 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/reesecritchlow/UBC/robot-summer-repo&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/reesecritchlow/Robot/robot-summer/src"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/include" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PlatformIO.PlatformIO Debug">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Z_DUMMY_TARGET" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="robot-summer" TARGET_NAME="Z_DUMMY_TARGET" CONFIG_NAME="bluepill_f103c8" RUN_TARGET_PROJECT_NAME="robot-summer" RUN_TARGET_NAME="Z_DUMMY_TARGET">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO Debug" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="robot-summer" TARGET_NAME="Debug" CONFIG_NAME="bluepill_f103c8" RUN_TARGET_PROJECT_NAME="robot-summer" RUN_TARGET_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlatformIO Upload" type="platformio" factoryName="PlatformIO Upload" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="robot-summer" TARGET_NAME="Production" CONFIG_NAME="bluepill_f103c8" RUN_TARGET_PROJECT_NAME="robot-summer" RUN_TARGET_NAME="Production">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Z_DUMMY_TARGET" />
+      <item itemvalue="PlatformIO.PlatformIO Debug" />
+      <item itemvalue="PlatformIO.PlatformIO Upload" />
+    </list>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,6 +124,7 @@
       <workItem from="1652674099474" duration="26000" />
       <workItem from="1652674377604" duration="1000" />
       <workItem from="1652674422933" duration="1000" />
+      <workItem from="1659564397342" duration="311000" />
     </task>
     <servers />
   </component>
