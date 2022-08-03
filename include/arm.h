@@ -8,6 +8,8 @@
 namespace Arm {
     extern int move_distance;
     extern int idol_position;
+    extern bool see_idol_right;
+    extern bool see_idol_left;
 
     void armSetup();
 

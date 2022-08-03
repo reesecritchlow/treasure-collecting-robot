@@ -113,4 +113,44 @@
 #define LEFT_REFLECTANCE_PIN PA0
 #define DEFAULT_REFLECTANCE_THRESHOLD 100
 
+// Arm 
+
+#define LEFT -100
+#define RIGHT 100
+
+#define SWT_PIN PC15
+
+#define MOTOR_INTERFACE 1
+#define DIR_PIN PB9
+#define STP_PIN PB8
+#define SLP_PIN PB7
+
+#define L_TRIG PA14
+#define L_ECHO PA15
+#define R_TRIG PA4
+#define R_ECHO PA5
+
+#define SONAR_MAX_RANGE 25
+#define USTEP_RATIO 8
+#define DIST_RATIO 3.704
+#define MAX_SPD 40000
+#define ACCEL 300
+
+#define BIN_DIST 10
+#define SONAR_OFFSET 5
+
+// Claw
+
+#define SERVO_PIN_GRAB PA10
+#define SERVO_PIN_TILT_LEFT PA2
+#define SERVO_PIN_TILT_RIGHT PA1
+
+#define SERVO_CLOSE_ANGLE 80 // closed grabbed
+#define SERVO_OPEN_ANGLE 0   // released open
+#define LEFT_LOWER_ANGLE 85 // lowered
+#define LEFT_UPPER_ANGLE 10  // raised
+#define RIGHT_LOWER_ANGLE 35 // lowered
+#define RIGHT_UPPER_ANGLE 125  // raised
+#define SERVO_WAIT_TIME 1000
+
 #endif
