@@ -17,31 +17,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/include/arm.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/claw.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/config.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/display-manager.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/drivetrain.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/encoder-navigator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/infrared-navigator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/pid-system.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/sonar-manager.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/state-machine.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/tape-navigator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/arm.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/claw.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/display-manager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/drivetrain.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/encoder-navigator.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/infrared-navigator.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pid-system.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sonar-manager.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tape-navigator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/robot-summer-repo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/claw.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/claw.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/platformio.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/arm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/claw.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/claw.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,17 +51,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "/Users/reesecritchlow/Robot/robot-summer/src"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/reesecritchlow/Robot/robot-summer/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -87,12 +70,12 @@
     </key>
   </component>
   <component name="RunManager" selected="PlatformIO.PlatformIO Debug">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Z_DUMMY_TARGET" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="robot-summer" TARGET_NAME="Z_DUMMY_TARGET" CONFIG_NAME="bluepill_f103c8" RUN_TARGET_PROJECT_NAME="robot-summer" RUN_TARGET_NAME="Z_DUMMY_TARGET">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Z_DUMMY_TARGET" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="robot-summer" TARGET_NAME="Z_DUMMY_TARGET" CONFIG_NAME="bluepill_f103c8" RUN_TARGET_PROJECT_NAME="robot-summer" RUN_TARGET_NAME="Z_DUMMY_TARGET">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -124,7 +107,8 @@
       <workItem from="1652674099474" duration="26000" />
       <workItem from="1652674377604" duration="1000" />
       <workItem from="1652674422933" duration="1000" />
-      <workItem from="1659564397342" duration="311000" />
+      <workItem from="1659564397342" duration="979000" />
+      <workItem from="1659565712901" duration="45000" />
     </task>
     <servers />
   </component>

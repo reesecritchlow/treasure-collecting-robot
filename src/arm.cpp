@@ -23,7 +23,6 @@
 #define RIGHT_UPPER_ANGLE 125  // raised
 #define SERVO_WAIT_TIME 1000
 
-
 #define L_TRIG PA14
 #define L_ECHO PA15
 #define R_TRIG PA4
