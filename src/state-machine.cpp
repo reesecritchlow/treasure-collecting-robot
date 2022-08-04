@@ -105,7 +105,7 @@ namespace StateMachine {
         Claw::open();
         if(Arm::see_idol_left) {
             Claw::leftGoLowerLimit();
-            if(!seen_magnet) {
+            if(!Claw::seen_magnet) {
                 while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
                     Claw::close(clawCounter);
                     clawCounter += 1;
@@ -115,7 +115,7 @@ namespace StateMachine {
                 }
             }
             Claw::leftGoMiddle();
-            StateHandler = state_droppingIdol;
+            StateHandler = state_goToBin;
             clawCounter = 0;
             return;
         }
