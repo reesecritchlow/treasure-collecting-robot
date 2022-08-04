@@ -115,6 +115,8 @@ namespace StateMachine {
                 }
             }
             Claw::leftGoMiddle();
+            StateHandler = state_droppingIdol;
+            clawCounter = 0;
             return;
         }
         if(Arm::see_idol_right) {
@@ -177,5 +179,7 @@ namespace StateMachine {
 
         //stepper go home
         Claw::seen_magnet = true;
+        detachInterrupt(MAGNET_INTERRUPT_PIN);
+        StateHandler = state_goingHome;
     }
 }
