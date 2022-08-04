@@ -130,9 +130,11 @@ namespace StateMachine {
         }
     }
 
-    void state_armArch() {
+    void state_armThruArch() {
         Arm::goHome();
-        Claw::goLowerLimit();
+        Claw::leftGoLowerLimit();
+        Claw::rightGoLowerLimit();
+         
         Claw::close3();
     }
 
