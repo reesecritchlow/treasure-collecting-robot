@@ -1,6 +1,7 @@
 #include "config.h"
 #include "claw.h"
 #include "arm.h"
+#include "state-machine.h"
 
 Servo servoGrab;
 Servo servoTiltLeft;
@@ -67,5 +68,15 @@ namespace Claw {
         servoTiltLeft.write(LEFT_UPPER_ANGLE);
         servoTiltRight.write(RIGHT_UPPER_ANGLE);
         servoGrab.write(SERVO_CLOSE_ANGLE);
+    }
+
+    void setupHallSensor() {
+        pinMode(MAGNET_INTERRUPT_PIN, INPUT_PULLUP);
+        attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), , FALLING);
+    }
+
+    void handleMagneticField() {
+        
+       
     }
 }
