@@ -97,55 +97,50 @@ namespace StateMachine {
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
-            StateHandler = state_grabbingIdol;
+            StateHandler = state_tiltArmForIdol;
         }
     }
 
-    void state_grabbingIdol() {
+    void state_tiltArmForIdol() {
         Claw::open();
         if(Arm::see_idol_left) {
             Claw::leftGoLowerLimit();
-            if(!Claw::seen_magnet) {
-                while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
-                    Claw::close(clawCounter);
-                    clawCounter += 1;
-                }
-                if(Claw::magnetic_idol) {
-                    Claw::open();
-                    delay(SERVO_WAIT_TIME);
-                    Claw::leftGoUpperLimit();
-                    return;
-                }
-            } else {
-                Claw::close(SERVO_ANGLE_DIVISION);
-            }
-            Claw::leftGoMiddle();
-            StateHandler = state_goToBin;
-            clawCounter = 0;
-            return;
+            StateHandler = state_grabIdol;
         }
-        // insert above code *****************************************************************
         if(Arm::see_idol_right) {
             Claw::rightGoLowerLimit();
-            if(!Claw::seen_magnet) {
-                while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
-                    Claw::close(clawCounter);
-                    clawCounter += 1;
-                }
-                if(Claw::magnetic_idol) {
-                    Claw::open();
-                    delay(SERVO_WAIT_TIME);
-                    Claw::leftGoUpperLimit();
-                    return;
-                }
-            } else {
-                Claw::close(SERVO_ANGLE_DIVISION);
-            }
-            Claw::rightGoMiddle();
-            StateHandler = state_goToBin;
-            clawCounter = 0;
-            return;
+            StateHandler = state_grabIdol;
         }
+    }
+
+    void state_grabIdol() {
+        if(!Claw::seen_magnet) {
+            while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+                Claw::close(clawCounter);
+                clawCounter += 1;
+            }
+            if(Claw::magnetic_idol) {
+                Claw::open();
+                delay(SERVO_WAIT_TIME);
+                Claw::leftGoUpperLimit();
+                return;
+            }
+        } else {
+            Claw::close(SERVO_ANGLE_DIVISION);
+        }
+        clawCounter = 0;
+        StateHandler = state_returnForDrop;
+    }
+
+    void state_returnForDrop() {
+        if (Arm::see_idol_left) {
+            Claw::leftGoMiddle();
+        }
+        if (Arm::see_idol_right) {
+            Claw::rightGoMiddle();
+        }
+        StateHandler = state_goToBin;
+        return;
     }
 
     void state_goToBin() {
