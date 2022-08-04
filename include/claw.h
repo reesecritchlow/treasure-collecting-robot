@@ -6,6 +6,7 @@
 
 namespace Claw {
     extern volatile bool magnetic_idol;
+    extern bool seen_magnet;
 
     void setupServos();
     void setupHallSensor();

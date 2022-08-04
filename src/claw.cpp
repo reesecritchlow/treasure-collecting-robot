@@ -10,6 +10,7 @@ Servo servoTiltRight;
 namespace Claw {
 
     volatile bool magnetic_idol = false;
+    bool seen_magnet = false;
 
     void leftGoLowerLimit() {
         servoTiltLeft.write(LEFT_LOWER_ANGLE);

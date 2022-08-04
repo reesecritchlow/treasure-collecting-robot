@@ -97,7 +97,7 @@ namespace StateMachine {
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
-            StateHandler = state_droppingIdol;
+            StateHandler = state_grabbingIdol;
         }
     }
 
@@ -105,12 +105,14 @@ namespace StateMachine {
         Claw::open();
         if(Arm::see_idol_left) {
             Claw::leftGoLowerLimit();
-            while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
-                Claw::close(clawCounter);
-                clawCounter += 1;
-            }
-            if(Claw::magnetic_idol) {
-                Claw::open();
+            if(!seen_magnet) {
+                while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+                    Claw::close(clawCounter);
+                    clawCounter += 1;
+                }
+                if(Claw::magnetic_idol) {
+                    Claw::open();
+                }
             }
             Claw::leftGoMiddle();
             return;
@@ -125,25 +127,29 @@ namespace StateMachine {
                 Claw::open();
             }
             Claw::rightGoMiddle();
-            StateHandler = state_droppingIdol;
+            StateHandler = state_goToBin;
             clawCounter = 0;
             return;
         }
     }
 
-    void state_droppingIdol() {
+    void state_goToBin() {
         if(Arm::idol_position > 0) {
             Arm::move_distance = -BIN_DIST;
         } else if (Arm::idol_position < 0) {
             Arm::move_distance = BIN_DIST;
         }
         Arm::goTo();
-        delay(1000);
-        Claw::open();
         if(Arm::getDistanceToGo() == 0) {
             StateHandler = state_goingHome;
             Serial3.println("droppingIdol");
         }
+    }
+
+    void state_dropIdol() {
+        delay(1000);
+        Claw::open();
+        StateHandler = state_goingHome;
     }
 
     void state_armThruArch() {
@@ -164,10 +170,12 @@ namespace StateMachine {
     }
 
     void state_magneticField() {
+
         //claw open fully
 
         //claw raise up
 
         //stepper go home
+        Claw::seen_magnet = true;
     }
 }
