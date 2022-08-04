@@ -11,7 +11,7 @@ namespace Arm {
 
     AccelStepper stepper(MOTOR_INTERFACE, STP_PIN, DIR_PIN);
 
-    void armSetup() {
+    void setupArm() {
         pinMode(SLP_PIN, OUTPUT);
         digitalWrite(SLP_PIN, HIGH);
         pinMode(SWT_PIN, INPUT_PULLUP);
@@ -22,7 +22,7 @@ namespace Arm {
     /**
      * @brief move arm to distance in cm, moves stepper the appropriate amount of steps for this distance
      */
-    void armGoTo() {
+    void goTo() {
         if(stepper.distanceToGo() == 0) {
             stepper.moveTo((int)move_distance*DIST_RATIO*10);
         }
@@ -38,7 +38,7 @@ namespace Arm {
      * @return true
      * @return false
      */
-    bool armSetHome() {
+    bool setHome() {
         bool switch_initial = digitalRead(SWT_PIN);
         int direction;
 
@@ -56,7 +56,7 @@ namespace Arm {
         } while (switch_initial == digitalRead(SWT_PIN));
 
         if (digitalRead(SWT_PIN)) { // if we have pressed it
-            armSetHome();
+            setHome();
         }
 
         stepper.setCurrentPosition(0);
@@ -68,21 +68,21 @@ namespace Arm {
      *
      * @return
      */
-    void armGoHome() {
+    void goHome() {
         stepper.moveTo(0);
         stepper.run();
     }
 
-    int armCurrPos() {
+    int currPos() {
         return stepper.currentPosition();
     }
 
-    int armGetDistanceToGo() {
+    int getDistanceToGo() {
         return stepper.distanceToGo();
     }
 
 
-    int armGetDistance(uint8_t trig_pin, uint8_t echo_pin) {
+    int getDistance(uint8_t trig_pin, uint8_t echo_pin) {
         int duration;
         digitalWrite(trig_pin, LOW);  // Added this line
         delayMicroseconds(2); // Added this line
@@ -104,11 +104,11 @@ namespace Arm {
      * @return int, distance in cm needed to move in order to
      * reach idol.
      */
-    int armSenseForIdol() {
+    int senseForIdol() {
         int left_distance;
         int right_distance;
-        left_distance = armGetDistance(L_TRIG, L_ECHO);
-        right_distance = armGetDistance(R_TRIG, R_ECHO);
+        left_distance = getDistance(L_TRIG, L_ECHO);
+        right_distance = getDistance(R_TRIG, R_ECHO);
 
         //establishes max range for sonar
         if(left_distance > SONAR_MAX_RANGE) {
@@ -140,18 +140,18 @@ namespace Arm {
      * @brief setup to initialize sonar on arm
      *
      */
-    void armSonarSetup() {
+    void setupSonars() {
         pinMode(L_TRIG, OUTPUT);
         pinMode(L_ECHO, INPUT);
         pinMode(R_TRIG, OUTPUT);
         pinMode(R_ECHO, INPUT);
     }
 
-    void armSleep() {
+    void sleep() {
         digitalWrite(SLP_PIN, LOW);
     }
 
-    void armDropOff() {
+    void dropOff() {
 
     }
 }

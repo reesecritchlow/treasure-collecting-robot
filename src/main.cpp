@@ -5,6 +5,8 @@
 #include "config.h"
 #include "display-manager.h"
 #include "state-machine.h"
+#include "claw.h"
+#include "arm.h"
 
 void setup() {
   pinMode(INTERNAL_LED, OUTPUT);
@@ -12,6 +14,9 @@ void setup() {
   Infrared::setupInfrared();
   Display::setupDisplay();
   Encoders::setupEncoders();
+  Claw::setupServos();
+  Arm::setupArm();
+  Arm::setupSonars();
 }
 
 void loop() {

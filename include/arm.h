@@ -11,18 +11,18 @@ namespace Arm {
     extern bool see_idol_right;
     extern bool see_idol_left;
 
-    void armSetup();
+    void setupArm();
+    void setupSonars();
 
-    bool armSetHome();
-    void armGoHome();
-    void armGoTo();
-    void armSleep();
-    int armCurrPos();
+    bool setHome();
+    void goHome();
+    void goTo();
+    void sleep();
+    int currPos();
 
-    int armSenseForIdol();
-    void armSonarSetup();
+    int senseForIdol();
 
-    int armGetDistanceToGo();
+    int getDistanceToGo();
 }
 
 #endif

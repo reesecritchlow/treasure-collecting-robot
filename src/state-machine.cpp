@@ -32,7 +32,7 @@ namespace StateMachine {
         Infrared::runPIDCycle();
     }
 
-    void state5_do_nothing() {
+    void state_do_nothing() {
     
     }
 
@@ -84,7 +84,7 @@ namespace StateMachine {
     }
 
     void state_sensingIdol() {
-        Arm::idol_position = Arm::armSenseForIdol();
+        Arm::idol_position = Arm::senseForIdol();
         Serial3.println(Arm::idol_position);
         Arm::move_distance = Arm::idol_position; // = idol_position
         if(Arm::idol_position != 0)
@@ -92,8 +92,8 @@ namespace StateMachine {
     }
 
     void state_moveToIdol() {
-        Arm::armGoTo();
-        if(Arm::armGetDistanceToGo() == 0) {
+        Arm::goTo();
+        if(Arm::getDistanceToGo() == 0) {
             delay(1000);
             StateHandler = state_droppingIdol;
             Serial3.println("moveToIdol");
@@ -110,15 +110,18 @@ namespace StateMachine {
         } else if (Arm::idol_position < 0) {
             Arm::move_distance = BIN_DIST;
         }
-        Arm::armGoTo();
-        if(Arm::armGetDistanceToGo() == 0) {
+        Arm::goTo();
+        if(Arm::getDistanceToGo() == 0) {
             StateHandler = state_goingHome;
             Serial3.println("droppingIdol");
         }
     }
 
     void state_goingHome() {
-    Arm::armGoHome();
+        Arm::goHome();
+        Arm::see_idol_left = false;
+        Arm::see_idol_right = false;
+        StateHandler = state_do_nothing;
     }
 
 }
