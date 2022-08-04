@@ -53,4 +53,9 @@ namespace Encoders {
         right_destination_count = angle_radians * SPIN_RADIUS / DISTANCE_CM_PER_STEP;
         left_destination_count = angle_radians * SPIN_RADIUS / DISTANCE_CM_PER_STEP;
     }
+
+    bool checkDestinationDistance() {
+        return !(Encoders::left_count < Encoders::left_destination_count &&
+               Encoders::right_count < Encoders::right_destination_count);
+    }
 }

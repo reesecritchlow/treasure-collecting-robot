@@ -101,7 +101,7 @@ namespace Drivetrain {
         pwm_start(DEFAULT_RIGHT_BACKWARD_MOTOR_PIN, DEFAULT_CLOCK_FREQUENCY, 0, DEFAULT_RESOLUTION);
     }
 
-    void stopDrive() {
+    void halt() {
         if (right_direction) {
             pwm_start(DEFAULT_RIGHT_FORWARD_MOTOR_PIN, DEFAULT_CLOCK_FREQUENCY, 0, DEFAULT_RESOLUTION);
             pwm_start(DEFAULT_RIGHT_BACKWARD_MOTOR_PIN, DEFAULT_CLOCK_FREQUENCY, right_speed, DEFAULT_RESOLUTION);

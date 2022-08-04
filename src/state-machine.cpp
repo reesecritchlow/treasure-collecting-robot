@@ -29,6 +29,9 @@ namespace StateMachine {
     void state_goingHome();
     void state_dropIdol();
     void state_armThruArch();
+    void state_search_for_infrared_at_arch();
+    void state_spin_for_third_idol();
+    void state_drive_to_third_idol();
 
     void state_tape_following() {
         Arm::idol_position = Arm::senseForIdol();
@@ -41,10 +44,55 @@ namespace StateMachine {
 
         if(Arm::idol_position != 0) {
             StateHandler = state_moveToIdol;
-            Drivetrain::stopDrive();
+            Drivetrain::halt();
         }
-        Infrared::readLeftSensor();
         Infrared::readRightSensor();
+
+        if (Infrared::right_signal < INFRARED_TRANSITION_LEFT_THRESHOLD) {
+            return;
+        }
+        Drivetrain::halt();
+        StateHandler = state_search_for_infrared_at_arch;
+        Encoders::setSpinDestinationDistance(30.0);
+    }
+
+    void state_search_for_infrared_at_arch() {
+        Encoders::encoderSpin(COUNTER_CLOCKWISE);
+        Infrared::readRightSensor();
+        Infrared::readLeftSensor();
+        if (
+                Infrared::left_signal < INFRARED_ARCH_ALIGNMENT_THRESHOLD ||
+                Infrared::right_signal < INFRARED_ARCH_ALIGNMENT_THRESHOLD ||
+                !Encoders::checkDestinationDistance()
+                ) {
+            return;
+        }
+        Drivetrain::halt();
+        Encoders::setStraightDestinationDistance(10.0);
+    }
+
+    void state_push_out_of_arch() {
+        if (Encoders::checkDestinationDistance()) {
+            StateHandler = state_spin_for_third_idol;
+            Encoders::setSpinDestinationDistance(30.0);
+        }
+        Encoders::encoderDriveStraight();
+    }
+
+    void state_spin_for_third_idol() {
+        if (Encoders::checkDestinationDistance()) {
+            Encoders::setStraightDestinationDistance(20.0);
+            StateHandler = state_drive_to_third_idol;
+            return;
+        }
+        Encoders::encoderSpin(COUNTER_CLOCKWISE);
+    }
+
+    void state_drive_to_third_idol() {
+        if (Encoders::checkDestinationDistance()) {
+            StateHandler = state_do_nothing;
+        }
+        Encoders::encoderDriveStraight();
     }
 
     void state_sensingIdol() {
@@ -74,7 +122,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::stopDrive();
+        Drivetrain::halt();
         digitalWrite(INTERNAL_LED, HIGH);
 
         StateHandler = state_do_nothing;
@@ -89,7 +137,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::stopDrive();
+        Drivetrain::halt();
         digitalWrite(INTERNAL_LED, LOW);
         Encoders::setStraightDestinationDistance(10.0);
         StateHandler = state_drive_straight_again;
@@ -105,7 +153,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::stopDrive();
+        Drivetrain::halt();
         digitalWrite(INTERNAL_LED, HIGH);
         Encoders::setSpinDestinationDistance(45.0);
         StateHandler = state_spin;

@@ -27,6 +27,8 @@ namespace Encoders {
     void setStraightDestinationDistance(double distance_cm);
 
     void setSpinDestinationDistance(double angle_degrees);
+
+    bool checkDestinationDistance();
 }
 
 

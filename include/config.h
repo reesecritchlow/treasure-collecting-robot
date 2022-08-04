@@ -8,6 +8,10 @@
 
 #define PRINT_LOOP_COUNT 100
 
+// State Machine
+
+#define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
+
 // Display Manager
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
