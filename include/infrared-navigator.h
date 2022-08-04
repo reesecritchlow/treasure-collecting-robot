@@ -11,8 +11,8 @@ namespace Infrared {
     extern int last_pid_multiplier;
     extern int current_pid_multiplier;
 
-    double readRightSensor();
-    double readLeftSensor();
+    void readRightSensor();
+    void readLeftSensor();
 
     void calculatePIDMultiplier();
 

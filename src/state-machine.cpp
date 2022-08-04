@@ -15,6 +15,7 @@ namespace StateMachine {
 
     void state_tape_following();
 
+    // Initial State
     void (*StateHandler)() = state_tape_following;
 
     void state_infrared_tracking();
@@ -42,8 +43,8 @@ namespace StateMachine {
             StateHandler = state_moveToIdol;
             Drivetrain::stopDrive();
         }
-        Infrared::left_signal = Infrared::readLeftSensor();
-        Infrared::right_signal = Infrared::readRightSensor();
+        Infrared::readLeftSensor();
+        Infrared::readRightSensor();
     }
 
     void state_sensingIdol() {
@@ -160,7 +161,6 @@ namespace StateMachine {
             Claw::rightGoMiddle();
         }
         StateHandler = state_goToBin;
-        return;
     }
 
     void state_goToBin() {
@@ -172,7 +172,6 @@ namespace StateMachine {
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             StateHandler = state_goingHome;
-            Serial3.println("droppingIdol");
         }
     }
 

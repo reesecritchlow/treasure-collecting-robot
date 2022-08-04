@@ -16,11 +16,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state-machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +97,7 @@
       <workItem from="1659564397342" duration="979000" />
       <workItem from="1659565712901" duration="45000" />
       <workItem from="1659639447149" duration="29000" />
-      <workItem from="1659639490342" duration="544000" />
+      <workItem from="1659639490342" duration="1032000" />
     </task>
     <servers />
   </component>
@@ -114,6 +110,21 @@
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="tl-arm" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
