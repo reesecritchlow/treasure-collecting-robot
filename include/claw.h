@@ -12,7 +12,6 @@ namespace Claw {
     void goLowerLimit();
     void open();
     void close();
-    void servoRoutine();
 }
 
 #endif
