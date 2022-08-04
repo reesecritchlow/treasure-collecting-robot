@@ -97,11 +97,11 @@ namespace StateMachine {
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
-            StateHandler = state_tiltArmForIdol;
+            StateHandler = state_lowerArmForIdol;
         }
     }
 
-    void state_tiltArmForIdol() {
+    void state_lowerArmForIdol() {
         Claw::open();
         if(Arm::see_idol_left) {
             Claw::leftGoLowerLimit();
@@ -129,10 +129,10 @@ namespace StateMachine {
             Claw::close(SERVO_ANGLE_DIVISION);
         }
         clawCounter = 0;
-        StateHandler = state_returnForDrop;
+        StateHandler = state_raiseForDrop;
     }
 
-    void state_returnForDrop() {
+    void state_raiseForDrop() {
         if (Arm::see_idol_left) {
             Claw::leftGoMiddle();
         }
