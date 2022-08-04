@@ -9,18 +9,22 @@ Servo servoTiltRight;
 namespace Claw {
     void leftGoLowerLimit() {
         servoTiltLeft.write(LEFT_LOWER_ANGLE);
+        delay(SERVO_WAIT_TIME);
     }
 
     void rightGoLowerLimit() {
         servoTiltRight.write(RIGHT_LOWER_ANGLE);
+        delay(SERVO_WAIT_TIME);
     }
 
     void leftGoUpperLimit() {
         servoTiltLeft.write(LEFT_UPPER_ANGLE);
-    }
+         delay(SERVO_WAIT_TIME);
+   }
 
     void rightGoUpperLimit() {
         servoTiltRight.write(RIGHT_UPPER_ANGLE);
+        delay(SERVO_WAIT_TIME);
     }
 
     void open() {
