@@ -135,4 +135,11 @@ namespace StateMachine {
         StateHandler = state_do_nothing;
     }
 
+    void state_magneticField() {
+        //claw open fully
+
+        //claw raise up
+
+        //stepper go home
+    }
 }
