@@ -110,7 +110,8 @@ namespace StateMachine {
         }
         if(Arm::see_idol_right) {
             Claw::rightGoLowerLimit();
-            Claw::close();
+            while()
+                Claw::close();
             Claw::rightGoMiddle();
             StateHandler = state_droppingIdol;
             return;

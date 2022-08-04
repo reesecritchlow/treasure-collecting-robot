@@ -36,26 +36,12 @@ namespace Claw {
         delay(SERVO_WAIT_TIME);
     }
 
-    void close1() {
+    void close(int angle) {
         if (!magnetic_idol) {
-            servoGrab.write(SERVO_CLOSE_ANGLE/4);
-            delay(SERVO_WAIT_TIME/2);
+            servoGrab.write(SERVO_CLOSE_ANGLE/SERVO_ANGLE_DIVISION * angle);
+            delay(SERVO_WAIT_TIME/4);
         }
     } 
-
-    void close2() {
-        if (!magnetic_idol) { 
-            servoGrab.write(SERVO_CLOSE_ANGLE/2);
-            delay(SERVO_WAIT_TIME);
-        }
-    }
-
-    void close3() {
-        if (!magnetic_idol) {
-        servoGrab.write(SERVO_CLOSE_ANGLE);
-        delay(SERVO_WAIT_TIME);    
-        }
-    }
 
     void leftGoMiddle() {
         servoTiltLeft.write((LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
@@ -91,5 +77,5 @@ namespace Claw {
     void handleMagneticField() {
         //StateMachine::
        
-    // }
+     }
 }
