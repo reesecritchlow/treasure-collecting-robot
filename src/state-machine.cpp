@@ -5,6 +5,7 @@
 #include "config.h"
 #include "display-manager.h"
 #include "arm.h"
+#include  "claw.h"
 
 namespace StateMachine {
 
@@ -101,7 +102,10 @@ namespace StateMachine {
     }
 
     void state_grabbingIdol() {
-        
+        Claw::open();
+        Claw::goLowerLimit();
+        Claw::close();
+        Claw::goMiddle();
     }
 
     void state_droppingIdol() {
@@ -117,8 +121,15 @@ namespace StateMachine {
         }
     }
 
+    void state_armArch() {
+        Arm::goHome();
+        Claw::goLowerLimit();
+        Claw::close();
+    }
+
     void state_goingHome() {
         Arm::goHome();
+        Claw::goUpperLimit();
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
         StateHandler = state_do_nothing;
