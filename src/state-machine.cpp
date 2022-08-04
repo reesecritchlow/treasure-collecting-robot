@@ -10,6 +10,7 @@
 namespace StateMachine {
 
     int cycleCounter = 0;
+    int clawCounter = 0;
 
     void state1_tape_following();
 
@@ -105,15 +106,28 @@ namespace StateMachine {
         Claw::open();
         if(Arm::see_idol_left) {
             Claw::leftGoLowerLimit();
+            while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+                Claw::close(clawCounter);
+                clawCounter += 1;
+            }
+            if(Claw::magnetic_idol) {
+                Claw::open();
+            }
             Claw::leftGoMiddle();
             return;
         }
         if(Arm::see_idol_right) {
             Claw::rightGoLowerLimit();
-            while()
-                Claw::close();
+            while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+                Claw::close(clawCounter);
+                clawCounter += 1;
+            }
+            if(Claw::magnetic_idol) {
+                Claw::open();
+            }
             Claw::rightGoMiddle();
             StateHandler = state_droppingIdol;
+            clawCounter = 0;
             return;
         }
     }
