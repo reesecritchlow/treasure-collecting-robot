@@ -5,7 +5,7 @@
 #include "config.h"
 #include "display-manager.h"
 #include "arm.h"
-#include  "claw.h"
+#include "claw.h"
 
 namespace StateMachine {
 

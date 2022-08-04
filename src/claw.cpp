@@ -53,14 +53,6 @@ namespace Claw {
         delay(SERVO_WAIT_TIME);
     }
 
-    void goUpperLimit() {
-        if(Arm::see_idol_left) {
-            servoTiltLeft.write(LEFT_UPPER_ANGLE);
-            return;
-        }
-        servoTiltRight.write(RIGHT_UPPER_ANGLE);
-    }
-
     void setupServos() {
         servoGrab.attach(SERVO_PIN_GRAB);
         servoTiltLeft.attach(SERVO_PIN_TILT_LEFT);
@@ -68,7 +60,7 @@ namespace Claw {
 
         servoTiltLeft.write(LEFT_LOWER_ANGLE);
         servoTiltRight.write(RIGHT_LOWER_ANGLE);
-        servoGrab.write(SERVO_OPEN_ANGLE);
+        open();
 
         delay(SERVO_WAIT_TIME);
 

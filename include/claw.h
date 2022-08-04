@@ -7,9 +7,16 @@
 namespace Claw {
     void setupServos();
 
-    void goUpperLimit();
-    void goMiddle();
-    void goLowerLimit();
+    void leftGoLowerLimit();
+    void leftGoUpperLimit();
+    void leftGoMiddle();
+    
+
+    void rightGoLowerLimit();
+    void rightGoUpperLimit();
+    void rightGoMiddle();
+    
+
     void open();
     void close();
 }
