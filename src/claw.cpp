@@ -70,13 +70,13 @@ namespace Claw {
         servoGrab.write(SERVO_CLOSE_ANGLE);
     }
 
-    void setupHallSensor() {
-        pinMode(MAGNET_INTERRUPT_PIN, INPUT_PULLUP);
-        attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), , FALLING);
-    }
+    // void setupHallSensor() {
+    //     pinMode(MAGNET_INTERRUPT_PIN, INPUT_PULLUP);
+    //     attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), d, FALLING);
+    // }
 
-    void handleMagneticField() {
+    // void handleMagneticField() {
         
        
-    }
+    // }
 }

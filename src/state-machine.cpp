@@ -103,9 +103,18 @@ namespace StateMachine {
 
     void state_grabbingIdol() {
         Claw::open();
-        Claw::goLowerLimit();
-        Claw::close();
-        Claw::goMiddle();
+        if(Arm::see_idol_left) {
+            Claw::leftGoLowerLimit();
+            Claw::leftGoMiddle();
+            return;
+        }
+        if(Arm::see_idol_right) {
+            Claw::rightGoLowerLimit();
+            Claw::close();
+            Claw::rightGoMiddle();
+            StateHandler = state_droppingIdol;
+            return;
+        }
     }
 
     void state_droppingIdol() {
