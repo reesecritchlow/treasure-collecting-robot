@@ -7,12 +7,20 @@ Servo servoTiltLeft;
 Servo servoTiltRight;
 
 namespace Claw {
-    void goLowerLimit() {
-        if(Arm::see_idol_left) {
-            servoTiltLeft.write(LEFT_LOWER_ANGLE);
-            return;
-        }
+    void leftGoLowerLimit() {
+        servoTiltLeft.write(LEFT_LOWER_ANGLE);
+    }
+
+    void rightGoLowerLimit() {
         servoTiltRight.write(RIGHT_LOWER_ANGLE);
+    }
+
+    void leftGoUpperLimit() {
+        servoTiltLeft.write(LEFT_UPPER_ANGLE);
+    }
+
+    void rightGoUpperLimit() {
+        servoTiltRight.write(RIGHT_UPPER_ANGLE);
     }
 
     void open() {
@@ -25,12 +33,12 @@ namespace Claw {
         delay(SERVO_WAIT_TIME);
     }
 
-    void goMiddle() {
-        if(Arm::see_idol_left) {
-            servoTiltLeft.write((LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
-            delay(SERVO_WAIT_TIME);
-            return; 
-        }
+    void leftGoMiddle() {
+        servoTiltLeft.write((LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
+        delay(SERVO_WAIT_TIME);
+    }
+
+    void rightGoMiddle() {
         servoTiltRight.write((RIGHT_LOWER_ANGLE + RIGHT_UPPER_ANGLE)/2);
         delay(SERVO_WAIT_TIME);
     }
