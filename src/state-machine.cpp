@@ -98,7 +98,6 @@ namespace StateMachine {
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
             StateHandler = state_droppingIdol;
-            Serial3.println("moveToIdol");
         }
     }
 
@@ -139,21 +138,26 @@ namespace StateMachine {
             Arm::move_distance = BIN_DIST;
         }
         Arm::goTo();
+        delay(1000);
+        Claw::open();
         if(Arm::getDistanceToGo() == 0) {
             StateHandler = state_goingHome;
             Serial3.println("droppingIdol");
         }
     }
 
-    void state_armArch() {
+    void state_armThruArch() {
         Arm::goHome();
-        Claw::goLowerLimit();
-        Claw::close3();
+        Claw::leftGoLowerLimit();
+        Claw::rightGoLowerLimit();
+         
+        Claw::close(SERVO_ANGLE_DIVISION);
     }
 
     void state_goingHome() {
         Arm::goHome();
-        Claw::goUpperLimit();
+        Claw::leftGoUpperLimit();
+        Claw::rightGoUpperLimit();
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
         StateHandler = state_do_nothing;
