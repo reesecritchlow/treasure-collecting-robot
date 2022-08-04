@@ -15,11 +15,19 @@ namespace StateMachine {
 
     void state_tape_following();
 
-    void (*StateHandler)() = state1_tape_following;
+    void (*StateHandler)() = state_tape_following;
 
     void state_infrared_tracking();
     void state_drive_straight();
     void state_do_nothing();
+    void state_moveToIdol();
+    void state_grabIdol();
+    void state_lowerArmForIdol();
+    void state_goToBin();
+    void state_raiseForDrop();
+    void state_goingHome();
+    void state_dropIdol();
+    void state_armThruArch();
 
     void state_tape_following() {
         Arm::idol_position = Arm::senseForIdol();
