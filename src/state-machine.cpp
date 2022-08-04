@@ -127,12 +127,19 @@ namespace StateMachine {
         // insert above code *****************************************************************
         if(Arm::see_idol_right) {
             Claw::rightGoLowerLimit();
-            while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
-                Claw::close(clawCounter);
-                clawCounter += 1;
-            }
-            if(Claw::magnetic_idol) {
-                Claw::open();
+            if(!Claw::seen_magnet) {
+                while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+                    Claw::close(clawCounter);
+                    clawCounter += 1;
+                }
+                if(Claw::magnetic_idol) {
+                    Claw::open();
+                    delay(SERVO_WAIT_TIME);
+                    Claw::leftGoUpperLimit();
+                    return;
+                }
+            } else {
+                Claw::close(SERVO_ANGLE_DIVISION);
             }
             Claw::rightGoMiddle();
             StateHandler = state_goToBin;
