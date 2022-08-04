@@ -21,6 +21,12 @@ namespace Claw {
     }
 
     void close() {
+        servoGrab.write(SERVO_CLOSE_ANGLE/4);
+        delay(SERVO_WAIT_TIME/2);
+
+        servoGrab.write(SERVO_CLOSE_ANGLE/2);
+        delay(SERVO_WAIT_TIME);
+
         servoGrab.write(SERVO_CLOSE_ANGLE);
         delay(SERVO_WAIT_TIME);
     }
