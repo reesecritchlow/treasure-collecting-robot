@@ -113,6 +113,8 @@ namespace StateMachine {
                 Claw::open();
             }
             Claw::leftGoMiddle();
+            StateHandler = state_droppingIdol;
+            clawCounter = 0;
             return;
         }
         if(Arm::see_idol_right) {
@@ -164,10 +166,7 @@ namespace StateMachine {
     }
 
     void state_magneticField() {
-        //claw open fully
-
-        //claw raise up
-
-        //stepper go home
+        detachInterrupt(MAGNET_INTERRUPT_PIN);
+        StateHandler = state_goingHome;
     }
 }

@@ -75,7 +75,7 @@ namespace Claw {
     }
 
     void handleMagneticField() {
-        //StateMachine::
-       
+        magnetic_idol = true;
+        StateMachine::StateHandler = StateMachine::state_magneticField;
      }
 }
