@@ -133,7 +133,7 @@ namespace StateMachine {
     void state_armArch() {
         Arm::goHome();
         Claw::goLowerLimit();
-        Claw::close();
+        Claw::close3();
     }
 
     void state_goingHome() {
