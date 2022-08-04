@@ -21,7 +21,7 @@ namespace Claw {
     
 
     void open();
-    void close();
+    void close(int angle);
     void handleMagneticField();
 }
 
