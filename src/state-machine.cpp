@@ -104,7 +104,9 @@ namespace StateMachine {
     void state_grabbingIdol() {
         Claw::open();
         Claw::goLowerLimit();
-        Claw::close();
+        Claw::close1();
+        Claw::close2();
+        Claw::close3();
         Claw::goMiddle();
     }
 
@@ -124,7 +126,7 @@ namespace StateMachine {
     void state_armArch() {
         Arm::goHome();
         Claw::goLowerLimit();
-        Claw::close();
+        Claw::close3();
     }
 
     void state_goingHome() {

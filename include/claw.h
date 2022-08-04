@@ -6,12 +6,16 @@
 
 namespace Claw {
     void setupServos();
+    void setupHallSensor();
 
     void goUpperLimit();
     void goMiddle();
     void goLowerLimit();
     void open();
-    void close();
+    void close1();
+    void close2();
+    void close3();
+    void handleMagneticField();
 }
 
 #endif

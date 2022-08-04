@@ -8,6 +8,9 @@ Servo servoTiltLeft;
 Servo servoTiltRight;
 
 namespace Claw {
+
+    volatile bool magnetic_idol = false;
+
     void leftGoLowerLimit() {
         servoTiltLeft.write(LEFT_LOWER_ANGLE);
         delay(SERVO_WAIT_TIME);
@@ -33,15 +36,25 @@ namespace Claw {
         delay(SERVO_WAIT_TIME);
     }
 
-    void close() {
-        servoGrab.write(SERVO_CLOSE_ANGLE/4);
-        delay(SERVO_WAIT_TIME/2);
+    void close1() {
+        if (!magnetic_idol) {
+            servoGrab.write(SERVO_CLOSE_ANGLE/4);
+            delay(SERVO_WAIT_TIME/2);
+        }
+    } 
 
-        servoGrab.write(SERVO_CLOSE_ANGLE/2);
-        delay(SERVO_WAIT_TIME);
+    void close2() {
+        if (!magnetic_idol) { 
+            servoGrab.write(SERVO_CLOSE_ANGLE/2);
+            delay(SERVO_WAIT_TIME);
+        }
+    }
 
+    void close3() {
+        if (!magnetic_idol) {
         servoGrab.write(SERVO_CLOSE_ANGLE);
-        delay(SERVO_WAIT_TIME);
+        delay(SERVO_WAIT_TIME);    
+        }
     }
 
     void leftGoMiddle() {
@@ -80,11 +93,11 @@ namespace Claw {
 
     void setupHallSensor() {
         pinMode(MAGNET_INTERRUPT_PIN, INPUT_PULLUP);
-        attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), , FALLING);
+        attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), handleMagneticField, FALLING);
     }
 
     void handleMagneticField() {
-        
+        //StateMachine::
        
     }
 }
