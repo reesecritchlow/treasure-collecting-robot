@@ -15,7 +15,7 @@ namespace PID {
     extern double kd;
 
     double computePID(int input);
-    void resetPID();
+    void newPIDSystem(double _kp, double _ki, double _kd);
 }
 
 

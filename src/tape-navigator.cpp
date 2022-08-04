@@ -51,12 +51,12 @@ namespace Tape {
         }
         else if (!left && !right && !mid && last_pid_multiplier > 0)
         {
-            current_pid_multiplier = 5;
+            current_pid_multiplier = 7;
             return;
         }
         else if (!left && !right && !mid && last_pid_multiplier < 0)
         {
-            current_pid_multiplier = -5;
+            current_pid_multiplier = -7;
             return;
         }
         else if (!left && !mid && right)

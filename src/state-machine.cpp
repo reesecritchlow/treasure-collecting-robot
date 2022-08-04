@@ -42,10 +42,10 @@ namespace StateMachine {
             Display::displayTapeMetrics();
         }
 
-        if(Arm::idol_position != 0) {
+       /* if(Arm::idol_position != 0) {
             StateHandler = state_moveToIdol;
             Drivetrain::halt();
-        }
+        }*/
         Infrared::readRightSensor();
 
         if (Infrared::right_signal < INFRARED_TRANSITION_LEFT_THRESHOLD) {

@@ -25,7 +25,7 @@ namespace PID {
         cumulative_error += error * elapsed_time;
         rate_error = (error - last_state) / elapsed_time;
 
-        double out = kp * error + ki * cumulative_error * 0 - kd * rate_error;
+        double out = kp * error - kd * rate_error;
 
         if (error != last_error) {
             last_state = last_error;
@@ -45,6 +45,13 @@ namespace PID {
         last_state = 0;
         cumulative_error = 0.0;
         rate_error = 0.0;
+    }
+
+    void newPIDSystem(double _kp, double _ki, double _kd) {
+        resetPID();
+        kp = _kp;
+        ki = _ki;
+        kd = _kd;
     }
 }
 

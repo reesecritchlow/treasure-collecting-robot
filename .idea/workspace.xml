@@ -18,12 +18,15 @@
   <component name="ChangeListManager">
     <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/drivetrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivetrain.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/encoder-navigator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/encoder-navigator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drivetrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drivetrain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encoder-navigator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/encoder-navigator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/display-manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/display-manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/pid-system.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/pid-system.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display-manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/display-manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pid-system.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pid-system.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state-machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tape-navigator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape-navigator.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +72,7 @@
       <recent name="$PROJECT_DIR$/include" />
     </key>
   </component>
-  <component name="RunManager" selected="PlatformIO.PlatformIO Debug">
+  <component name="RunManager" selected="PlatformIO.PlatformIO Upload">
     <configuration name="Z_DUMMY_TARGET" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="robot-summer" TARGET_NAME="Z_DUMMY_TARGET" CONFIG_NAME="bluepill_f103c8" RUN_TARGET_PROJECT_NAME="robot-summer" RUN_TARGET_NAME="Z_DUMMY_TARGET">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -105,7 +108,8 @@
       <workItem from="1659564397342" duration="979000" />
       <workItem from="1659565712901" duration="45000" />
       <workItem from="1659639447149" duration="29000" />
-      <workItem from="1659639490342" duration="3242000" />
+      <workItem from="1659639490342" duration="4749000" />
+      <workItem from="1659652107040" duration="3171000" />
     </task>
     <servers />
   </component>

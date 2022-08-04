@@ -1,3 +1,4 @@
+#include <Wire.h>
 #include "Adafruit_SSD1306.h"
 #include "tape-navigator.h"
 #include "drivetrain.h"
@@ -20,9 +21,10 @@ namespace Display {
 	display_handler.print(Tape::middle_reflectance);
 	display_handler.print(" ");
 	display_handler.println(Tape::right_reflectance);
-	display_handler.print("P,D: ");
 	display_handler.print(PID::kp);
 	display_handler.print(" ");
+    display_handler.print(PID::ki);
+    display_handler.print(" ");
 	display_handler.println(PID::kd);
 	display_handler.print(Tape::last_pid_multiplier);
 	display_handler.print(" ");
@@ -246,35 +248,46 @@ namespace Display {
 
 
 	void setupDisplay() {
-	// Set pins
-	Wire.setSCL(PB10);
-	Wire.setSDA(PB11);
+        // Set pins
+        Wire.setSCL(PB10);
+        Wire.setSDA(PB11);
 
-	display_handler.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+        display_handler.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 
-	display_handler.clearDisplay();
-	display_handler.drawBitmap(0, 0, epd_bitmap_Bitmap, 128, 64, WHITE);
-	display_handler.display();
+        display_handler.clearDisplay();
+        display_handler.drawBitmap(0, 0, epd_bitmap_Bitmap, 128, 64, WHITE);
+        display_handler.display();
 
-	delay(2000);	
+        delay(2000);
 
-	display_handler.clearDisplay();
-	display_handler.drawBitmap(0, 0, epd_bitmap_le_monke, 128, 64, WHITE);
-	display_handler.display();
+        display_handler.clearDisplay();
+        display_handler.drawBitmap(0, 0, epd_bitmap_le_monke, 128, 64, WHITE);
+        display_handler.display();
 
-	delay(2000);	
+        delay(2000);
 
-	display_handler.clearDisplay();
-	display_handler.setTextSize(1);
-	display_handler.setTextColor(SSD1306_WHITE);
-	display_handler.setCursor(0, 0);
-	display_handler.println(DISTANCE_CM_PER_STEP);
-	double test = 5.0 / DISTANCE_CM_PER_STEP;
-	display_handler.print(test);
-	display_handler.display();
+        display_handler.clearDisplay();
+        display_handler.setTextSize(1);
+        display_handler.setTextColor(SSD1306_WHITE);
+        display_handler.setCursor(0, 0);
+        display_handler.println("monkeOS");
+        display_handler.display();
 
-	delay(500);
+        delay(500);
 	}
+
+    void displayTuners(double counter, double tuner1, double tuner2) {
+        display_handler.clearDisplay();
+        display_handler.setCursor(0, 0);
+        display_handler.println(counter);
+        display_handler.print("kp");
+        display_handler.print(": ");
+        display_handler.println(tuner1);
+        display_handler.print("secondary");
+        display_handler.print(": ");
+        display_handler.println(tuner2);
+        display_handler.display();
+    }
 }
 
 
