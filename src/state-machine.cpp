@@ -11,26 +11,43 @@ namespace StateMachine {
 
     int cycleCounter = 0;
     int clawCounter = 0;
+    bool following_tape = true;
 
-    void state1_tape_following();
+    void state_tape_following();
 
     void (*StateHandler)() = state1_tape_following;
 
-    void state2_infrared_tracking();
-    void state3_drive_straight();
-    void state5_do_nothing();
+    void state_infrared_tracking();
+    void state_drive_straight();
+    void state_do_nothing();
 
-    void state1_tape_following() {
+    void state_tape_following() {
+        Arm::idol_position = Arm::senseForIdol();
+
         digitalWrite(INTERNAL_LED, HIGH);
             Tape::runPIDCycle();
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayTapeMetrics();
         }
+
+        if(Arm::idol_position != 0) {
+            StateHandler = state_moveToIdol;
+            Drivetrain::stopDrive();
+        }
         Infrared::left_signal = Infrared::readLeftSensor();
         Infrared::right_signal = Infrared::readRightSensor();
     }
 
-    void state2_infrared_tracking() {
+    void state_sensingIdol() {
+        Arm::idol_position = Arm::senseForIdol();
+        // Serial3.println(Arm::idol_position);
+        Arm::move_distance = Arm::idol_position;
+        if(Arm::idol_position != 0)
+            StateHandler = state_moveToIdol;
+    }
+
+    void state_infrared_tracking() {
+        following_tape = false;
         Infrared::runPIDCycle();
     }
 
@@ -38,7 +55,7 @@ namespace StateMachine {
     
     }
 
-    void state6_drive_straight_again() {
+    void state_drive_straight_again() {
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayEncoderMetrics();
         }
@@ -51,10 +68,10 @@ namespace StateMachine {
         Drivetrain::stopDrive();
         digitalWrite(INTERNAL_LED, HIGH);
 
-        StateHandler = state5_do_nothing;
+        StateHandler = state_do_nothing;
     }
 
-    void state4_spin() {
+    void state_spin() {
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayEncoderMetrics();
         }
@@ -66,10 +83,10 @@ namespace StateMachine {
         Drivetrain::stopDrive();
         digitalWrite(INTERNAL_LED, LOW);
         Encoders::setStraightDestinationDistance(10.0);
-        StateHandler = state6_drive_straight_again;
+        StateHandler = state_drive_straight_again;
     }
 
-    void state3_drive_straight() {
+    void state_drive_straight() {
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayEncoderMetrics();
         }
@@ -82,18 +99,12 @@ namespace StateMachine {
         Drivetrain::stopDrive();
         digitalWrite(INTERNAL_LED, HIGH);
         Encoders::setSpinDestinationDistance(45.0);
-        StateHandler = state4_spin;
+        StateHandler = state_spin;
     }
 
-    void state_sensingIdol() {
-        Arm::idol_position = Arm::senseForIdol();
-        Serial3.println(Arm::idol_position);
-        Arm::move_distance = Arm::idol_position; // = idol_position
-        if(Arm::idol_position != 0)
-            StateHandler = state_moveToIdol;
-    }
 
     void state_moveToIdol() {
+        Arm::move_distance = Arm::idol_position;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
@@ -123,6 +134,7 @@ namespace StateMachine {
                 Claw::open();
                 delay(SERVO_WAIT_TIME);
                 Claw::leftGoUpperLimit();
+    
                 return;
             }
         } else {
@@ -176,7 +188,11 @@ namespace StateMachine {
         Claw::rightGoUpperLimit();
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
-        StateHandler = state_do_nothing;
+        if(following_tape) {
+            StateHandler = state_tape_following;
+            return;
+        }
+        StateHandler = state_infrared_tracking;
     }
 
     void state_magneticField() {
