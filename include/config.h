@@ -152,6 +152,7 @@
 #define RIGHT_LOWER_ANGLE 35 // lowered
 #define RIGHT_UPPER_ANGLE 125  // raised
 #define SERVO_WAIT_TIME 1000
+#define SERVO_ANGLE_DIVISION 8
 
 #define MAGNET_INTERRUPT_PIN PC13
 

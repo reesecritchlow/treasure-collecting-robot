@@ -5,6 +5,8 @@
 #include <Arduino.h>
 
 namespace Claw {
+    extern volatile bool magnetic_idol;
+
     void setupServos();
     void setupHallSensor();
 
@@ -19,9 +21,7 @@ namespace Claw {
     
 
     void open();
-    void close1();
-    void close2();
-    void close3();
+    void close();
     void handleMagneticField();
 }
 
