@@ -21,11 +21,19 @@ namespace PID {
         elapsed_time = (double)(current_time - flag_time);
 
         error = input;
+        
+        if (error == 0) {
+            cumulative_error = 0;
+        }
 
         cumulative_error += error * elapsed_time;
         rate_error = (error - last_state) / elapsed_time;
 
         double out = kp * error - kd * rate_error;
+
+        if (elapsed_time > 1000) {
+            out += ki * cumulative_error;
+        }
 
         if (error != last_error) {
             last_state = last_error;

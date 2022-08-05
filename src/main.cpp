@@ -25,7 +25,7 @@ void setup() {
       secondary = analogRead(TUNER_ONE)/1000.0;
       Display::displayTuners(i, custom_kp, secondary);
   }
-  PID::newPIDSystem(custom_kp, 0.0, TAPE_KD);
+  PID::newPIDSystem(custom_kp, TAPE_KI, TAPE_KD);
 }
 
 void loop() {
