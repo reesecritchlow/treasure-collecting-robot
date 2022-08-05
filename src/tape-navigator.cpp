@@ -6,35 +6,35 @@
 
 namespace Tape {
 
-    double right_reflectance = analogRead(RIGHT_REFLECTANCE_PIN);
-    double middle_reflectance = analogRead(MIDDLE_REFLECTANCE_PIN);
-    double left_reflectance = analogRead(LEFT_REFLECTANCE_PIN);
+    double right_reflectance = analogRead(TAPE_RIGHT_SENSOR_PIN);
+    double middle_reflectance = analogRead(TAPE_MIDDLE_SENSOR_PIN);
+    double left_reflectance = analogRead(TAPE_LEFT_SENSOR_PIN);
     int last_pid_multiplier = DEFAULT_PID_STATE;
     int current_pid_multiplier = DEFAULT_PID_STATE;
     double transformed_PID = 0.0;
 
     void setupTapeTracking() {
-        pinMode(RIGHT_REFLECTANCE_PIN, INPUT);
-        pinMode(MIDDLE_REFLECTANCE_PIN, INPUT);
-        pinMode(LEFT_REFLECTANCE_PIN, INPUT);
+        pinMode(TAPE_RIGHT_SENSOR_PIN, INPUT);
+        pinMode(TAPE_MIDDLE_SENSOR_PIN, INPUT);
+        pinMode(TAPE_LEFT_SENSOR_PIN, INPUT);
     }
 
     void calculateTapePIDMultiplier() {
         last_pid_multiplier = current_pid_multiplier;
-        right_reflectance = analogRead(RIGHT_REFLECTANCE_PIN);
-        middle_reflectance = analogRead(MIDDLE_REFLECTANCE_PIN);
-        left_reflectance = analogRead(LEFT_REFLECTANCE_PIN);
+        right_reflectance = analogRead(TAPE_RIGHT_SENSOR_PIN);
+        middle_reflectance = analogRead(TAPE_MIDDLE_SENSOR_PIN);
+        left_reflectance = analogRead(TAPE_LEFT_SENSOR_PIN);
 
         bool left = OFF, right = OFF, mid = OFF; // using each sensor, determine where we are on the tape
-        if (left_reflectance > DEFAULT_REFLECTANCE_THRESHOLD)
+        if (left_reflectance > TAPE_REFLECTANCE_THRESHOLD)
         {
             left = ON;
         }
-        if (right_reflectance > DEFAULT_REFLECTANCE_THRESHOLD)
+        if (right_reflectance > TAPE_REFLECTANCE_THRESHOLD)
         {
             right = ON;
         }
-        if (middle_reflectance > DEFAULT_REFLECTANCE_THRESHOLD)
+        if (middle_reflectance > TAPE_REFLECTANCE_THRESHOLD)
         {
             mid = ON;
         } 

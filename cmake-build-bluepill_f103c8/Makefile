@@ -155,6 +155,294 @@ Z_DUMMY_TARGET/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/build
 .PHONY : Z_DUMMY_TARGET/fast
 
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.obj: .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.i: .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.i
+
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.s: .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.s
+
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.obj: .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.i: .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.i
+
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.s: .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.obj: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.i: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.s: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.obj: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.i: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.s: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.obj: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.i: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.s: .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.obj: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.i: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.s: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.obj: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.i: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.s: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.obj: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.i: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.s: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.obj: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.i: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.s: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.obj: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.i: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.s: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.obj: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.i: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.s: .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.s
+
+.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.obj: .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.obj
+
+# target to build an object file
+.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj
+
+.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.i: .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.i
+
+# target to preprocess a source file
+.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.i
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.i
+
+.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.s: .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.s
+
+# target to generate assembly for a file
+.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.s
+.PHONY : .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.s
+
 src/arm.obj: src/arm.cpp.obj
 .PHONY : src/arm.obj
 
@@ -454,6 +742,42 @@ help:
 	@echo "... Debug"
 	@echo "... Production"
 	@echo "... Z_DUMMY_TARGET"
+	@echo "... .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.s"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.obj"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.i"
+	@echo "... .pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.s"
 	@echo "... src/arm.obj"
 	@echo "... src/arm.i"
 	@echo "... src/arm.s"

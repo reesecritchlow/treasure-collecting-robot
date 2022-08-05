@@ -1,4 +1,28 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj.d"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/arm.cpp.obj"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/arm.cpp.obj.d"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/claw.cpp.obj"
@@ -28,6 +52,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/Z_DUMMY_TARGET.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

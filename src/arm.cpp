@@ -108,7 +108,7 @@ namespace Arm {
         int left_distance;
         int right_distance;
         left_distance = getDistance(L_TRIG, L_ECHO);
-        right_distance = getDistance(R_TRIG, R_ECHO);
+        right_distance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
 
         //establishes max range for sonar
         if(left_distance > SONAR_MAX_RANGE) {
@@ -143,8 +143,8 @@ namespace Arm {
     void setupSonars() {
         pinMode(L_TRIG, OUTPUT);
         pinMode(L_ECHO, INPUT);
-        pinMode(R_TRIG, OUTPUT);
-        pinMode(R_ECHO, INPUT);
+        pinMode(R_TRIG_PIN, OUTPUT);
+        pinMode(R_ECHO_PIN, INPUT);
     }
 
     void sleep() {

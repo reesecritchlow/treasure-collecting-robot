@@ -1,13 +1,63 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+// Pins
+
+#define INTERNAL_LED PB2
+
+#define INFRARED_RIGHT_CAP_RESET_PIN PB12   // Right infrared capacitor reset pin (digital output)
+#define INFRARED_LEFT_CAP_RESET_PIN PB13    // Left infrared capacitor reset pin (digital output)
+
+#define DIR_PIN PB14                        // (5V digital)
+#define STP_PIN PB15                        // (5V digital)
+
+#define SLP_PIN PA8                         // (5V PWM)
+
+// PA9 Empty (PWM 5V Pin)
+
+#define SERVO_PIN_GRAB PA10
+
+// PA11 Empty (5V digital)
+
+#define L_ECHO PA12                         // (5V digital)
+
+#define RIGHT_ENCODER_PIN PA15              // Right encoder (counter) pin (5V digital interrupt input)
+#define LEFT_ENCODER_PIN PB3                // Left encoder (counter) pin (5V digital interrupt input)
+
+#define SERVO_PIN_TILT_LEFT PB4             // (5V digital)
+#define SERVO_PIN_TILT_RIGHT PB5            // (3v3 digital)
+
+#define RIGHT_FORWARD_MOTOR_PIN PB_7        // Right forwards motor pin (PWM output)
+#define RIGHT_BACKWARD_MOTOR_PIN PB_6       // Right backward motor pin (PWM output)
+#define LEFT_FORWARD_MOTOR_PIN PB_9         // Left forwards motor pin (PWM output)
+#define LEFT_BACKWARD_MOTOR_PIN PB_8        // Left forwards motor pin (PWM output)
+
+// PB11 is temporarily OLED (I2C)
+// PB12 is temporarily OLED (I2C)
+
+#define TUNER_TWO_PIN PB0
+#define TUNER_ONE_PIN PB1
+
+#define INFRARED_LEFT_SENSOR_PIN PA7        // Left infrared sensor pin (3v3 analog input)
+#define INFRARED_RIGHT_SENSOR_PIN PA6       // Right infrared sensor pin (3v3 analog input)
+
+#define TAPE_RIGHT_SENSOR_PIN PA5           // Right tape reflectance sensor pin (5V analog input)
+#define TAPE_MIDDLE_SENSOR_PIN PA4          // Middle tape reflectance sensor pin (5V analog input)
+#define TAPE_LEFT_SENSOR_PIN PA3            // Left tape reflectance sensor pin (5V analog input)
+
+#define R_ECHO_PIN PA2
+#define R_TRIG_PIN PA1
+#define L_TRIG_PIN PA0
+
+#define MAGNET_INTERRUPT_PIN PC14
+#define SWT_PIN PC15
+
 // Globals
 
 #define DEFAULT_PID_STATE 0
-#define INTERNAL_LED PB2
 
-#define TUNER_ONE PB0
-#define TUNER_TWO PB1
+
+
 
 #define PRINT_LOOP_COUNT 100
 
@@ -49,10 +99,7 @@
 #define ON 1
 #define OFF 0
 
-#define DEFAULT_RIGHT_SENSOR_PIN PA6
-#define DEFAULT_LEFT_SENSOR_PIN PA7
-#define DEFAULT_RIGHT_CAP_RESET_PIN PB12
-#define DEFAULT_LEFT_CAP_RESET_PIN PB13
+
 
 #define DEFAULT_RIGHT_INFRARED_THRESHOLD 100
 #define DEFAULT_LEFT_INFRARED_THRESHOLD 100
@@ -62,29 +109,17 @@
 
 // Drivetrain Constants
 
-#define DEFAULT_RIGHT_FORWARD_MOTOR_PIN PB_7
-#define DEFAULT_RIGHT_BACKWARD_MOTOR_PIN PB_6
-#define DEFAULT_LEFT_FORWARD_MOTOR_PIN PB_9
-#define DEFAULT_LEFT_BACKWARD_MOTOR_PIN PB_8
 
-#define DEFAULT_CLOCK_FREQUENCY 100
-#define DEFAULT_RESOLUTION RESOLUTION_12B_COMPARE_FORMAT
-#define DEFAULT_BASE_SPEED 1024
 
-#define DEFAULT_SPEED_MULTIPLIER 1.0
+#define PWM_CLOCK_FREQUENCY 100
+#define PWM_SIGNAL_RESOLUTION RESOLUTION_12B_COMPARE_FORMAT
+#define DRIVETRAIN_BASE_SPEED 1024
+
+#define DRIVETRAIN_SPEED_MULTIPLIER 1.0
 
 #define BRAKING_TIME 220
 
 // Encoder Constants
-
-#define RIGHT_ENCODER_PIN PA14
-#define LEFT_ENCODER_PIN PB4
-
-#define RIGHT_ENCODER_DIRECTION_PIN PA13
-#define LEFT_ENCODER_DIRECTION_PIN PB3
-
-#define RIGHT_ENCODER_FORWARDS_PHASE 1
-#define LEFT_ENCODER_FORWARDS_PHASE 0
 
 #define ENCODER_SCALING_VALUE 1.0
 
@@ -115,27 +150,14 @@
 
 // Tape Following Constants
 
-#define RIGHT_REFLECTANCE_PIN PA2
-#define MIDDLE_REFLECTANCE_PIN PA1
-#define LEFT_REFLECTANCE_PIN PA0
-#define DEFAULT_REFLECTANCE_THRESHOLD 60
+#define TAPE_REFLECTANCE_THRESHOLD 60
 
 // Arm 
 
 #define LEFT -100
 #define RIGHT 100
 
-#define SWT_PIN PC15
-
 #define MOTOR_INTERFACE 1
-#define DIR_PIN PB14
-#define STP_PIN PB15
-#define SLP_PIN PA8
-
-#define L_TRIG PA14
-#define L_ECHO PA15
-#define R_TRIG PA4
-#define R_ECHO PA5
 
 #define SONAR_MAX_RANGE 25
 #define USTEP_RATIO 8
@@ -148,9 +170,7 @@
 
 // Claw
 
-#define SERVO_PIN_GRAB PA10
-#define SERVO_PIN_TILT_LEFT PA2
-#define SERVO_PIN_TILT_RIGHT PA1
+
 
 #define SERVO_CLOSE_ANGLE 80 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
@@ -161,6 +181,6 @@
 #define SERVO_WAIT_TIME 1000
 #define SERVO_ANGLE_DIVISION 8
 
-#define MAGNET_INTERRUPT_PIN PC14
+
 
 #endif

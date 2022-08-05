@@ -3,32 +3,32 @@
 #include "config.h"
 
 namespace Infrared {
-    double right_signal = analogRead(DEFAULT_RIGHT_SENSOR_PIN);
-    double left_signal = analogRead(DEFAULT_RIGHT_SENSOR_PIN);
+    double right_signal = analogRead(INFRARED_RIGHT_SENSOR_PIN);
+    double left_signal = analogRead(INFRARED_RIGHT_SENSOR_PIN);
     int last_pid_multiplier = 0;
     int current_pid_multiplier = 0;
 
     void setupInfrared() {
-        pinMode(DEFAULT_RIGHT_SENSOR_PIN, INPUT);
-        pinMode(DEFAULT_LEFT_SENSOR_PIN, INPUT);
-        pinMode(DEFAULT_RIGHT_CAP_RESET_PIN, OUTPUT);
-        pinMode(DEFAULT_LEFT_CAP_RESET_PIN, OUTPUT);
+        pinMode(INFRARED_RIGHT_SENSOR_PIN, INPUT);
+        pinMode(INFRARED_LEFT_SENSOR_PIN, INPUT);
+        pinMode(INFRARED_RIGHT_CAP_RESET_PIN, OUTPUT);
+        pinMode(INFRARED_LEFT_CAP_RESET_PIN, OUTPUT);
     }
 
     void readRightSensor() {
-        digitalWrite(DEFAULT_RIGHT_CAP_RESET_PIN, HIGH);
+        digitalWrite(INFRARED_RIGHT_CAP_RESET_PIN, HIGH);
         delayMicroseconds(CAP_DELAY);
-        digitalWrite(DEFAULT_RIGHT_CAP_RESET_PIN, LOW);
+        digitalWrite(INFRARED_RIGHT_CAP_RESET_PIN, LOW);
         delayMicroseconds(READ_DELAY);
-        right_signal = analogRead(DEFAULT_RIGHT_SENSOR_PIN);
+        right_signal = analogRead(INFRARED_RIGHT_SENSOR_PIN);
     }
 
     void readLeftSensor() {
-        digitalWrite(DEFAULT_LEFT_CAP_RESET_PIN, HIGH);
+        digitalWrite(INFRARED_LEFT_CAP_RESET_PIN, HIGH);
         delayMicroseconds(CAP_DELAY);
-        digitalWrite(DEFAULT_LEFT_CAP_RESET_PIN, LOW);
+        digitalWrite(INFRARED_LEFT_CAP_RESET_PIN, LOW);
         delayMicroseconds(READ_DELAY);
-        left_signal = analogRead(DEFAULT_LEFT_SENSOR_PIN);
+        left_signal = analogRead(INFRARED_LEFT_SENSOR_PIN);
     }
 
     void calculatePIDMultiplier() {
