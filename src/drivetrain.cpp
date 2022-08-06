@@ -18,26 +18,26 @@ namespace Drivetrain {
     // Changes drive speeds based on PID modifier value produced from a Navigator object
     void changeDrivePID(double pid_modifier_value) {
         if ((DRIVETRAIN_BASE_SPEED + pid_modifier_value) * speed_multiplier > 0) {
-            pwm_stop(RIGHT_BACKWARD_MOTOR_PIN);
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             right_speed = (DRIVETRAIN_BASE_SPEED + pid_modifier_value) * speed_multiplier;
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
             right_direction = true;
         } else {
-            pwm_stop(LEFT_FORWARD_MOTOR_PIN);
-            left_speed = -1 * (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
-            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+            right_speed = -1 * (DRIVETRAIN_BASE_SPEED + pid_modifier_value) * speed_multiplier;
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
             left_direction = false;
         }
 
         if ((DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier > 0) {
-            pwm_stop(LEFT_BACKWARD_MOTOR_PIN);
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             left_speed = (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
             left_direction = true;
         } else {
-            pwm_stop(RIGHT_FORWARD_MOTOR_PIN);
-            right_speed = -1 * (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
-            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+            left_speed = -1 * (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
             right_direction = false;
         }
     }
