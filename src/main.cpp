@@ -14,18 +14,14 @@ void setup() {
   Tape::setupTapeTracking();
   Infrared::setupInfrared();
   Display::setupDisplay();
-  Encoders::setupEncoders();
+  // Encoders::setupEncoders();
+
+  Drivetrain::startDrive();
+
   // Claw::setupServos();
   // Arm::setupArm();
   // Arm::setupSonars();
-  double custom_kp = analogRead(TUNER_ONE_PIN);
-  double secondary = analogRead(TUNER_TWO_PIN) / 1000.0;
-  for (int i = 0; i < 500; i++) {
-      custom_kp = analogRead(TUNER_ONE_PIN);
-      secondary = analogRead(TUNER_TWO_PIN) / 1000.0;
-      Display::displayTuners(i, custom_kp, secondary);
-  }
-  PID::newPIDSystem(custom_kp, TAPE_KI, TAPE_KD);
+  PID::newPIDSystem(500.0, 0, 65.0);
 }
 
 void loop() {

@@ -10,6 +10,7 @@ namespace Drivetrain {
     extern bool right_direction;
     extern bool left_direction;
 
+    void startDrive();
     void startDrivetrainStraight();
     void changeDrivePID(double pid_modifier_value);
     void changeDrivePIDSpin(double pid_modifier_value, bool direction);

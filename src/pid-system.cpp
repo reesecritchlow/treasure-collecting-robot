@@ -26,7 +26,7 @@ namespace PID {
             cumulative_error = 0;
         }*/
 
-        cumulative_error += error * elapsed_time;
+        // cumulative_error += error * elapsed_time;
         rate_error = (error - last_state) / elapsed_time;
 
         double out = kp * error - kd * rate_error;

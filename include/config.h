@@ -8,18 +8,15 @@
 #define INFRARED_RIGHT_CAP_RESET_PIN PB12   // Right infrared capacitor reset pin (digital output)
 #define INFRARED_LEFT_CAP_RESET_PIN PB13    // Left infrared capacitor reset pin (digital output)
 
+// Stepper Block
 #define DIR_PIN PB14                        // (5V digital)
 #define STP_PIN PB15                        // (5V digital)
-
 #define SLP_PIN PA8                         // (5V PWM)
 
 // PA9 Empty (PWM 5V Pin)
-
 #define SERVO_PIN_GRAB PA10
-
 // PA11 Empty (5V digital)
-
-#define L_ECHO PA12                         // (5V digital)
+#define L_ECHO_PIN PA12                         // (5V digital)
 
 #define RIGHT_ENCODER_PIN PA15              // Right encoder (counter) pin (5V digital interrupt input)
 #define LEFT_ENCODER_PIN PB3                // Left encoder (counter) pin (5V digital interrupt input)
@@ -27,14 +24,13 @@
 #define SERVO_PIN_TILT_LEFT PB4             // (5V digital)
 #define SERVO_PIN_TILT_RIGHT PB5            // (3v3 digital)
 
-#define RIGHT_FORWARD_MOTOR_PIN PB_7        // Right forwards motor pin (PWM output)
-#define RIGHT_BACKWARD_MOTOR_PIN PB_6       // Right backward motor pin (PWM output)
-#define LEFT_FORWARD_MOTOR_PIN PB_9         // Left forwards motor pin (PWM output)
-#define LEFT_BACKWARD_MOTOR_PIN PB_8        // Left forwards motor pin (PWM output)
+#define RIGHT_FORWARD_MOTOR_PIN PB_8        // Right forwards motor pin (PWM output)
+#define RIGHT_BACKWARD_MOTOR_PIN PB_9       // Right backward motor pin (PWM output)
+#define LEFT_FORWARD_MOTOR_PIN PB_6         // Left forwards motor pin (PWM output)
+#define LEFT_BACKWARD_MOTOR_PIN PB_7        // Left forwards motor pin (PWM output)
 
 // PB11 is temporarily OLED (I2C)
 // PB12 is temporarily OLED (I2C)
-
 #define TUNER_TWO_PIN PB0
 #define TUNER_ONE_PIN PB1
 
@@ -113,7 +109,7 @@
 
 #define PWM_CLOCK_FREQUENCY 100
 #define PWM_SIGNAL_RESOLUTION RESOLUTION_12B_COMPARE_FORMAT
-#define DRIVETRAIN_BASE_SPEED 1024
+#define DRIVETRAIN_BASE_SPEED 2048
 
 #define DRIVETRAIN_SPEED_MULTIPLIER 1.0
 
@@ -151,6 +147,10 @@
 // Tape Following Constants
 
 #define TAPE_REFLECTANCE_THRESHOLD 60
+
+#define FIRST_TAPE_STATE 1
+#define SECOND_TAPE_STATE 2
+#define THIRD_TAPE_STATE 9
 
 // Arm 
 

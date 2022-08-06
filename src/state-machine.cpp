@@ -34,18 +34,18 @@ namespace StateMachine {
     void state_drive_to_third_idol();
 
     void state_tape_following() {
-        Arm::idol_position = Arm::senseForIdol();
-
-        digitalWrite(INTERNAL_LED, HIGH);
-            Tape::runPIDCycle();
+//        Arm::idol_position = Arm::senseForIdol();
+//
+//        digitalWrite(INTERNAL_LED, HIGH);
+        Tape::runPIDCycle();
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayTapeMetrics();
         }
 
-       /* if(Arm::idol_position != 0) {
+        /*if(Arm::idol_position != 0) {
             StateHandler = state_moveToIdol;
             Drivetrain::halt();
-        }*/
+        }
         Infrared::readRightSensor();
 
         if (Infrared::right_signal < INFRARED_TRANSITION_LEFT_THRESHOLD) {
@@ -53,7 +53,7 @@ namespace StateMachine {
         }
         Drivetrain::halt();
         StateHandler = state_search_for_infrared_at_arch;
-        Encoders::setSpinDestinationDistance(30.0);
+        Encoders::setSpinDestinationDistance(30.0);*/
     }
 
     void state_search_for_infrared_at_arch() {

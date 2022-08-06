@@ -18,25 +18,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/.cmake/api/v1/reply/codemodel-v2-054d5423210643485427.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/.cmake/api/v1/reply/index-2022-08-03T22-13-32-0046.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/.cmake/api/v1/reply/target-Z_DUMMY_TARGET-bluepill_f103c8-a07406dde2317d9cabe9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/Z_DUMMY_TARGET.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/robot-summer.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/robot-summer.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drivetrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drivetrain.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infrared-navigator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/infrared-navigator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivetrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivetrain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/arm.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pid-system.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pid-system.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state-machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tape-navigator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape-navigator.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

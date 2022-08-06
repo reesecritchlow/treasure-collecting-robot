@@ -107,7 +107,7 @@ namespace Arm {
     int senseForIdol() {
         int left_distance;
         int right_distance;
-        left_distance = getDistance(L_TRIG, L_ECHO);
+        left_distance = getDistance(L_TRIG_PIN, L_ECHO_PIN);
         right_distance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
 
         //establishes max range for sonar
@@ -141,8 +141,8 @@ namespace Arm {
      *
      */
     void setupSonars() {
-        pinMode(L_TRIG, OUTPUT);
-        pinMode(L_ECHO, INPUT);
+        pinMode(L_TRIG_PIN, OUTPUT);
+        pinMode(L_ECHO_PIN, INPUT);
         pinMode(R_TRIG_PIN, OUTPUT);
         pinMode(R_ECHO_PIN, INPUT);
     }

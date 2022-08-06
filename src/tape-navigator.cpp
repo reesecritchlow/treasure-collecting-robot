@@ -46,37 +46,37 @@ namespace Tape {
         }
         else if (!left && !right && !mid && last_pid_multiplier == 0) // review if all are high or low
         {
-            current_pid_multiplier = -1; // chicken wire, go slight left
+            current_pid_multiplier = -FIRST_TAPE_STATE; // chicken wire, go slight left
             return;
         }
         else if (!left && !right && !mid && last_pid_multiplier > 0)
         {
-            current_pid_multiplier = 5;
+            current_pid_multiplier = THIRD_TAPE_STATE;
             return;
         }
         else if (!left && !right && !mid && last_pid_multiplier < 0)
         {
-            current_pid_multiplier = -5;
+            current_pid_multiplier = -THIRD_TAPE_STATE;
             return;
         }
         else if (!left && !mid && right)
         {
-            current_pid_multiplier = -2;
+            current_pid_multiplier = -SECOND_TAPE_STATE;
             return;
         }
         else if (left && !mid && !right)
         {
-            current_pid_multiplier = 2;
+            current_pid_multiplier = SECOND_TAPE_STATE;
             return;
         }
         else if (!left && mid && right)
         {
-            current_pid_multiplier = -1;
+            current_pid_multiplier = -FIRST_TAPE_STATE;
             return;
         }
             else if (left && mid && !right)
         {
-            current_pid_multiplier = 1;
+            current_pid_multiplier = FIRST_TAPE_STATE;
             return;
         }
         current_pid_multiplier = 0; // mid sees tape, go straight
