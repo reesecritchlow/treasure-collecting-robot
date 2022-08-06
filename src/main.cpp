@@ -12,14 +12,15 @@ void setup() {
   Tape::setupTapeTracking();
   Infrared::setupInfrared();
   Display::setupDisplay();
-  // Encoders::setupEncoders();
+  Encoders::setupEncoders();
 
-  Drivetrain::startDrive();
+  // Drivetrain::startDrive();
 
   // Claw::setupServos();
   // Arm::setupArm();
   // Arm::setupSonars();
-  PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
+  Encoders::setStraightDestinationDistance(5.0);
+  PID::newPIDSystem(750, TAPE_KI, 200.0);
 }
 
 void loop() {

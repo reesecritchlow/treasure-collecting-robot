@@ -14,9 +14,10 @@ namespace StateMachine {
     bool following_tape = true;
 
     void state_tape_following();
+    void test_encoders();
 
     // Initial State
-    void (*StateHandler)() = state_tape_following;
+    void (*StateHandler)() = test_encoders;
 
     void state_infrared_tracking();
     void state_drive_straight();
@@ -54,6 +55,19 @@ namespace StateMachine {
         Drivetrain::halt();
         StateHandler = state_search_for_infrared_at_arch;
         Encoders::setSpinDestinationDistance(30.0);*/
+    }
+
+    void test_encoders() {
+        Encoders::encoderDriveStraight();
+        if (cycleCounter % PRINT_LOOP_COUNT == 0) {
+            Display::displayEncoderMetrics();
+        }
+
+        if (Encoders::left_count > Encoders::left_destination_count ||
+            Encoders::right_count > Encoders::right_destination_count) {
+            Drivetrain::halt();
+            StateHandler = state_do_nothing;
+        }
     }
 
     void state_search_for_infrared_at_arch() {

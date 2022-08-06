@@ -18,8 +18,8 @@
 // PA11 Empty (5V digital)
 #define L_ECHO_PIN PA12                         // (5V digital)
 
-#define RIGHT_ENCODER_PIN PA15              // Right encoder (counter) pin (5V digital interrupt input)
-#define LEFT_ENCODER_PIN PB3                // Left encoder (counter) pin (5V digital interrupt input)
+#define RIGHT_ENCODER_PIN PB3              // Right encoder (counter) pin (5V digital interrupt input)
+#define LEFT_ENCODER_PIN PA15                // Left encoder (counter) pin (5V digital interrupt input)
 
 #define SERVO_PIN_TILT_LEFT PB4             // (5V digital)
 #define SERVO_PIN_TILT_RIGHT PB5            // (3v3 digital)
@@ -105,7 +105,7 @@
 
 // Drivetrain Constants
 
-
+#define HALT_SCALING_VALUE 5.0
 
 #define PWM_CLOCK_FREQUENCY 100
 #define PWM_SIGNAL_RESOLUTION RESOLUTION_12B_COMPARE_FORMAT
@@ -117,7 +117,7 @@
 
 // Encoder Constants
 
-#define ENCODER_SCALING_VALUE 1.0
+#define ENCODER_SCALING_VALUE 0.5
 
     // Straight Line Constants
 
@@ -129,11 +129,11 @@
 
 #define RADIANS_PER_STEP 2.0 * PI / STEPS_PER_ROTATION
 
-#define DISTANCE_CM_PER_STEP 0.14825003500631917 // Hardcoded, because cpp loves you.
+#define DISTANCE_CM_PER_STEP 0.143 // Hardcoded, because cpp loves you.
 
     // Spinning Constants
 
-#define SPIN_RADIUS 10.845  // (Half the track width)
+#define SPIN_RADIUS 10.82  // (Half the track width)
 
 #define CLOCKWISE true
 #define COUNTER_CLOCKWISE false

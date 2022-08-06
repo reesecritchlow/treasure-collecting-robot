@@ -13,6 +13,7 @@ namespace Drivetrain {
     void startDrive();
     void startDrivetrainStraight();
     void changeDrivePID(double pid_modifier_value);
+    void changeDrivePIDStraight(double pid_multiplier_value);
     void changeDrivePIDSpin(double pid_modifier_value, bool direction);
     void killDrive();
     void changeDriveMultiplier(double drive_multiplier);
