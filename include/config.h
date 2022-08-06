@@ -81,9 +81,9 @@
 #define TAPE_KI 0.0
 #define TAPE_KD 65.0
 
-#define ENCODER_KP 65.0
+#define ENCODER_KP 750.0
 #define ENCODER_KI 65.0
-#define ENCODER_KD 0.0
+#define ENCODER_KD 200.0
 
 // IR Constants
 
