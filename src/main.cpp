@@ -9,8 +9,6 @@
 
 void setup() {
   pinMode(INTERNAL_LED, OUTPUT);
-  pinMode(TUNER_TWO_PIN, INPUT_ANALOG);
-  pinMode(TUNER_ONE_PIN, INPUT_ANALOG);
   Tape::setupTapeTracking();
   Infrared::setupInfrared();
   Display::setupDisplay();
@@ -21,7 +19,7 @@ void setup() {
   // Claw::setupServos();
   // Arm::setupArm();
   // Arm::setupSonars();
-  PID::newPIDSystem(500.0, 0, 65.0);
+  PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
 }
 
 void loop() {
