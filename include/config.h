@@ -43,7 +43,7 @@
 #define TAPE_LEFT_SENSOR_PIN PA3            // Left tape reflectance sensor pin (5V analog input)
 
 // Servo Block
-#define SERVO_PIN_TILT_LEFT PA_2  
+#define SERVO_PIN_TILT_LEFT PA_2 
 #define SERVO_PIN_GRAB PA_1         
 #define SERVO_PIN_TILT_RIGHT PA_0
 
@@ -153,7 +153,7 @@
 
 #define MOTOR_INTERFACE 1
 
-#define SONAR_MAX_RANGE 25
+#define SONAR_MAX_RANGE 20
 #define USTEP_RATIO 8
 #define DIST_RATIO 3.704
 #define MAX_SPD 40000
@@ -175,10 +175,10 @@
 
 #define SERVO_CLOSE_ANGLE 80 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
-#define LEFT_LOWER_ANGLE 85 // lowered
+#define LEFT_LOWER_ANGLE 95 // lowered
 #define LEFT_UPPER_ANGLE 10  // raised
-#define RIGHT_LOWER_ANGLE 45 // lowered
-#define RIGHT_UPPER_ANGLE 125  // raised
+#define RIGHT_LOWER_ANGLE 55 // lowered
+#define RIGHT_UPPER_ANGLE 140  // raised
 #define SERVO_WAIT_TIME 1000
 #define SERVO_ANGLE_DIVISION 8
 
