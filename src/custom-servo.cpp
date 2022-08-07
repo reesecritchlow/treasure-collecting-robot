@@ -32,6 +32,6 @@ namespace GrabServo {
     void write(double position) {
         double modified_position = convertPosition(position);
         last_position = modified_position;
-        pwm_start(SERVO_PIN_GRAB, 100, 50, RESOLUTION_10B_COMPARE_FORMAT);
+        pwm_start(SERVO_PIN_GRAB, 100, 50, CUSTOM_SERVO_RESOLUTION);
     }
 }
