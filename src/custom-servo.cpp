@@ -14,10 +14,6 @@ namespace LeftTiltServo {
         last_position = modified_position;
         pwm_start(SERVO_PIN_TILT_LEFT, CUSTOM_SERVO_READ_FREQUENCY, modified_position, CUSTOM_SERVO_RESOLUTION);
     }
-
-    void stopSignal() {
-        pwm_start(SERVO_PIN_TILT_LEFT, CUSTOM_SERVO_READ_FREQUENCY, 0, CUSTOM_SERVO_RESOLUTION);
-    }
 }
 
 namespace RightTiltServo {
@@ -28,10 +24,6 @@ namespace RightTiltServo {
         last_position = modified_position;
         pwm_start(SERVO_PIN_TILT_RIGHT, CUSTOM_SERVO_READ_FREQUENCY, modified_position, CUSTOM_SERVO_RESOLUTION);
     }
-
-    void stopSignal() {
-        pwm_start(SERVO_PIN_TILT_RIGHT, CUSTOM_SERVO_READ_FREQUENCY, 0, CUSTOM_SERVO_RESOLUTION);
-    }
 }
 
 namespace GrabServo {
@@ -41,9 +33,5 @@ namespace GrabServo {
         double modified_position = convertPosition(position);
         last_position = modified_position;
         pwm_start(SERVO_PIN_GRAB, 100, 50, RESOLUTION_10B_COMPARE_FORMAT);
-    }
-
-    void stopSignal() {
-        pwm_start(SERVO_PIN_GRAB, CUSTOM_SERVO_READ_FREQUENCY, 0, CUSTOM_SERVO_RESOLUTION);
     }
 }
