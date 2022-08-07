@@ -20,7 +20,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/state-machine.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/state-machine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/display-manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/display-manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state-machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tape-navigator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape-navigator.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +108,7 @@
       <workItem from="1659639490342" duration="4749000" />
       <workItem from="1659652107040" duration="3171000" />
       <workItem from="1659817990088" duration="5517000" />
-      <workItem from="1659828527757" duration="2648000" />
+      <workItem from="1659828527757" duration="5790000" />
     </task>
     <servers />
   </component>

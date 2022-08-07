@@ -6,6 +6,7 @@
 #include "config.h"
 #include "encoder-navigator.h"
 #include "pid-system.h"
+#include "state-machine.h"
 
 namespace Display {
 	Adafruit_SSD1306 display_handler(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -96,11 +97,12 @@ namespace Display {
 		display_handler.print(" ");
 
 		if (Drivetrain::right_direction) {
-			display_handler.print("fwd");
+			display_handler.println("fwd");
 		} else {
-			display_handler.print("rev");
+			display_handler.println("rev");
 		}
 
+        display_handler.print(StateMachine::search_direction);
 		display_handler.display();
 	}
 
@@ -293,6 +295,7 @@ namespace Display {
         display_handler.clearDisplay();
         display_handler.setCursor(0, 0);
         display_handler.println("chicken wire");
+        display_handler.println(Tape::tapeLost);
         display_handler.display();
     }
 }
