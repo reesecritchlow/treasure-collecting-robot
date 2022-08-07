@@ -13,8 +13,7 @@ namespace StateMachine {
     int clawCounter = 0;
     bool following_tape = true;
     bool chicken_wire_crossed = false;
-    bool homing_sweep_direction = false;
-    bool search_direction = false;
+    bool search_direction = true;
     int idol_count = 0;
 
     void state_tape_following();
@@ -92,6 +91,7 @@ namespace StateMachine {
                 Display::displayEncoderMetrics();
             }
         }
+        Display::displayEncoderMetrics();
         Drivetrain::halt();
         chicken_wire_crossed = true;
         StateHandler = state_tape_homing;
@@ -99,21 +99,30 @@ namespace StateMachine {
 
     void state_tape_homing() {
         double search_angle = 45.0;
-        do {
+        while (Tape::tapeLost) {
+            delay(1000);
             Encoders::setSpinDestinationDistance(search_angle);
-            while (Encoders::checkDestinationDistance()) {
+            while (!Encoders::checkDestinationDistance()) {
                 cycleCounter++;
                 Encoders::encoderSpin(search_direction);
                 Tape::calculateTapePIDMultiplier();
-                if (Tape::current_pid_multiplier == 0) {
+                if (cycleCounter % PRINT_LOOP_COUNT) {
+                    Display::displayEncoderMetrics();
+                }
+                if (Tape::current_pid_multiplier == 0 && !Tape::tapeLost) {
+                    PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
                     Tape::tapeLost = false;
+                    Drivetrain::halt();
+                    delay(1000);
                     StateHandler = state_tape_following;
                     break;
                 }
             }
             search_direction = !search_direction;
             search_angle *= 2;
-        } while (Tape::tapeLost);
+            Drivetrain::halt();
+        }
+        digitalWrite(INTERNAL_LED, HIGH);
     }
 
     void state_infrared_homing() {
@@ -121,7 +130,7 @@ namespace StateMachine {
         bool infrared_lost = true;
         while (infrared_lost) {
             Encoders::setSpinDestinationDistance(search_angle);
-            while (Encoders::checkDestinationDistance()) {
+            while (!Encoders::checkDestinationDistance()) {
                 cycleCounter++;
                 Encoders::encoderSpin(search_direction);
                 Infrared::calculatePIDMultiplier();

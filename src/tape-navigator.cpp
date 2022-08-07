@@ -47,6 +47,7 @@ namespace Tape {
         // Now determine which state
         if (left && right && mid) {
             current_pid_multiplier = 0;
+            tapeLost = false;
             return;
         } else if (!left && !right && !mid && last_pid_multiplier == 0) // review if all are high or low
         {
@@ -71,6 +72,7 @@ namespace Tape {
             current_pid_multiplier = FIRST_TAPE_STATE;
             return;
         }
+        tapeLost = false;
         current_pid_multiplier = 0; // mid sees tape, go straight
     }
 

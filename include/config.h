@@ -58,7 +58,7 @@
 // State Machine
 
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
-#define CHICKEN_WIRE_DISTANCE 18.0 // (centimeters)
+#define CHICKEN_WIRE_DISTANCE 20.0 // (centimeters)
 
 
 // Display Manager
@@ -83,7 +83,7 @@
 
 #define TAPE_KP 500.0
 #define TAPE_KI 0.0
-#define TAPE_KD 65.0
+#define TAPE_KD 150.0
 
 #define ENCODER_KP 750.0
 #define ENCODER_KI 65.0
@@ -140,7 +140,7 @@
 
 #define FIRST_TAPE_STATE 1
 #define SECOND_TAPE_STATE 2
-#define THIRD_TAPE_STATE 9
+#define THIRD_TAPE_STATE 8
 
 #define CHICKEN_WIRE_THRESHOLD 250
 

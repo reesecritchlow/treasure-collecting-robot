@@ -3,6 +3,7 @@
 
 namespace StateMachine {
     extern int cycleCounter;
+    extern bool search_direction;
     extern void (*StateHandler)();
     extern void state_magneticField();
 }
