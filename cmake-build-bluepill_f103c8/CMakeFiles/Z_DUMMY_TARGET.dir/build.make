@@ -111,10 +111,24 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.s"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/reesecritchlow/Robot/robot-summer/src/config.cpp -o CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.s
 
+CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
+CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj: ../src/custom-servo.cpp
+CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj"
+	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/custom-servo.cpp
+
+CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.i"
+	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/reesecritchlow/Robot/robot-summer/src/custom-servo.cpp > CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.i
+
+CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.s"
+	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/reesecritchlow/Robot/robot-summer/src/custom-servo.cpp -o CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.s
+
 CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj: ../src/display-manager.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/display-manager.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj: ../src/drivetrain.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/drivetrain.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj: ../src/encoder-navigator.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/encoder-navigator.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj: ../src/infrared-navigator.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/infrared-navigator.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/infrared-navigator.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj: ../src/main.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/main.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj: ../src/pid-system.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/pid-system.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/pid-system.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj: ../src/sonar-manager.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/sonar-manager.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/sonar-manager.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj: ../src/state-machine.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/state-machine.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/state-machine.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj: ../src/tape-navigator.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/src/tape-navigator.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/src/tape-navigator.cpp.s: cmake_force
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj: ../.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/AccelStepper.cpp.i: cmake_force
@@ -254,7 +268,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/Acce
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj: ../.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.obj -c /Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/MultiStepper.cpp.i: cmake_force
@@ -268,7 +282,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/AccelStepper/src/Mult
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ BusIO/Adafruit_BusIO_Register.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit BusIO/Adafruit_BusIO_Register.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_BusIO_Register.cpp.i: cmake_force
@@ -282,7 +296,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafru
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ BusIO/Adafruit_I2CDevice.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit BusIO/Adafruit_I2CDevice.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_I2CDevice.cpp.i: cmake_force
@@ -296,7 +310,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafru
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ BusIO/Adafruit_SPIDevice.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit BusIO/Adafruit_SPIDevice.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafruit_SPIDevice.cpp.i: cmake_force
@@ -310,7 +324,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_BusIO/Adafru
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ GFX\ Library/Adafruit_GFX.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit GFX Library/Adafruit_GFX.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GFX.cpp.i: cmake_force
@@ -324,7 +338,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ GFX\ Library/Adafruit_GrayOLED.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit GFX Library/Adafruit_GrayOLED.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp.i: cmake_force
@@ -338,7 +352,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ GFX\ Library/Adafruit_SPITFT.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit GFX Library/Adafruit_SPITFT.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/Adafruit_SPITFT.cpp.i: cmake_force
@@ -352,7 +366,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ GFX\ Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit GFX Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/examples/GFXcanvas/GFXcanvasSerialDemo.cpp.i: cmake_force
@@ -366,7 +380,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ GFX\ Library/fontconvert/fontconvert.c
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit GFX Library/fontconvert/fontconvert.c"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/fontconvert/fontconvert.c.i: cmake_force
@@ -380,7 +394,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ GFX\ Library/glcdfont.c
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit GFX Library/glcdfont.c"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/glcdfont.c.i: cmake_force
@@ -394,7 +408,7 @@ CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_GFX_Library/
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/flags.make
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj: ../.pio/libdeps/bluepill_f103c8/Adafruit\ SSD1306/Adafruit_SSD1306.cpp
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj: CMakeFiles/Z_DUMMY_TARGET.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj"
 	/Users/reesecritchlow/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj -MF CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj.d -o CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj -c "/Users/reesecritchlow/Robot/robot-summer/.pio/libdeps/bluepill_f103c8/Adafruit SSD1306/Adafruit_SSD1306.cpp"
 
 CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.i: cmake_force
@@ -410,6 +424,7 @@ Z_DUMMY_TARGET_OBJECTS = \
 "CMakeFiles/Z_DUMMY_TARGET.dir/src/arm.cpp.obj" \
 "CMakeFiles/Z_DUMMY_TARGET.dir/src/claw.cpp.obj" \
 "CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.obj" \
+"CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj" \
 "CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj" \
 "CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj" \
 "CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj" \
@@ -438,6 +453,7 @@ Z_DUMMY_TARGET_EXTERNAL_OBJECTS =
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/arm.cpp.obj
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/claw.cpp.obj
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.obj
+Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/src/encoder-navigator.cpp.obj
@@ -461,7 +477,7 @@ Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafr
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/.pio/libdeps/bluepill_f103c8/Adafruit_SSD1306/Adafruit_SSD1306.cpp.obj
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/build.make
 Z_DUMMY_TARGET: CMakeFiles/Z_DUMMY_TARGET.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Linking CXX executable Z_DUMMY_TARGET"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/reesecritchlow/Robot/robot-summer/cmake-build-bluepill_f103c8/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable Z_DUMMY_TARGET"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Z_DUMMY_TARGET.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

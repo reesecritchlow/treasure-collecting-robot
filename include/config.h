@@ -43,9 +43,9 @@
 #define TAPE_LEFT_SENSOR_PIN PA3            // Left tape reflectance sensor pin (5V analog input)
 
 // Servo Block
-#define SERVO_PIN_TILT_LEFT PA2  
-#define SERVO_PIN_GRAB PA1         
-#define SERVO_PIN_TILT_RIGHT PA0
+#define SERVO_PIN_TILT_LEFT PA_2  
+#define SERVO_PIN_GRAB PA_1         
+#define SERVO_PIN_TILT_RIGHT PA_0
 
 #define MAGNET_INTERRUPT_PIN PC14
 #define SWT_PIN PC15
@@ -164,7 +164,16 @@
 
 // Claw
 
-#define SERVO_CLOSE_ANGLE 50 // closed grabbed
+
+#define CUSTOM_SERVO_MINIMUM_RANGE 36
+#define CUSTOM_SERVO_MAXIMUM_RANGE 256
+#define CUSTOM_SERVO_READ_FREQUENCY 100
+#define CUSTOM_SERVO_RESOLUTION RESOLUTION_10B_COMPARE_FORMAT
+
+#define LIBRARY_SERVO_MINIMUM_RANGE 0
+#define LIBRARY_SERVO_MAXIMUM_RANGE 180
+
+#define SERVO_CLOSE_ANGLE 80 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
 #define LEFT_LOWER_ANGLE 85 // lowered
 #define LEFT_UPPER_ANGLE 10  // raised
@@ -172,7 +181,5 @@
 #define RIGHT_UPPER_ANGLE 125  // raised
 #define SERVO_WAIT_TIME 1000
 #define SERVO_ANGLE_DIVISION 8
-
-
 
 #endif
