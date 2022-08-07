@@ -102,6 +102,7 @@ namespace StateMachine {
 
     void state_tape_homing() {
         double search_angle = 45.0;
+        Drivetrain::speed_multiplier = 0.5;
         while (Tape::tapeLost) {
             delay(1000);
             Encoders::setSpinDestinationDistance(search_angle);
@@ -125,6 +126,7 @@ namespace StateMachine {
             search_angle *= 2;
             Drivetrain::halt();
         }
+        Drivetrain::speed_multiplier = 1.0;
         digitalWrite(INTERNAL_LED, HIGH);
     }
 
