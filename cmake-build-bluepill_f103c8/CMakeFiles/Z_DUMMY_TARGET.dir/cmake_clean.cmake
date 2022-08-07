@@ -29,6 +29,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/claw.cpp.obj.d"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.obj"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.obj.d"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj"
+  "CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj.d"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/display-manager.cpp.obj.d"
   "CMakeFiles/Z_DUMMY_TARGET.dir/src/drivetrain.cpp.obj"

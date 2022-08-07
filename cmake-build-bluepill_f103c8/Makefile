@@ -515,6 +515,30 @@ src/config.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/src/config.cpp.s
 .PHONY : src/config.cpp.s
 
+src/custom-servo.obj: src/custom-servo.cpp.obj
+.PHONY : src/custom-servo.obj
+
+# target to build an object file
+src/custom-servo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.obj
+.PHONY : src/custom-servo.cpp.obj
+
+src/custom-servo.i: src/custom-servo.cpp.i
+.PHONY : src/custom-servo.i
+
+# target to preprocess a source file
+src/custom-servo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.i
+.PHONY : src/custom-servo.cpp.i
+
+src/custom-servo.s: src/custom-servo.cpp.s
+.PHONY : src/custom-servo.s
+
+# target to generate assembly for a file
+src/custom-servo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Z_DUMMY_TARGET.dir/build.make CMakeFiles/Z_DUMMY_TARGET.dir/src/custom-servo.cpp.s
+.PHONY : src/custom-servo.cpp.s
+
 src/display-manager.obj: src/display-manager.cpp.obj
 .PHONY : src/display-manager.obj
 
@@ -787,6 +811,9 @@ help:
 	@echo "... src/config.obj"
 	@echo "... src/config.i"
 	@echo "... src/config.s"
+	@echo "... src/custom-servo.obj"
+	@echo "... src/custom-servo.i"
+	@echo "... src/custom-servo.s"
 	@echo "... src/display-manager.obj"
 	@echo "... src/display-manager.i"
 	@echo "... src/display-manager.s"

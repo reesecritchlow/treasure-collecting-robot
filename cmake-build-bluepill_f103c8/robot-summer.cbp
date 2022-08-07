@@ -639,6 +639,9 @@
 		<Unit filename="/Users/reesecritchlow/Robot/robot-summer/src/config.cpp">
 			<Option target="Z_DUMMY_TARGET"/>
 		</Unit>
+		<Unit filename="/Users/reesecritchlow/Robot/robot-summer/src/custom-servo.cpp">
+			<Option target="Z_DUMMY_TARGET"/>
+		</Unit>
 		<Unit filename="/Users/reesecritchlow/Robot/robot-summer/src/display-manager.cpp">
 			<Option target="Z_DUMMY_TARGET"/>
 		</Unit>
