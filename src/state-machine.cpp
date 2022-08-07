@@ -18,10 +18,13 @@ namespace StateMachine {
 
     void state_tape_following();
     void test_encoders();
+    void state_armHome();
+    void state_clawLoop();
 
     // Initial State
-    void (*StateHandler)() = state_tape_following;
-    void (*LastMainState)();
+    void (*StateHandler)() = state_armHome;
+    void (*LastMainState)() = state_tape_following;
+
 
     void state_infrared_tracking();
     void state_drive_straight();
@@ -31,7 +34,6 @@ namespace StateMachine {
     void state_lowerArmForIdol();
     void state_goToBin();
     void state_raiseForDrop();
-    void state_goingHome();
     void state_dropIdol();
     void state_armThruArch();
     void state_search_for_infrared_at_arch();
@@ -40,6 +42,7 @@ namespace StateMachine {
     void state_chicken_wire_drive_straight();
     void state_tape_homing();
     void state_infrared_homing();
+    void state_armHomeSetup();
 
     void state_tape_following() {
         // Loop Operations
@@ -328,7 +331,7 @@ namespace StateMachine {
     void state_dropIdol() {
         delay(1000);
         Claw::open();
-        StateHandler = state_goingHome;
+        StateHandler = state_armHome;
     }
 
     // =========== Arm movement states ============
@@ -340,8 +343,20 @@ namespace StateMachine {
         Claw::close(SERVO_ANGLE_DIVISION);
     }
 
-    void state_goingHome() {
-        Arm::goHome();
+    void state_armHome() {
+        // Arm::goHome();
+        // if (Arm::getDistanceToGo() == 0) {
+        //     StateHandler = LastMainState;   
+        // }
+        Arm::move_distance = 0;
+        Arm::goTo();
+        if(Arm::getDistanceToGo() == 0) {
+            delay(1000);
+            StateHandler = state_armHomeSetup;
+        }
+    }
+
+    void state_armHomeSetup() {
         Claw::leftGoUpperLimit();
         Claw::rightGoUpperLimit();
         Arm::see_idol_left = false;
@@ -358,6 +373,12 @@ namespace StateMachine {
         //stepper go home
         Claw::seen_magnet = true;
         detachInterrupt(MAGNET_INTERRUPT_PIN);
-        StateHandler = state_goingHome;
+        StateHandler = state_armHome;
+    }
+
+    void state_clawLoop() {
+        Claw::leftGoUpperLimit();
+        // delay(1000);
+        Claw::leftGoLowerLimit();
     }
 }

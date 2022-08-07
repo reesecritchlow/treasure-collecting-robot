@@ -67,7 +67,8 @@ namespace Claw {
 
         servoTiltLeft.write(LEFT_UPPER_ANGLE);
         servoTiltRight.write(RIGHT_UPPER_ANGLE);
-        servoGrab.write(SERVO_CLOSE_ANGLE);
+        close(SERVO_ANGLE_DIVISION);
+        // servoGrab.write(SERVO_CLOSE_ANGLE);
     }
 
     void setupHallSensor() {

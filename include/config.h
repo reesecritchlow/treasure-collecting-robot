@@ -9,9 +9,9 @@
 #define INFRARED_LEFT_CAP_RESET_PIN PB13    // Left infrared capacitor reset pin (digital output)
 
 // Stepper Block
-#define DIR_PIN PB14                        // (5V digital)
+#define DIR_PIN PA8                        // (5V digital)
 #define STP_PIN PB15                        // (5V digital)
-#define SLP_PIN PA8                         // (5V PWM)
+#define SLP_PIN PB14                         // (5V PWM)
 
 // Sonar Block
 #define R_ECHO_PIN PA9
@@ -149,7 +149,7 @@
 #define LEFT -100
 #define RIGHT 100
 
-#define STEP_HOME_OFFSET 300
+#define STEP_HOME_OFFSET -200
 
 #define MOTOR_INTERFACE 1
 
@@ -164,11 +164,11 @@
 
 // Claw
 
-#define SERVO_CLOSE_ANGLE 80 // closed grabbed
+#define SERVO_CLOSE_ANGLE 50 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
-#define LEFT_LOWER_ANGLE 85 // lowered
+#define LEFT_LOWER_ANGLE 115 // lowered
 #define LEFT_UPPER_ANGLE 10  // raised
-#define RIGHT_LOWER_ANGLE 35 // lowered
+#define RIGHT_LOWER_ANGLE 45 // lowered
 #define RIGHT_UPPER_ANGLE 125  // raised
 #define SERVO_WAIT_TIME 1000
 #define SERVO_ANGLE_DIVISION 8
