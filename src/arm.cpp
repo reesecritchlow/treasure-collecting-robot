@@ -52,14 +52,14 @@ namespace Arm {
         do {
             stepper.move(direction);
             stepper.run();
-            digitalWrite(PB2, HIGH);
+            // digitalWrite(PB2, HIGH);
         } while (switch_initial == digitalRead(SWT_PIN));
 
         if (digitalRead(SWT_PIN)) { // if we have pressed it
             setHome();
         }
 
-        stepper.setCurrentPosition(STEP_HOME_OFFSET);
+        stepper.setCurrentPosition(0);
         return true;
     }
 
@@ -69,7 +69,7 @@ namespace Arm {
      * @return
      */
     void goHome() {
-        stepper.moveTo(STEP_HOME_OFFSET);
+        stepper.moveTo(0);
         stepper.run();
     }
 
