@@ -7,6 +7,7 @@ namespace Display {
     void setupDisplay();
     void displayEncoderMetrics();
     void displayTuners(double counter, double tuner1, double tuner2);
+    void displayState();
 }
 
 

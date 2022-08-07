@@ -12,6 +12,7 @@ namespace Tape {
     int last_pid_multiplier = DEFAULT_PID_STATE;
     int current_pid_multiplier = DEFAULT_PID_STATE;
     double transformed_PID = 0.0;
+    bool tapeLost = false;
 
     void setupTapeTracking() {
         pinMode(TAPE_RIGHT_SENSOR_PIN, INPUT);
@@ -24,6 +25,8 @@ namespace Tape {
         right_reflectance = analogRead(TAPE_RIGHT_SENSOR_PIN);
         middle_reflectance = analogRead(TAPE_MIDDLE_SENSOR_PIN);
         left_reflectance = analogRead(TAPE_LEFT_SENSOR_PIN);
+
+
 
         bool left = OFF, right = OFF, mid = OFF; // using each sensor, determine where we are on the tape
         if (left_reflectance > TAPE_REFLECTANCE_THRESHOLD)
@@ -41,12 +44,13 @@ namespace Tape {
         // Now determine which state
         if (left && right && mid)
         {
-            current_pid_multiplier = 0; // switch to IR
+            current_pid_multiplier = 0;
+            tapeLost = true;
             return;
         }
         else if (!left && !right && !mid && last_pid_multiplier == 0) // review if all are high or low
         {
-            current_pid_multiplier = -FIRST_TAPE_STATE; // chicken wire, go slight left
+            current_pid_multiplier = 0;
             return;
         }
         else if (!left && !right && !mid && last_pid_multiplier > 0)

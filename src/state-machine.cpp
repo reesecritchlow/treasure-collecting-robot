@@ -12,12 +12,17 @@ namespace StateMachine {
     int cycleCounter = 0;
     int clawCounter = 0;
     bool following_tape = true;
+    bool chicken_wire_crossed = false;
+    bool homing_sweep_direction = false;
+    bool search_direction = false;
+    int idol_count = 0;
 
     void state_tape_following();
     void test_encoders();
 
     // Initial State
-    void (*StateHandler)() = test_encoders;
+    void (*StateHandler)() = state_tape_following;
+    void (*LastMainState)();
 
     void state_infrared_tracking();
     void state_drive_straight();
@@ -33,28 +38,97 @@ namespace StateMachine {
     void state_search_for_infrared_at_arch();
     void state_spin_for_third_idol();
     void state_drive_to_third_idol();
+    void state_chicken_wire_drive_straight();
+    void state_tape_homing();
+    void state_infrared_homing();
 
     void state_tape_following() {
-//        Arm::idol_position = Arm::senseForIdol();
-//
-//        digitalWrite(INTERNAL_LED, HIGH);
+        // Loop Operations
+        Arm::idol_position = Arm::senseForIdol();
         Tape::runPIDCycle();
+
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayTapeMetrics();
         }
 
+        // Conditional Exits
+
+        // Loss of Tape
+        if (Tape::tapeLost) {
+            if (!chicken_wire_crossed) {
+                Display::displayState();
+                Drivetrain::killDrive();
+                PID::newPIDSystem(ENCODER_KP, ENCODER_KI, ENCODER_KD);
+                StateHandler = state_chicken_wire_drive_straight;
+                return;
+            }
+            Drivetrain::halt();
+            StateHandler = state_infrared_homing;
+            return;
+        }
+
+        // Idol Sensed
         /*if(Arm::idol_position != 0) {
             StateHandler = state_moveToIdol;
+            LastMainState = state_tape_following;
             Drivetrain::halt();
         }
         Infrared::readRightSensor();
 
-        if (Infrared::right_signal < INFRARED_TRANSITION_LEFT_THRESHOLD) {
-            return;
+        // Infrared Sensed
+        if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
+            StateHandler = state_infrared_homing;
+        }*/
+
+    }
+
+    void state_chicken_wire_drive_straight() {
+        Encoders::setStraightDestinationDistance(CHICKEN_WIRE_DISTANCE);
+        while (!Encoders::checkDestinationDistance()) {
+            Encoders::encoderDriveStraight();
+            cycleCounter++; // TODO: remove these (RC)
         }
-        Drivetrain::halt();
-        StateHandler = state_search_for_infrared_at_arch;
-        Encoders::setSpinDestinationDistance(30.0);*/
+        chicken_wire_crossed = true;
+        StateHandler = state_tape_homing;
+    }
+
+    void state_tape_homing() {
+        double search_angle = 45.0;
+        do {
+            Encoders::setSpinDestinationDistance(search_angle);
+            while (Encoders::checkDestinationDistance()) {
+                cycleCounter++;
+                Encoders::encoderSpin(search_direction);
+                Tape::calculateTapePIDMultiplier();
+                if (Tape::current_pid_multiplier == 0) {
+                    Tape::tapeLost = false;
+                    StateHandler = state_tape_following;
+                    break;
+                }
+            }
+            search_direction = !search_direction;
+            search_angle *= 2;
+        } while (Tape::tapeLost);
+    }
+
+    void state_infrared_homing() {
+        double search_angle = 45.0;
+        bool infrared_lost = true;
+        while (infrared_lost) {
+            Encoders::setSpinDestinationDistance(search_angle);
+            while (Encoders::checkDestinationDistance()) {
+                cycleCounter++;
+                Encoders::encoderSpin(search_direction);
+                Infrared::calculatePIDMultiplier();
+                if (Infrared::current_pid_multiplier == 0) {
+                    infrared_lost = false;
+                    StateHandler = state_infrared_tracking;
+                    break;
+                }
+            }
+            search_direction = !search_direction;
+            search_angle *= 2;
+        }
     }
 
     void test_encoders() {
@@ -185,23 +259,23 @@ namespace StateMachine {
 
     void state_lowerArmForIdol() {
         Claw::open();
-        if(Arm::see_idol_left) {
+        if (Arm::see_idol_left) {
             Claw::leftGoLowerLimit();
             StateHandler = state_grabIdol;
         }
-        if(Arm::see_idol_right) {
+        if (Arm::see_idol_right) {
             Claw::rightGoLowerLimit();
             StateHandler = state_grabIdol;
         }
     }
 
     void state_grabIdol() {
-        if(!Claw::seen_magnet) {
+        if (!Claw::seen_magnet) {
             while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
                 Claw::close(clawCounter);
                 clawCounter += 1;
             }
-            if(Claw::magnetic_idol) {
+            if (Claw::magnetic_idol) {
                 Claw::open();
                 delay(SERVO_WAIT_TIME);
                 Claw::leftGoUpperLimit();
@@ -226,13 +300,13 @@ namespace StateMachine {
     }
 
     void state_goToBin() {
-        if(Arm::idol_position > 0) {
+        if (Arm::idol_position > 0) {
             Arm::move_distance = -BIN_DIST;
         } else if (Arm::idol_position < 0) {
             Arm::move_distance = BIN_DIST;
         }
         Arm::goTo();
-        if(Arm::getDistanceToGo() == 0) {
+        if (Arm::getDistanceToGo() == 0) {
             StateHandler = state_goingHome;
         }
     }
@@ -257,11 +331,7 @@ namespace StateMachine {
         Claw::rightGoUpperLimit();
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
-        if(following_tape) {
-            StateHandler = state_tape_following;
-            return;
-        }
-        StateHandler = state_infrared_tracking;
+        StateHandler = LastMainState;
     }
 
     void state_magneticField() {

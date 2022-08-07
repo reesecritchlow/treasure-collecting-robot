@@ -13,16 +13,17 @@
 #define STP_PIN PB15                        // (5V digital)
 #define SLP_PIN PA8                         // (5V PWM)
 
-// PA9 Empty (PWM 5V Pin)
-#define SERVO_PIN_GRAB PA10
-// PA11 Empty (5V digital)
-#define L_ECHO_PIN PA12                         // (5V digital)
+// Sonar Block
+#define R_ECHO_PIN PA9
+#define R_TRIG_PIN PA10
+#define L_ECHO_PIN PA11
+#define L_TRIG_PIN PA12
 
 #define RIGHT_ENCODER_PIN PB3              // Right encoder (counter) pin (5V digital interrupt input)
 #define LEFT_ENCODER_PIN PA15                // Left encoder (counter) pin (5V digital interrupt input)
-
-#define SERVO_PIN_TILT_LEFT PB4             // (5V digital)
-#define SERVO_PIN_TILT_RIGHT PB5            // (3v3 digital)
+// PB4 Empty
+// PB5 Empty
+          
 
 #define RIGHT_FORWARD_MOTOR_PIN PB_8        // Right forwards motor pin (PWM output)
 #define RIGHT_BACKWARD_MOTOR_PIN PB_9       // Right backward motor pin (PWM output)
@@ -41,9 +42,10 @@
 #define TAPE_MIDDLE_SENSOR_PIN PA4          // Middle tape reflectance sensor pin (5V analog input)
 #define TAPE_LEFT_SENSOR_PIN PA3            // Left tape reflectance sensor pin (5V analog input)
 
-#define R_ECHO_PIN PA2
-#define R_TRIG_PIN PA1
-#define L_TRIG_PIN PA0
+// Servo Block
+#define SERVO_PIN_TILT_LEFT PA2  
+#define SERVO_PIN_GRAB PA1         
+#define SERVO_PIN_TILT_RIGHT PA0
 
 #define MAGNET_INTERRUPT_PIN PC14
 #define SWT_PIN PC15
@@ -51,15 +53,12 @@
 // Globals
 
 #define DEFAULT_PID_STATE 0
-
-
-
-
 #define PRINT_LOOP_COUNT 100
 
 // State Machine
 
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
+#define CHICKEN_WIRE_DISTANCE 18.0 // (centimeters)
 
 // Display Manager
 
@@ -72,6 +71,10 @@
 #define TEST_DRIVE_DISTANCE 100.0
 
 // PID Constants
+
+#define DEFAULT_KP 65.0
+#define DEFAULT_KI 65.0
+#define DEFAULT_KD 65.0
 
 #define INFRARED_KP 65.0
 #define INFRARED_KI 65.0
@@ -94,8 +97,6 @@
 
 #define ON 1
 #define OFF 0
-
-
 
 #define DEFAULT_RIGHT_INFRARED_THRESHOLD 100
 #define DEFAULT_LEFT_INFRARED_THRESHOLD 100
@@ -121,28 +122,16 @@
 
     // Straight Line Constants
 
-#define STEPS_PER_ROTATION 1441.0
-
-#define WHEEL_RADIUS 3.337
-
-#define PI 3.14159265359
-
-#define RADIANS_PER_STEP 2.0 * PI / STEPS_PER_ROTATION
-
-#define DISTANCE_CM_PER_STEP 0.143 // Hardcoded, because cpp loves you.
+    #define STEPS_PER_ROTATION 1441.0
+    #define PI 3.14159265359
+    #define DISTANCE_CM_PER_STEP 0.143 // Hardcoded, because cpp loves you.
 
     // Spinning Constants
 
-#define SPIN_RADIUS 10.82  // (Half the track width)
+    #define SPIN_RADIUS 10.82  // (Half the track width)
 
-#define CLOCKWISE true
-#define COUNTER_CLOCKWISE false
-
-// PID Constants
-
-#define DEFAULT_KP 65.0
-#define DEFAULT_KI 65.0
-#define DEFAULT_KD 65.0
+    #define CLOCKWISE true
+    #define COUNTER_CLOCKWISE false
 
 // Tape Following Constants
 
@@ -169,8 +158,6 @@
 #define SONAR_OFFSET 5
 
 // Claw
-
-
 
 #define SERVO_CLOSE_ANGLE 80 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open

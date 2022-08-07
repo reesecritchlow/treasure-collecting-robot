@@ -288,6 +288,13 @@ namespace Display {
         display_handler.println(tuner2);
         display_handler.display();
     }
+
+    void displayState() {
+        display_handler.clearDisplay();
+        display_handler.setCursor(0, 0);
+        display_handler.println("chicken wire");
+        display_handler.display();
+    }
 }
 
 

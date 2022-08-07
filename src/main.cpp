@@ -20,7 +20,7 @@ void setup() {
   // Arm::setupArm();
   // Arm::setupSonars();
   Encoders::setStraightDestinationDistance(5.0);
-  PID::newPIDSystem(750, TAPE_KI, 200.0);
+  PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
 }
 
 void loop() {

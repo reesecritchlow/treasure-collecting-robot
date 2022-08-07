@@ -28,6 +28,10 @@ namespace Encoders {
 
     void setSpinDestinationDistance(double angle_degrees);
 
+    /**
+     *
+     * @return true if distance is reached, false if not.
+     */
     bool checkDestinationDistance();
 }
 

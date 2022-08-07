@@ -14,6 +14,7 @@ namespace Tape {
     extern int last_pid_multiplier;
     extern int current_pid_multiplier;
     extern double transformed_PID;
+    extern bool tapeLost;
 
     void calculateTapePIDMultiplier();
 
