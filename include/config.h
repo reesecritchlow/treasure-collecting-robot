@@ -149,6 +149,8 @@
 #define LEFT -100
 #define RIGHT 100
 
+#define STEP_HOME_OFFSET 300
+
 #define MOTOR_INTERFACE 1
 
 #define SONAR_MAX_RANGE 25

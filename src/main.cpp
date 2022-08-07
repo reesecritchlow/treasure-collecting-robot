@@ -5,6 +5,8 @@
 #include "config.h"
 #include "display-manager.h"
 #include "state-machine.h"
+#include "arm.h"
+#include "claw.h"
 
 
 void setup() {
@@ -16,9 +18,9 @@ void setup() {
 
   // Drivetrain::startDrive();
 
-  // Claw::setupServos();
-  // Arm::setupArm();
-  // Arm::setupSonars();
+  Claw::setupServos();
+  Arm::setupArm();
+  Arm::setupSonars();
   PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
 }
 

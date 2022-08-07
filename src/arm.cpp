@@ -59,7 +59,7 @@ namespace Arm {
             setHome();
         }
 
-        stepper.setCurrentPosition(0);
+        stepper.setCurrentPosition(STEP_HOME_OFFSET);
         return true;
     }
 
@@ -69,7 +69,7 @@ namespace Arm {
      * @return
      */
     void goHome() {
-        stepper.moveTo(0);
+        stepper.moveTo(STEP_HOME_OFFSET);
         stepper.run();
     }
 
