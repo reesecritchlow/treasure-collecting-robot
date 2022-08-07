@@ -87,7 +87,12 @@ namespace StateMachine {
         while (!Encoders::checkDestinationDistance()) {
             Encoders::encoderDriveStraight();
             cycleCounter++; // TODO: remove these (RC)
+
+            if (cycleCounter % PRINT_LOOP_COUNT) {
+                Display::displayEncoderMetrics();
+            }
         }
+        Drivetrain::halt();
         chicken_wire_crossed = true;
         StateHandler = state_tape_homing;
     }
