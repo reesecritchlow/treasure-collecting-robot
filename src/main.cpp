@@ -19,7 +19,6 @@ void setup() {
   // Claw::setupServos();
   // Arm::setupArm();
   // Arm::setupSonars();
-  Encoders::setStraightDestinationDistance(5.0);
   PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
 }
 

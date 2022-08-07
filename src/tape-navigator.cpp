@@ -26,60 +26,48 @@ namespace Tape {
         middle_reflectance = analogRead(TAPE_MIDDLE_SENSOR_PIN);
         left_reflectance = analogRead(TAPE_LEFT_SENSOR_PIN);
 
-
-
-        bool left = OFF, right = OFF, mid = OFF; // using each sensor, determine where we are on the tape
-        if (left_reflectance > TAPE_REFLECTANCE_THRESHOLD)
-        {
-            left = ON;
-        }
-        if (right_reflectance > TAPE_REFLECTANCE_THRESHOLD)
-        {
-            right = ON;
-        }
-        if (middle_reflectance > TAPE_REFLECTANCE_THRESHOLD)
-        {
-            mid = ON;
-        } 
-        // Now determine which state
-        if (left && right && mid)
-        {
+        if (left_reflectance > CHICKEN_WIRE_THRESHOLD &&
+            middle_reflectance > CHICKEN_WIRE_THRESHOLD &&
+            right_reflectance > CHICKEN_WIRE_THRESHOLD) {
             current_pid_multiplier = 0;
             tapeLost = true;
             return;
         }
-        else if (!left && !right && !mid && last_pid_multiplier == 0) // review if all are high or low
+
+        bool left = OFF, right = OFF, mid = OFF; // using each sensor, determine where we are on the tape
+        if (left_reflectance > TAPE_REFLECTANCE_THRESHOLD) {
+            left = ON;
+        }
+        if (right_reflectance > TAPE_REFLECTANCE_THRESHOLD) {
+            right = ON;
+        }
+        if (middle_reflectance > TAPE_REFLECTANCE_THRESHOLD) {
+            mid = ON;
+        }
+        // Now determine which state
+        if (left && right && mid) {
+            current_pid_multiplier = 0;
+            return;
+        } else if (!left && !right && !mid && last_pid_multiplier == 0) // review if all are high or low
         {
             current_pid_multiplier = 0;
             return;
-        }
-        else if (!left && !right && !mid && last_pid_multiplier > 0)
-        {
+        } else if (!left && !right && !mid && last_pid_multiplier > 0) {
             current_pid_multiplier = THIRD_TAPE_STATE;
             return;
-        }
-        else if (!left && !right && !mid && last_pid_multiplier < 0)
-        {
+        } else if (!left && !right && !mid && last_pid_multiplier < 0) {
             current_pid_multiplier = -THIRD_TAPE_STATE;
             return;
-        }
-        else if (!left && !mid && right)
-        {
+        } else if (!left && !mid && right) {
             current_pid_multiplier = -SECOND_TAPE_STATE;
             return;
-        }
-        else if (left && !mid && !right)
-        {
+        } else if (left && !mid && !right) {
             current_pid_multiplier = SECOND_TAPE_STATE;
             return;
-        }
-        else if (!left && mid && right)
-        {
+        } else if (!left && mid && right) {
             current_pid_multiplier = -FIRST_TAPE_STATE;
             return;
-        }
-            else if (left && mid && !right)
-        {
+        } else if (left && mid && !right) {
             current_pid_multiplier = FIRST_TAPE_STATE;
             return;
         }

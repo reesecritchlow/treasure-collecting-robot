@@ -60,6 +60,7 @@
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
 #define CHICKEN_WIRE_DISTANCE 18.0 // (centimeters)
 
+
 // Display Manager
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
@@ -140,6 +141,8 @@
 #define FIRST_TAPE_STATE 1
 #define SECOND_TAPE_STATE 2
 #define THIRD_TAPE_STATE 9
+
+#define CHICKEN_WIRE_THRESHOLD 500
 
 // Arm 
 
