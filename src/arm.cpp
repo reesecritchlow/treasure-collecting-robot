@@ -149,11 +149,11 @@ namespace Arm {
         pinMode(R_ECHO_PIN, INPUT);
     }
 
-    void sleep() {
-        digitalWrite(SLP_PIN, LOW);
+    void wake() {
+        digitalWrite(SLP_PIN, HIGH);
     }
 
-    void dropOff() {
-
+    void sleep() {
+        digitalWrite(SLP_PIN, LOW);
     }
 }

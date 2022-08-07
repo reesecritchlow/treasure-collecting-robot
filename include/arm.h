@@ -19,6 +19,7 @@ namespace Arm {
     void goTo();
     void sleep();
     int currPos();
+    void wake();
 
     int senseForIdol();
 

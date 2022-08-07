@@ -71,6 +71,7 @@ namespace StateMachine {
 
         // Idol Sensed
         if(Arm::idol_position != 0) {
+            Arm::wake();
             StateHandler = state_moveToIdol;
             LastMainState = state_tape_following;
             Drivetrain::halt();
@@ -334,6 +335,7 @@ namespace StateMachine {
         delay(1000);
         Claw::open();
         StateHandler = state_armHome;
+        Arm::sleep();
     }
 
     // =========== Arm movement states ============
