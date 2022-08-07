@@ -70,7 +70,7 @@ namespace StateMachine {
         }
 
         // Idol Sensed
-        if(Arm::idol_position != 0) {
+        if (Arm::idol_position != 0) {
             Drivetrain::halt();
             Arm::wake();
             StateHandler = state_moveToIdol;
