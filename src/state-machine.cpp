@@ -301,6 +301,7 @@ namespace StateMachine {
                 Claw::open();
                 delay(SERVO_WAIT_TIME);
                 Claw::leftGoUpperLimit();
+                Claw::rightGoUpperLimit();
                 return;
             }
         } else {
@@ -311,6 +312,9 @@ namespace StateMachine {
     }
 
     void state_raiseForDrop() {
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println("raise for drop");
+        Display::display_handler.display();   
         Claw::leftGoMiddle();
         Claw::rightGoMiddle();
         StateHandler = state_goToBin;
