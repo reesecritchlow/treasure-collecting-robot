@@ -103,28 +103,21 @@ namespace Drivetrain {
     }
 
     void halt() {
-        Display::display_handler.clearDisplay();
-        Display::display_handler.setCursor(0,0);
         if (left_direction) {
-            Display::display_handler.println("left forwards");
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
         } else {
-            Display::display_handler.println("left backwards");
-            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
             pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
         if (right_direction) {
-            Display::display_handler.print("right forwards");
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
         } else {
-            Display::display_handler.print("right backwards");
-            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
             pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
-        Display::display_handler.display();
-        delay(BRAKING_TIME);
+        delay(BRAKING_TIME * 0.75);
         killDrive();
     }
 }
