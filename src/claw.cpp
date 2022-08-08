@@ -72,7 +72,11 @@ namespace Claw {
     }
 
     void handleMagneticField() {
-        magnetic_idol = true;
-        StateMachine::StateHandler = StateMachine::state_magneticField;
-     }
+
+        delay(1000);
+        if (digitalRead(MAGNET_INTERRUPT_PIN) == LOW) {
+            magnetic_idol = true;
+            StateMachine::StateHandler = StateMachine::state_magneticField;
+        }
+    }
 }
