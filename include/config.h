@@ -173,7 +173,7 @@
 #define LIBRARY_SERVO_MINIMUM_RANGE 0
 #define LIBRARY_SERVO_MAXIMUM_RANGE 180
 
-#define SERVO_CLOSE_ANGLE 50 // closed grabbed
+#define SERVO_CLOSE_ANGLE 60 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
 #define LEFT_LOWER_ANGLE 95 // lowered
 #define LEFT_UPPER_ANGLE 10  // raised

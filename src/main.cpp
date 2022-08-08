@@ -10,7 +10,7 @@
 
 
 void setup() {
-  pinMode(INTERNAL_LED, OUTPUT);
+  pinMode(PB2, OUTPUT);
   Tape::setupTapeTracking();
   Infrared::setupInfrared();
   Display::setupDisplay();
