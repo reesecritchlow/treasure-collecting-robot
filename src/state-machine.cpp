@@ -20,9 +20,10 @@ namespace StateMachine {
     void test_encoders();
     void state_armHome();
     void state_clawLoop();
+    void state_sonarRead();
 
     // Initial State
-    void (*StateHandler)() = state_armHome;
+    void (*StateHandler)() = state_sonarRead;
     void (*QueuedState)();
     void (*LastMainState)() = state_tape_following;
 
@@ -91,6 +92,12 @@ namespace StateMachine {
         //     Arm::left_sonar_on = true;
         // }
 
+    }
+
+    void state_sonarRead() {
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println(Arm::senseForIdol());
+        Display::display_handler.display();
     }
 
     void state_temp_drive_straight() {
