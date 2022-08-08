@@ -3,6 +3,7 @@
 #include "arm.h"
 #include "state-machine.h"
 #include "custom-servo.h"
+#include "display-manager.h"
 
 namespace Claw {
 
@@ -42,12 +43,15 @@ namespace Claw {
     } 
 
     void leftGoMiddle() {
-        LeftTiltServo::write((LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
+        Display::display_handler.println("leftGoMiddle");
+        LeftTiltServo::write((int)(LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
         delay(SERVO_WAIT_TIME);
     }
 
     void rightGoMiddle() {
-        LeftTiltServo::write((RIGHT_LOWER_ANGLE + RIGHT_UPPER_ANGLE)/2);
+        Display::display_handler.println("rightGoMiddle");
+
+        LeftTiltServo::write((int)(RIGHT_LOWER_ANGLE + RIGHT_UPPER_ANGLE)/2);
         delay(SERVO_WAIT_TIME);
     }
 

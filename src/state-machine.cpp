@@ -72,6 +72,7 @@ namespace StateMachine {
 
         // Idol Sensed
         if (Arm::idol_position != 0) {
+            digitalWrite(PB2, LOW);
             Drivetrain::halt();
             Arm::wake();
             StateHandler = state_moveToIdol;
@@ -292,21 +293,27 @@ namespace StateMachine {
     }
 
     void state_grabIdol() {
+        
         if (!Claw::seen_magnet) {
             while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
                 Claw::close(clawCounter);
                 clawCounter += 1;
             }
             if (Claw::magnetic_idol) {
+                digitalWrite(PB2, HIGH);
                 Claw::open();
                 delay(SERVO_WAIT_TIME);
                 Claw::leftGoUpperLimit();
-                Claw::rightGoUpperLimit();
+                // Claw::rightGoUpperLimit();
                 return;
             }
         } else {
+            Display::display_handler.println("close");
             Claw::close(SERVO_ANGLE_DIVISION);
         }
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println("grab complete");
+        Display::display_handler.display();
         clawCounter = 0;
         StateHandler = state_raiseForDrop;
     }
@@ -314,9 +321,9 @@ namespace StateMachine {
     void state_raiseForDrop() {
         Display::display_handler.clearDisplay();
         Display::display_handler.println("raise for drop");
+        Claw::leftGoUpperLimit();
+        Claw::rightGoUpperLimit();
         Display::display_handler.display();   
-        Claw::leftGoMiddle();
-        Claw::rightGoMiddle();
         StateHandler = state_goToBin;
     }
 
