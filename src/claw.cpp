@@ -71,12 +71,35 @@ namespace Claw {
         attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), handleMagneticField, FALLING);
     }
 
+    /**
+     * @brief Waits 1 second, scans again then handles situation
+     * 
+     */
     void handleMagneticField() {
 
+        Display::display_handler.clearDisplay();
+        Display::display_handler.setCursor(0,0);
+        Display::display_handler.println("first detection");
+        Display::display_handler.println(digitalRead(MAGNET_INTERRUPT_PIN));
+        Display::display_handler.display();
+
         delay(1000);
-        if (digitalRead(MAGNET_INTERRUPT_PIN) == LOW) {
+
+
+        if (digitalRead(MAGNET_INTERRUPT_PIN) < 1) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.setCursor(0,0);
+            Display::display_handler.println("its a bomb");
+            Display::display_handler.display();
             magnetic_idol = true;
+            detachInterrupt(MAGNET_INTERRUPT_PIN);
             StateMachine::StateHandler = StateMachine::state_magneticField;
+            return;            
         }
-    }
+
+        Display::display_handler.clearDisplay();
+        Display::display_handler.setCursor(0,0);
+        Display::display_handler.println("false alarm");
+        Display::display_handler.display();    
+        }
 }

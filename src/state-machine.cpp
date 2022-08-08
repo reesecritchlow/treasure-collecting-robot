@@ -401,7 +401,6 @@ namespace StateMachine {
 
         //stepper go home
         Claw::seen_magnet = true;
-        detachInterrupt(MAGNET_INTERRUPT_PIN);
         Claw::leftGoMiddle();
         Claw::rightGoMiddle();
         StateHandler = state_armHome;
