@@ -23,6 +23,7 @@ namespace StateMachine {
 
     // Initial State
     void (*StateHandler)() = state_armHome;
+    void (*QueuedState)();
     void (*LastMainState)() = state_tape_following;
 
 
@@ -44,6 +45,7 @@ namespace StateMachine {
     void state_infrared_homing();
     void state_armHomeSetup();
     void state_magneticField();
+    void state_temp_drive_straight();
 
     void state_tape_following() {
         // Loop Operations
@@ -65,7 +67,7 @@ namespace StateMachine {
                 StateHandler = state_chicken_wire_drive_straight;
                 return;
             }
-            Drivetrain::halt();
+            Drivetrain::haltEncoders();
             StateHandler = state_infrared_homing;
             return;
         }
@@ -74,9 +76,11 @@ namespace StateMachine {
         if (Arm::idol_position != 0) {
             digitalWrite(PB2, LOW);
             Arm::pickup_count++;
-            Drivetrain::halt();
+            Drivetrain::haltFirstIdol();
             Arm::wake();
-            StateHandler = state_moveToIdol;
+            Encoders::setStraightDestinationDistance(5.0);
+            QueuedState = state_moveToIdol;
+            StateHandler = state_temp_drive_straight;
             LastMainState = state_tape_following;
         }
 
@@ -87,6 +91,14 @@ namespace StateMachine {
         //     Arm::left_sonar_on = true;
         // }
 
+    }
+
+    void state_temp_drive_straight() {
+        while (!Encoders::checkDestinationDistance()) {
+            Encoders::encoderDriveStraight();
+        }
+        Drivetrain::haltEncoders();
+        StateHandler = QueuedState;
     }
 
     void state_chicken_wire_drive_straight() {
@@ -100,7 +112,7 @@ namespace StateMachine {
             }
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         chicken_wire_crossed = true;
         StateHandler = state_tape_homing;
     }
@@ -121,7 +133,7 @@ namespace StateMachine {
                 if (Tape::current_pid_multiplier == 0 && !Tape::tapeLost) {
                     PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
                     Tape::tapeLost = false;
-                    Drivetrain::halt();
+                    Drivetrain::haltEncoders();
                     delay(1000);
                     StateHandler = state_tape_following;
                     break;
@@ -129,7 +141,7 @@ namespace StateMachine {
             }
             search_direction = !search_direction;
             search_angle *= 2;
-            Drivetrain::halt();
+            Drivetrain::haltEncoders();
         }
         Drivetrain::speed_multiplier = 1.0;
         digitalWrite(INTERNAL_LED, HIGH);
@@ -163,7 +175,7 @@ namespace StateMachine {
 
         if (Encoders::left_count > Encoders::left_destination_count ||
             Encoders::right_count > Encoders::right_destination_count) {
-            Drivetrain::halt();
+            Drivetrain::haltEncoders();
             StateHandler = state_do_nothing;
         }
     }
@@ -179,7 +191,7 @@ namespace StateMachine {
                 ) {
             return;
         }
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         Encoders::setStraightDestinationDistance(10.0);
     }
 
@@ -234,7 +246,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         digitalWrite(INTERNAL_LED, HIGH);
 
         StateHandler = state_do_nothing;
@@ -249,7 +261,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         digitalWrite(INTERNAL_LED, LOW);
         Encoders::setStraightDestinationDistance(10.0);
         StateHandler = state_drive_straight_again;
@@ -265,7 +277,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         digitalWrite(INTERNAL_LED, HIGH);
         Encoders::setSpinDestinationDistance(45.0);
         StateHandler = state_spin;
