@@ -52,8 +52,8 @@ namespace Claw {
     }
 
     void setupServos() {
-        LeftTiltServo::write(LEFT_LOWER_ANGLE);
-        RightTiltServo::write(RIGHT_LOWER_ANGLE);
+        LeftTiltServo::write(LEFT_LOWER_ANGLE - 20);
+        RightTiltServo::write(RIGHT_LOWER_ANGLE + 20);
         open();
 
         delay(SERVO_WAIT_TIME);

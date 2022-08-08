@@ -70,11 +70,11 @@ namespace StateMachine {
         }
 
         // Idol Sensed
-        if(Arm::idol_position != 0) {
+        if (Arm::idol_position != 0) {
+            Drivetrain::killDrive();
             Arm::wake();
             StateHandler = state_moveToIdol;
             LastMainState = state_tape_following;
-            Drivetrain::halt();
         }
 
         // Infrared::readRightSensor();
@@ -270,7 +270,7 @@ namespace StateMachine {
 
     // ============== Sensed Idol States ===============
     void state_moveToIdol() {
-        Arm::move_distance = Arm::idol_position;
+        Arm::move_distance = Arm::idol_position + SONAR_OFFSET;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
@@ -280,11 +280,11 @@ namespace StateMachine {
 
     void state_lowerArmForIdol() {
         Claw::open();
-        if (Arm::see_idol_left) {
+        if (Arm::see_idol_right) {
             Claw::leftGoLowerLimit();
             StateHandler = state_grabIdol;
         }
-        if (Arm::see_idol_right) {
+        if (Arm::see_idol_left) {
             Claw::rightGoLowerLimit();
             StateHandler = state_grabIdol;
         }
@@ -310,10 +310,10 @@ namespace StateMachine {
     }
 
     void state_raiseForDrop() {
-        if (Arm::see_idol_left) {
+        if (Arm::see_idol_right) {
             Claw::leftGoMiddle();
         }
-        if (Arm::see_idol_right) {
+        if (Arm::see_idol_left) {
             Claw::rightGoMiddle();
         }
         StateHandler = state_goToBin;

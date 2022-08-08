@@ -31,11 +31,16 @@ void setup() {
   Display::display_handler.clearDisplay();
   Display::display_handler.println("sonar");
   Display::display_handler.display();
+  Claw::setupHallSensor(); 
+  Display::display_handler.clearDisplay();
+  Display::display_handler.println("magnet");
+  Display::display_handler.display();
   Arm::setHome();
   Display::display_handler.clearDisplay();
   Display::display_handler.println("home");
   Display::display_handler.display();
   PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
+  Claw::setupHallSensor();
 }
 
 void loop() {
