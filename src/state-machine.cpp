@@ -23,6 +23,7 @@ namespace StateMachine {
 
     // Initial State
     void (*StateHandler)() = state_armHome;
+    void (*CachedState)();
     void (*LastMainState)() = state_tape_following;
 
 
@@ -44,6 +45,7 @@ namespace StateMachine {
     void state_infrared_homing();
     void state_armHomeSetup();
     void state_magneticField();
+    void state_tape_continuation();
 
     void state_tape_following() {
         // Loop Operations
@@ -130,6 +132,14 @@ namespace StateMachine {
         }
         Drivetrain::speed_multiplier = 1.0;
         digitalWrite(INTERNAL_LED, HIGH);
+    }
+
+    void state_tape_continuation() {
+        while (!Encoders::checkDestinationDistance()) {
+            Tape::runPIDCycle();
+            cycleCounter++;
+        }
+        StateHandler = CachedState;
     }
 
     void state_infrared_homing() {
