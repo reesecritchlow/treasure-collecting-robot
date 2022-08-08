@@ -50,7 +50,7 @@ namespace StateMachine {
     void state_tape_following() {
         // Loop Operations
         Arm::idol_position = Arm::senseForIdol();
-        Tape::runPIDCycle();
+        
 
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
             Display::displayTapeMetrics();
@@ -75,11 +75,14 @@ namespace StateMachine {
         // Idol Sensed
         if (Arm::idol_position != 0) {
             digitalWrite(PB2, LOW);
-            Drivetrain::halt();
-            Arm::wake();
-            StateHandler = state_moveToIdol;
-            LastMainState = state_tape_following;
+            Drivetrain::haltTape();
+            delay(5000);
+            // Arm::wake();
+            // StateHandler = state_moveToIdol;
+            // LastMainState = state_tape_following;
         }
+
+        Tape::runPIDCycle();
 
         // Infrared::readRightSensor();
         // Infrared Sensed

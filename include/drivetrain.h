@@ -18,6 +18,7 @@ namespace Drivetrain {
     void killDrive();
     void changeDriveMultiplier(double drive_multiplier);
     void halt();
+    void haltTape();
 }
 
 #endif
