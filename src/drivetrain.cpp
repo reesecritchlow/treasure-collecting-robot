@@ -103,7 +103,7 @@ namespace Drivetrain {
 
     void halt() {
 
-        if (left_direction) {
+        if (!left_direction) {
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
         } else {
@@ -117,7 +117,7 @@ namespace Drivetrain {
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
             pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
-        delay(BRAKING_TIME);
+        delay(BRAKING_TIME * 3);
         killDrive();
     }
 }
