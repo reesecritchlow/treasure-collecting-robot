@@ -13,7 +13,7 @@ namespace StateMachine {
     int clawCounter = 0;
     bool following_tape = true;
     bool chicken_wire_crossed = false;
-    bool search_direction = true;
+    bool search_direction = false;
     int idol_count = 0;
 
     void state_tape_following();
