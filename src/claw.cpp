@@ -43,7 +43,6 @@ namespace Claw {
     } 
 
     void leftGoMiddle() {
-        
         LeftTiltServo::write((int)(LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
         delay(SERVO_WAIT_TIME);
     }
@@ -60,7 +59,6 @@ namespace Claw {
 
         delay(SERVO_WAIT_TIME);
 
-
         LeftTiltServo::write(LEFT_UPPER_ANGLE);
         RightTiltServo::write(RIGHT_UPPER_ANGLE);
         GrabServo::write(SERVO_CLOSE_ANGLE);
@@ -72,7 +70,15 @@ namespace Claw {
     }
 
     void handleMagneticField() {
-        magnetic_idol = true;
-        StateMachine::StateHandler = StateMachine::state_magneticField;
+        delay(1000);
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println(digitalRead(MAGNET_INTERRUPT_PIN));
+        if(!digitalRead(MAGNET_INTERRUPT_PIN)) {
+            magnetic_idol = true;
+            StateMachine::StateHandler = StateMachine::state_magneticField;
+            Display::display_handler.println("arm");
+            Display::display_handler.display();
+            return;
+        }
      }
 }
