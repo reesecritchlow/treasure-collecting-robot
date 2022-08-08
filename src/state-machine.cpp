@@ -18,10 +18,14 @@ namespace StateMachine {
 
     void state_tape_following();
     void test_encoders();
+    void state_armHome();
+    void state_clawLoop();
 
     // Initial State
-    void (*StateHandler)() = state_tape_following;
-    void (*LastMainState)();
+    void (*StateHandler)() = state_armHome;
+    void (*QueuedState)();
+    void (*LastMainState)() = state_tape_following;
+
 
     void state_infrared_tracking();
     void state_drive_straight();
@@ -31,7 +35,6 @@ namespace StateMachine {
     void state_lowerArmForIdol();
     void state_goToBin();
     void state_raiseForDrop();
-    void state_goingHome();
     void state_dropIdol();
     void state_armThruArch();
     void state_search_for_infrared_at_arch();
@@ -40,6 +43,9 @@ namespace StateMachine {
     void state_chicken_wire_drive_straight();
     void state_tape_homing();
     void state_infrared_homing();
+    void state_armHomeSetup();
+    void state_magneticField();
+    void state_temp_drive_straight();
 
     void state_tape_following() {
         // Loop Operations
@@ -61,24 +67,38 @@ namespace StateMachine {
                 StateHandler = state_chicken_wire_drive_straight;
                 return;
             }
-            Drivetrain::halt();
+            Drivetrain::haltEncoders();
             StateHandler = state_infrared_homing;
             return;
         }
 
         // Idol Sensed
-        /*if(Arm::idol_position != 0) {
-            StateHandler = state_moveToIdol;
+        if (Arm::idol_position != 0) {
+            digitalWrite(PB2, LOW);
+            Arm::pickup_count++;
+            Drivetrain::haltFirstIdol();
+            Arm::wake();
+            Encoders::setStraightDestinationDistance(5.0);
+            QueuedState = state_moveToIdol;
+            StateHandler = state_temp_drive_straight;
             LastMainState = state_tape_following;
-            Drivetrain::halt();
         }
+
         Infrared::readRightSensor();
+        //Infrared Sensed
+        // if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
+        //     StateHandler = state_infrared_homing;
+        //     Arm::left_sonar_on = true;
+        // }
 
-        // Infrared Sensed
-        if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
-            StateHandler = state_infrared_homing;
-        }*/
+    }
 
+    void state_temp_drive_straight() {
+        while (!Encoders::checkDestinationDistance()) {
+            Encoders::encoderDriveStraight();
+        }
+        Drivetrain::haltEncoders();
+        StateHandler = QueuedState;
     }
 
     void state_chicken_wire_drive_straight() {
@@ -92,7 +112,7 @@ namespace StateMachine {
             }
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         chicken_wire_crossed = true;
         StateHandler = state_tape_homing;
     }
@@ -113,7 +133,7 @@ namespace StateMachine {
                 if (Tape::current_pid_multiplier == 0 && !Tape::tapeLost) {
                     PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
                     Tape::tapeLost = false;
-                    Drivetrain::halt();
+                    Drivetrain::haltEncoders();
                     delay(1000);
                     StateHandler = state_tape_following;
                     break;
@@ -121,7 +141,7 @@ namespace StateMachine {
             }
             search_direction = !search_direction;
             search_angle *= 2;
-            Drivetrain::halt();
+            Drivetrain::haltEncoders();
         }
         Drivetrain::speed_multiplier = 1.0;
         digitalWrite(INTERNAL_LED, HIGH);
@@ -155,7 +175,7 @@ namespace StateMachine {
 
         if (Encoders::left_count > Encoders::left_destination_count ||
             Encoders::right_count > Encoders::right_destination_count) {
-            Drivetrain::halt();
+            Drivetrain::haltEncoders();
             StateHandler = state_do_nothing;
         }
     }
@@ -171,7 +191,7 @@ namespace StateMachine {
                 ) {
             return;
         }
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         Encoders::setStraightDestinationDistance(10.0);
     }
 
@@ -226,7 +246,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         digitalWrite(INTERNAL_LED, HIGH);
 
         StateHandler = state_do_nothing;
@@ -241,7 +261,7 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         digitalWrite(INTERNAL_LED, LOW);
         Encoders::setStraightDestinationDistance(10.0);
         StateHandler = state_drive_straight_again;
@@ -257,15 +277,16 @@ namespace StateMachine {
             return;
         }
         Display::displayEncoderMetrics();
-        Drivetrain::halt();
+        Drivetrain::haltEncoders();
         digitalWrite(INTERNAL_LED, HIGH);
         Encoders::setSpinDestinationDistance(45.0);
         StateHandler = state_spin;
     }
 
 
+    // ============== Sensed Idol States ===============
     void state_moveToIdol() {
-        Arm::move_distance = Arm::idol_position;
+        Arm::move_distance = Arm::idol_position + SONAR_OFFSET;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
@@ -275,43 +296,48 @@ namespace StateMachine {
 
     void state_lowerArmForIdol() {
         Claw::open();
-        if (Arm::see_idol_left) {
+        if (Arm::see_idol_right) {
             Claw::leftGoLowerLimit();
             StateHandler = state_grabIdol;
         }
-        if (Arm::see_idol_right) {
+        if (Arm::see_idol_left) {
             Claw::rightGoLowerLimit();
             StateHandler = state_grabIdol;
         }
     }
 
     void state_grabIdol() {
+        
         if (!Claw::seen_magnet) {
             while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
                 Claw::close(clawCounter);
                 clawCounter += 1;
             }
             if (Claw::magnetic_idol) {
+                digitalWrite(PB2, HIGH);
                 Claw::open();
                 delay(SERVO_WAIT_TIME);
                 Claw::leftGoUpperLimit();
-    
+                // Claw::rightGoUpperLimit();
                 return;
             }
         } else {
+            Display::display_handler.println("close");
             Claw::close(SERVO_ANGLE_DIVISION);
         }
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println("grab complete");
+        Display::display_handler.display();
         clawCounter = 0;
         StateHandler = state_raiseForDrop;
     }
 
     void state_raiseForDrop() {
-        if (Arm::see_idol_left) {
-            Claw::leftGoMiddle();
-        }
-        if (Arm::see_idol_right) {
-            Claw::rightGoMiddle();
-        }
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println("raise for drop");
+        Claw::leftGoUpperLimit();
+        Claw::rightGoUpperLimit();
+        Display::display_handler.display();   
         StateHandler = state_goToBin;
     }
 
@@ -323,16 +349,21 @@ namespace StateMachine {
         }
         Arm::goTo();
         if (Arm::getDistanceToGo() == 0) {
-            StateHandler = state_goingHome;
+            StateHandler = state_dropIdol;
         }
     }
 
     void state_dropIdol() {
         delay(1000);
+        Claw::leftGoLowerLimit();
+        Claw::rightGoLowerLimit();
         Claw::open();
-        StateHandler = state_goingHome;
+        Claw::leftGoUpperLimit();
+        Claw::rightGoUpperLimit();
+        StateHandler = state_armHome;
     }
 
+    // =========== Arm movement states ============
     void state_armThruArch() {
         Arm::goHome();
         Claw::leftGoLowerLimit();
@@ -341,8 +372,20 @@ namespace StateMachine {
         Claw::close(SERVO_ANGLE_DIVISION);
     }
 
-    void state_goingHome() {
-        Arm::goHome();
+    void state_armHome() {
+        // Arm::goHome();
+        // if (Arm::getDistanceToGo() == 0) {
+        //     StateHandler = LastMainState;   
+        // }
+        Arm::move_distance = 0;
+        Arm::goTo();
+        if(Arm::getDistanceToGo() == 0) {
+            delay(1000);
+            StateHandler = state_armHomeSetup;
+        }
+    }
+
+    void state_armHomeSetup() {
         Claw::leftGoUpperLimit();
         Claw::rightGoUpperLimit();
         Arm::see_idol_left = false;
@@ -359,6 +402,14 @@ namespace StateMachine {
         //stepper go home
         Claw::seen_magnet = true;
         detachInterrupt(MAGNET_INTERRUPT_PIN);
-        StateHandler = state_goingHome;
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
+        StateHandler = state_armHome;
+    }
+
+    void state_clawLoop() {
+        Claw::leftGoUpperLimit();
+        // delay(1000);
+        Claw::leftGoLowerLimit();
     }
 }

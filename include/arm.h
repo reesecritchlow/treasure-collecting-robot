@@ -10,6 +10,8 @@ namespace Arm {
     extern int idol_position;
     extern bool see_idol_right;
     extern bool see_idol_left;
+    extern bool left_sonar_on;
+    extern int pickup_count;
 
     void setupArm();
     void setupSonars();
@@ -19,6 +21,7 @@ namespace Arm {
     void goTo();
     void sleep();
     int currPos();
+    void wake();
 
     int senseForIdol();
 

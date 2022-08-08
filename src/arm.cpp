@@ -5,6 +5,9 @@ namespace Arm {
     volatile int min_dist = SONAR_MAX_RANGE + 1;
     bool see_idol_right = false;
     bool see_idol_left = false;
+    bool left_sonar_on = false;
+    int pickup_count = 0;
+
 
     int move_distance = 0;
     int idol_position = 0;
@@ -52,14 +55,14 @@ namespace Arm {
         do {
             stepper.move(direction);
             stepper.run();
-            digitalWrite(PB2, HIGH);
+            // digitalWrite(PB2, HIGH);
         } while (switch_initial == digitalRead(SWT_PIN));
 
         if (digitalRead(SWT_PIN)) { // if we have pressed it
             setHome();
         }
 
-        stepper.setCurrentPosition(0);
+        stepper.setCurrentPosition(STEP_HOME_OFFSET);
         return true;
     }
 
@@ -69,7 +72,9 @@ namespace Arm {
      * @return
      */
     void goHome() {
-        stepper.moveTo(0);
+        if(stepper.distanceToGo() == 0) {
+            stepper.moveTo(0);
+        }
         stepper.run();
     }
 
@@ -119,7 +124,7 @@ namespace Arm {
         }
 
 
-        if(right_distance < min_dist && right_distance > 0) {
+        if(right_distance < min_dist && right_distance > 0 && left_sonar_on) {
             min_dist = right_distance;
             see_idol_right = true;
         } else if(left_distance < min_dist && left_distance > 0) {
@@ -147,11 +152,11 @@ namespace Arm {
         pinMode(R_ECHO_PIN, INPUT);
     }
 
-    void sleep() {
-        digitalWrite(SLP_PIN, LOW);
+    void wake() {
+        digitalWrite(SLP_PIN, HIGH);
     }
 
-    void dropOff() {
-
+    void sleep() {
+        digitalWrite(SLP_PIN, LOW);
     }
 }

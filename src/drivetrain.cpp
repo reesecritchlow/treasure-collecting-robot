@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "drivetrain.h"
 #include "config.h"
+#include "display-manager.h"
 
 namespace Drivetrain {
     double speed_multiplier = DRIVETRAIN_SPEED_MULTIPLIER;
@@ -38,7 +39,7 @@ namespace Drivetrain {
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             left_speed = -1 * (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
             pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
-            left_direction = false;
+            left_direction = false ;
         }
     }
 
@@ -101,8 +102,26 @@ namespace Drivetrain {
         pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
     }
 
-    void halt() {
+    void haltFirstIdol() {
+        if (left_direction) {
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
+        } else {
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+        }
+        if (right_direction) {
+            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier * 1.3, PWM_SIGNAL_RESOLUTION);
+        } else {
+            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier * 1.3, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+        }
+        delay(BRAKING_TIME * 0.75);
+        killDrive();
+    }
 
+    void haltEncoders() {
         if (left_direction) {
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
@@ -117,7 +136,7 @@ namespace Drivetrain {
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
             pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
-        delay(BRAKING_TIME);
+        delay(BRAKING_TIME * 0.75);
         killDrive();
     }
 }
