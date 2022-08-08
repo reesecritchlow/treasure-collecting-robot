@@ -335,7 +335,6 @@ namespace StateMachine {
         delay(1000);
         Claw::open();
         StateHandler = state_armHome;
-        Arm::sleep();
     }
 
     // =========== Arm movement states ============
