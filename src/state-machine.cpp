@@ -219,14 +219,6 @@ namespace StateMachine {
         Encoders::encoderDriveStraight();
     }
 
-    void state_sensingIdol() {
-        Arm::idol_position = Arm::senseForIdol();
-        // Serial3.println(Arm::idol_position);
-        Arm::move_distance = Arm::idol_position;
-        if(Arm::idol_position != 0)
-            StateHandler = state_moveToIdol;
-    }
-
     void state_infrared_tracking() {
         following_tape = false;
         Infrared::runPIDCycle();
@@ -391,23 +383,6 @@ namespace StateMachine {
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
         StateHandler = LastMainState;
-    }
-
-    void state_magneticField() {
-        Display::display_handler.clearDisplay();
-        Display::display_handler.setCursor(0,0);
-        Display::display_handler.println("mfield state");
-        Display::display_handler.display();
-
-        //claw open fully
-
-        //claw raise up
-
-        //stepper go home
-        Claw::seen_magnet = true;
-        Claw::leftGoMiddle();
-        Claw::rightGoMiddle();
-        StateHandler = state_armHome;
     }
 
     void state_clawLoop() {
