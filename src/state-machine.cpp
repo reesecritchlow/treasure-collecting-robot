@@ -343,9 +343,11 @@ namespace StateMachine {
 
     void state_dropIdol() {
         delay(1000);
-        Claw::leftGoMiddle();
-        Claw::rightGoMiddle();
+        Claw::leftGoLowerLimit();
+        Claw::rightGoLowerLimit();
         Claw::open();
+        Claw::leftGoUpperLimit();
+        Claw::rightGoUpperLimit();
         StateHandler = state_armHome;
     }
 

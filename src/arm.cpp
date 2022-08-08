@@ -124,10 +124,10 @@ namespace Arm {
         }
 
 
-        if(right_distance < min_dist && right_distance > 0) {
+        if(right_distance < min_dist && right_distance > 0 && left_sonar_on) {
             min_dist = right_distance;
             see_idol_right = true;
-        } else if(left_distance < min_dist && left_distance > 0 && left_sonar_on) {
+        } else if(left_distance < min_dist && left_distance > 0) {
             min_dist = left_distance;
             see_idol_left = true;
         }
