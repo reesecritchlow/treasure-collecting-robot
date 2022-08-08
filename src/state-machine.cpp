@@ -71,7 +71,7 @@ namespace StateMachine {
 
         // Idol Sensed
         if (Arm::idol_position != 0) {
-            Drivetrain::halt();
+            Drivetrain::killDrive();
             Arm::wake();
             StateHandler = state_moveToIdol;
             LastMainState = state_tape_following;
