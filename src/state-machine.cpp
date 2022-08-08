@@ -77,8 +77,9 @@ namespace StateMachine {
             digitalWrite(PB2, LOW);
             Arm::pickup_count++;
             Drivetrain::haltFirstIdol();
+            delay(1000);
             Arm::wake();
-            Encoders::setStraightDestinationDistance(5.0);
+            Encoders::setStraightDestinationDistance(1.5);
             QueuedState = state_moveToIdol;
             StateHandler = state_temp_drive_straight;
             LastMainState = state_tape_following;
@@ -94,10 +95,12 @@ namespace StateMachine {
     }
 
     void state_temp_drive_straight() {
+        delay(1000);
         while (!Encoders::checkDestinationDistance()) {
             Encoders::encoderDriveStraight();
         }
         Drivetrain::haltEncoders();
+        delay(1000);
         StateHandler = QueuedState;
     }
 
