@@ -355,8 +355,8 @@ namespace StateMachine {
 
     void state_dropIdol() {
         delay(1000);
-        Claw::leftGoLowerLimit();
-        Claw::rightGoLowerLimit();
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
         Claw::open();
         Claw::leftGoUpperLimit();
         Claw::rightGoUpperLimit();

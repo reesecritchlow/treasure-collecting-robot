@@ -177,8 +177,10 @@
 #define SERVO_OPEN_ANGLE 0   // released open
 #define LEFT_LOWER_ANGLE 95 // lowered
 #define LEFT_UPPER_ANGLE 10  // raised
+#define LEFT_DUTY_DROP 73
 #define RIGHT_LOWER_ANGLE 55 // lowered
 #define RIGHT_UPPER_ANGLE 140  // raised
+#define RIGHT_DUTY_DROP 183
 #define SERVO_WAIT_TIME 1000
 #define SERVO_ANGLE_DIVISION 8
 

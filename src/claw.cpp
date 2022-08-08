@@ -43,15 +43,13 @@ namespace Claw {
     } 
 
     void leftGoMiddle() {
-        Display::display_handler.println("leftGoMiddle");
+        
         LeftTiltServo::write((int)(LEFT_LOWER_ANGLE + LEFT_UPPER_ANGLE)/2);
         delay(SERVO_WAIT_TIME);
     }
 
     void rightGoMiddle() {
-        Display::display_handler.println("rightGoMiddle");
-
-        LeftTiltServo::write((int)(RIGHT_LOWER_ANGLE + RIGHT_UPPER_ANGLE)/2);
+        RightTiltServo::write((int)(RIGHT_LOWER_ANGLE + RIGHT_UPPER_ANGLE)/2);
         delay(SERVO_WAIT_TIME);
     }
 
