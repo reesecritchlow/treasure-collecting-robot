@@ -43,6 +43,7 @@ namespace StateMachine {
     void state_tape_homing();
     void state_infrared_homing();
     void state_armHomeSetup();
+    void state_magneticField();
 
     void state_tape_following() {
         // Loop Operations
@@ -71,7 +72,7 @@ namespace StateMachine {
 
         // Idol Sensed
         if (Arm::idol_position != 0) {
-            Drivetrain::killDrive();
+            Drivetrain::halt();
             Arm::wake();
             StateHandler = state_moveToIdol;
             LastMainState = state_tape_following;
@@ -310,12 +311,8 @@ namespace StateMachine {
     }
 
     void state_raiseForDrop() {
-        if (Arm::see_idol_right) {
-            Claw::leftGoMiddle();
-        }
-        if (Arm::see_idol_left) {
-            Claw::rightGoMiddle();
-        }
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
         StateHandler = state_goToBin;
     }
 
@@ -376,6 +373,8 @@ namespace StateMachine {
         //stepper go home
         Claw::seen_magnet = true;
         detachInterrupt(MAGNET_INTERRUPT_PIN);
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
         StateHandler = state_armHome;
     }
 
