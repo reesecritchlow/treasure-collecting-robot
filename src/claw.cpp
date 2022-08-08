@@ -85,7 +85,6 @@ namespace Claw {
 
         delay(1000);
 
-
         if (digitalRead(MAGNET_INTERRUPT_PIN) < 1) {
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
@@ -93,6 +92,11 @@ namespace Claw {
             Display::display_handler.display();
             magnetic_idol = true;
             detachInterrupt(MAGNET_INTERRUPT_PIN);
+            delay(1000);
+            Display::display_handler.clearDisplay();
+            Display::display_handler.setCursor(0,0);
+            Display::display_handler.println("interrupt detatched");
+            Display::display_handler.display();
             StateMachine::StateHandler = StateMachine::state_magneticField;
             return;            
         }
