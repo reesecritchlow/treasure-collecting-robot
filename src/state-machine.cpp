@@ -73,16 +73,18 @@ namespace StateMachine {
         // Idol Sensed
         if (Arm::idol_position != 0) {
             digitalWrite(PB2, LOW);
+            Arm::pickup_count++;
             Drivetrain::halt();
             Arm::wake();
             StateHandler = state_moveToIdol;
             LastMainState = state_tape_following;
         }
 
-        // Infrared::readRightSensor();
-        // Infrared Sensed
+        Infrared::readRightSensor();
+        //Infrared Sensed
         // if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
         //     StateHandler = state_infrared_homing;
+        //     Arm::left_sonar_on = true;
         // }
 
     }

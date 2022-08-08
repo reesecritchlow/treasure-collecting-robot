@@ -160,7 +160,7 @@
 #define ACCEL 300
 
 #define BIN_DIST 10
-#define SONAR_OFFSET 5
+#define SONAR_OFFSET 6
 
 // Claw
 
