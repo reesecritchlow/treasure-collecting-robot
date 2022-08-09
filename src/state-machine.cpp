@@ -303,7 +303,7 @@ namespace StateMachine {
     }
 
     void state_grabIdol() {
-        
+        StateHandler = state_raiseForDrop;
         // if (!Claw::seen_magnet) {
             while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
                 Claw::close(clawCounter);
@@ -319,7 +319,6 @@ namespace StateMachine {
         Display::display_handler.println("grab complete");
         Display::display_handler.display();
         clawCounter = 0;
-        StateHandler = state_raiseForDrop;
     }
 
     void state_raiseForDrop() {
@@ -373,6 +372,7 @@ namespace StateMachine {
             delay(1000);
             StateHandler = state_armHomeSetup;
         }
+        Arm::min_dist = SONAR_MAX_RANGE + 1;
     }
 
     void state_armHomeSetup() {
