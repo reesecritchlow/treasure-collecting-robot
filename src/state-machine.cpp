@@ -14,6 +14,7 @@ namespace StateMachine {
     bool following_tape = true;
     bool chicken_wire_crossed = false;
     bool search_direction = true;
+    bool arch_mode = false;
     int idol_count = 0;
     volatile bool searching_for_idol = true; // Determines whether the current state should be searching for an idol or not with sonars
 
@@ -69,6 +70,7 @@ namespace StateMachine {
             }
             Drivetrain::haltEncoders();
             StateHandler = state_infrared_homing;
+            StateHandler = state_do_nothing;
             return;
         }
 
@@ -93,6 +95,8 @@ namespace StateMachine {
         Infrared::readRightSensor();
         //Infrared Sensed
         if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
+            arch_mode = false;
+            Arm::min_dist = SONAR_MAX_RANGE + 1;
             StateHandler = state_infrared_homing;
             Arm::left_sonar_on = true;
         }
@@ -146,7 +150,9 @@ namespace StateMachine {
                     if (Claw::magnetic_idol) {
                         Claw::magnetic_idol = false;
                     }
-                    Arm::min_dist = SONAR_MAX_RANGE + 1;
+                    if (!arch_mode) {
+                        Arm::min_dist = SONAR_MAX_RANGE + 1;
+                    }
                     StateHandler = state_tape_following;
                     break;
                 }
@@ -370,11 +376,15 @@ namespace StateMachine {
     // =========== Arm movement states ============
     void state_armThruArch() {
         Arm::goHome();
-        Claw::leftGoMiddle();
-        Claw::rightGoMiddle();
-         
-        Claw::close(SERVO_ANGLE_DIVISION);
-        StateHandler = LastMainState;
+
+        if(Arm::getDistanceToGo() == 0) {
+            delay(400);
+            Claw::leftGoMiddle();
+            Claw::rightGoMiddle();
+            Claw::close(SERVO_ANGLE_DIVISION);
+            arch_mode = true;
+            StateHandler = state_tape_homing;
+        }
     }
 
     void state_armHome() {
