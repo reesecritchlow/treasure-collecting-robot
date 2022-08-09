@@ -314,7 +314,6 @@ namespace StateMachine {
         Display::display_handler.println("grab complete");
         Display::display_handler.display();
         clawCounter = 0;
-        StateHandler = state_raiseForDrop;
     }
 
     void state_raiseForDrop() {
