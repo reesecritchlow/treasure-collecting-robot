@@ -17,6 +17,8 @@ namespace Arm {
     void setupArm();
     void setupSonars();
 
+    int secondSonarRead();
+
     bool setHome();
     void goHome();
     void goTo();

@@ -104,6 +104,13 @@ namespace StateMachine {
             Encoders::encoderDriveStraight();
         }
         Drivetrain::haltEncoders();
+        delay(1000);
+        Arm::idol_position = Arm::secondSonarRead();
+        Display::display_handler.clearDisplay();
+        Display::display_handler.setCursor(0,0);
+        Display::display_handler.print("Second Scan: ");
+        Display::display_handler.print(Arm::idol_position);
+        Display::display_handler.display();
         StateHandler = QueuedState;
     }
 

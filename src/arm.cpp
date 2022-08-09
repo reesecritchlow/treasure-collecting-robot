@@ -1,5 +1,6 @@
 #include "arm.h"
 #include "config.h"
+#include "display-manager.h"
 
 namespace Arm {
     int min_dist = SONAR_MAX_RANGE + 1;
@@ -139,6 +140,42 @@ namespace Arm {
         } else {
             return 0;
         }
+    }
+
+    int secondReadProcessor(int distance) {
+        Display::display_handler.clearDisplay();
+        Display::display_handler.setCursor(0,0);
+        Display::display_handler.print("new dist: ");
+        Display::display_handler.print(distance);
+        Display::display_handler.display();
+        delay(1000);
+        bool negative = false;
+        if (distance < 0) {
+            distance = distance * -1;
+            negative = true;
+        }
+        if (distance > SONAR_MAX_RANGE || abs(distance - idol_position) > SECOND_READ_ADJUSTMENT_THRESHOLD) {
+            return idol_position;
+        } else {
+            if (negative) {
+                return (distance + SECOND_READ_OFFSET) * -1;
+            }
+            return distance + SECOND_READ_OFFSET;
+        }
+    }
+
+    int secondSonarRead() {
+        int right_distance;
+        int left_distance;
+        if (see_idol_right) {
+            right_distance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
+            return secondReadProcessor(right_distance);
+        } else if (see_idol_left) {
+            left_distance = getDistance(L_TRIG_PIN, L_ECHO_PIN);
+            return secondReadProcessor(left_distance);
+        } else {
+            return idol_position;
+        }        
     }
 
     /**
