@@ -287,6 +287,18 @@ namespace StateMachine {
     // ============== Sensed Idol States ===============
     void state_moveToIdol() {
         Arm::move_distance = Arm::idol_position + SONAR_OFFSET;
+
+        int secondRead = 0;
+        if (Arm::move_distance < 0) {
+            secondRead = Arm::getDistance(L_ECHO_PIN, L_TRIG_PIN);
+        } else {
+            secondRead = -Arm::getDistance(R_ECHO_PIN, R_TRIG_PIN);
+        }
+
+        if (secondRead > -SONAR_MAX_RANGE && secondRead < SONAR_MAX_RANGE && secondRead != 0) {
+            Arm::move_distance = secondRead;
+        }
+
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);

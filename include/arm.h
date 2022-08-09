@@ -26,6 +26,7 @@ namespace Arm {
     int senseForIdol();
 
     int getDistanceToGo();
+    int getDistance(uint8_t trig_pin, uint8_t echo_pin);
 }
 
 #endif
