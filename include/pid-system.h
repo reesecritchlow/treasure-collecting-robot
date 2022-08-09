@@ -16,6 +16,7 @@ namespace PID {
 
     double computePID(int input);
     void newPIDSystem(double _kp, double _ki, double _kd);
+    void resetPID();
 }
 
 

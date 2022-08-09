@@ -87,6 +87,7 @@ namespace Claw {
             Claw::leftGoMiddle();
             Claw::rightGoMiddle();
             magnetic_idol = true;
+            StateMachine::searching_for_idol = false;
             StateMachine::StateHandler = StateMachine::state_armHome;
             return;            
         }

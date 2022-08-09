@@ -15,6 +15,7 @@ namespace StateMachine {
     bool chicken_wire_crossed = false;
     bool search_direction = false;
     int idol_count = 0;
+    bool searching_for_idol = true; // Determines whether the current state should be searching for an idol or not with sonars
 
     void state_tape_following();
     void test_encoders();
@@ -25,7 +26,6 @@ namespace StateMachine {
     void (*StateHandler)() = state_armHome;
     void (*QueuedState)();
     void (*LastMainState)() = state_tape_following;
-
 
     void state_infrared_tracking();
     void state_drive_straight();
@@ -73,7 +73,7 @@ namespace StateMachine {
         }
 
         // Idol Sensed
-        if (Arm::idol_position != 0) {
+        if (searching_for_idol && Arm::idol_position != 0) {
             digitalWrite(PB2, LOW);
             Arm::pickup_count++;
             Drivetrain::haltFirstIdol();
@@ -135,6 +135,7 @@ namespace StateMachine {
                     Tape::tapeLost = false;
                     Drivetrain::haltEncoders();
                     delay(1000);
+                    searching_for_idol = true;
                     StateHandler = state_tape_following;
                     break;
                 }
@@ -300,23 +301,15 @@ namespace StateMachine {
 
     void state_grabIdol() {
         
-        if (!Claw::seen_magnet) {
+        // if (!Claw::seen_magnet) {
             while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
                 Claw::close(clawCounter);
                 clawCounter += 1;
             }
-            if (Claw::magnetic_idol) {
-                digitalWrite(PB2, HIGH);
-                Claw::open();
-                delay(SERVO_WAIT_TIME);
-                Claw::leftGoUpperLimit();
-                // Claw::rightGoUpperLimit();
-                return;
-            }
-        } else {
-            Display::display_handler.println("close");
-            Claw::close(SERVO_ANGLE_DIVISION);
-        }
+        // } else {
+        //     Display::display_handler.println("close");
+        //     Claw::close(SERVO_ANGLE_DIVISION);
+        // }
         Display::display_handler.clearDisplay();
         Display::display_handler.println("grab complete");
         Display::display_handler.display();
@@ -382,6 +375,7 @@ namespace StateMachine {
         Claw::rightGoUpperLimit();
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
+        PID::resetPID();
         StateHandler = LastMainState;
     }
 
