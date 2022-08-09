@@ -15,7 +15,7 @@ namespace StateMachine {
     bool chicken_wire_crossed = false;
     bool search_direction = false;
     int idol_count = 0;
-    bool searching_for_idol = true; // Determines whether the current state should be searching for an idol or not with sonars
+    volatile bool searching_for_idol = true; // Determines whether the current state should be searching for an idol or not with sonars
 
     void state_tape_following();
     void test_encoders();
@@ -162,6 +162,7 @@ namespace StateMachine {
                 Infrared::calculatePIDMultiplier();
                 if (Infrared::current_pid_multiplier == 0) {
                     infrared_lost = false;
+                    Arm::idol_position = 0;
                     StateHandler = state_infrared_tracking;
                     break;
                 }
@@ -303,14 +304,16 @@ namespace StateMachine {
     }
 
     void state_grabIdol() {
-        StateHandler = state_raiseForDrop;
         // if (!Claw::seen_magnet) {
-            while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
-                Claw::close(clawCounter);
-                clawCounter += 1;
-            }
+        while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+            Claw::close(clawCounter);
+            clawCounter += 1;
+        }
 
-            
+        if (Claw::magnetic_idol) {
+            StateHandler = state_armHome;
+            return;
+        }
         // } else {
         //     Display::display_handler.println("close");
         //     Claw::close(SERVO_ANGLE_DIVISION);
@@ -319,6 +322,7 @@ namespace StateMachine {
         Display::display_handler.println("grab complete");
         Display::display_handler.display();
         clawCounter = 0;
+        StateHandler = state_raiseForDrop;
     }
 
     void state_raiseForDrop() {

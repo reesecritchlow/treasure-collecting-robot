@@ -6,7 +6,7 @@ namespace StateMachine {
     extern bool search_direction;
     extern void (*StateHandler)();
     extern void state_armHome();
-    extern bool searching_for_idol;
+    extern volatile bool searching_for_idol;
 }
 
 #endif
