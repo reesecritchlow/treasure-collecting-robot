@@ -13,7 +13,7 @@ namespace StateMachine {
     int clawCounter = 0;
     bool following_tape = true;
     bool chicken_wire_crossed = false;
-    bool search_direction = false;
+    bool search_direction = true;
     int idol_count = 0;
     volatile bool searching_for_idol = true; // Determines whether the current state should be searching for an idol or not with sonars
 
@@ -126,7 +126,12 @@ namespace StateMachine {
                 if (cycleCounter % PRINT_LOOP_COUNT) {
                     Display::displayEncoderMetrics();
                 }
-                if (Tape::current_pid_multiplier == 0 && !Tape::tapeLost) {
+                if ((Tape::current_pid_multiplier == 0 ||
+                    Tape::current_pid_multiplier == FIRST_TAPE_STATE ||
+                    Tape::current_pid_multiplier == SECOND_TAPE_STATE ||
+                    Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE ||
+                    Tape::current_pid_multiplier == -1 * SECOND_TAPE_STATE)
+                    && !Tape::tapeLost) {
                     PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
                     Tape::tapeLost = false;
                     Drivetrain::haltEncoders();
@@ -134,6 +139,9 @@ namespace StateMachine {
                     searching_for_idol = true;
                     if (Claw::magnetic_idol) {
                         Claw::magnetic_idol = false;
+                    }
+                    for (int i = 0; i < 50; i++) {
+                        Arm::idol_position = Arm::senseForIdol();
                     }
                     StateHandler = state_tape_following;
                     break;
@@ -350,6 +358,7 @@ namespace StateMachine {
         Claw::leftGoUpperLimit();
         Claw::rightGoUpperLimit();
         StateHandler = state_armHome;
+        searching_for_idol = false;
     }
 
     // =========== Arm movement states ============
