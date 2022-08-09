@@ -114,7 +114,7 @@ namespace StateMachine {
     }
 
     void state_tape_homing() {
-        double search_angle = 50.0;
+        double search_angle = 10.0;
         Drivetrain::speed_multiplier = 0.5;
         while (Tape::tapeLost) {
             delay(1000);
@@ -148,7 +148,7 @@ namespace StateMachine {
                 }
             }
             search_direction = !search_direction;
-            search_angle *= 2;
+            search_angle *= 1.5;
             Drivetrain::haltEncoders();
         }
         Drivetrain::speed_multiplier = 1.0;
@@ -381,6 +381,8 @@ namespace StateMachine {
             delay(1000);
             StateHandler = state_armHomeSetup;
         }
+
+        // TODO: I think it might be here. Maybe let's try making min_dist not volatile?
         Arm::min_dist = SONAR_MAX_RANGE + 1;
     }
 
