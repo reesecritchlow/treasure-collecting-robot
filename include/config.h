@@ -58,7 +58,7 @@
 // State Machine
 
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
-#define CHICKEN_WIRE_DISTANCE 22.0 // (centimeters)
+#define CHICKEN_WIRE_DISTANCE 30.0 // (centimeters)
 
 
 // Display Manager

@@ -74,9 +74,15 @@ namespace StateMachine {
 
         // Idol Sensed
         if (searching_for_idol && Arm::idol_position != 0) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.setCursor(0,0);
+            Display::display_handler.print("Arm Position: ");
+            Display::display_handler.print(Arm::idol_position);
+            Display::display_handler.display();
             digitalWrite(PB2, LOW);
             Arm::pickup_count++;
             Drivetrain::haltFirstIdol();
+            delay(2000);
             Arm::wake();
             Encoders::setStraightDestinationDistance(5.0);
             QueuedState = state_moveToIdol;
@@ -114,8 +120,8 @@ namespace StateMachine {
     }
 
     void state_tape_homing() {
-        double search_angle = 10.0;
-        Drivetrain::speed_multiplier = 0.5;
+        double search_angle = 30.0;
+        Drivetrain::speed_multiplier = 1.0;
         while (Tape::tapeLost) {
             delay(1000);
             Encoders::setSpinDestinationDistance(search_angle);
@@ -140,9 +146,7 @@ namespace StateMachine {
                     if (Claw::magnetic_idol) {
                         Claw::magnetic_idol = false;
                     }
-                    for (int i = 0; i < 50; i++) {
-                        Arm::idol_position = Arm::senseForIdol();
-                    }
+                    Arm::min_dist = SONAR_MAX_RANGE + 1;
                     StateHandler = state_tape_following;
                     break;
                 }
@@ -166,7 +170,6 @@ namespace StateMachine {
                 Infrared::calculatePIDMultiplier();
                 if (Infrared::current_pid_multiplier == 0) {
                     infrared_lost = false;
-                    Arm::idol_position = 0;
                     StateHandler = state_infrared_tracking;
                     break;
                 }
@@ -375,15 +378,14 @@ namespace StateMachine {
         // if (Arm::getDistanceToGo() == 0) {
         //     StateHandler = LastMainState;   
         // }
+        
         Arm::move_distance = 0;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
+            Arm::min_dist = SONAR_MAX_RANGE + 1;
             StateHandler = state_armHomeSetup;
         }
-
-        // TODO: I think it might be here. Maybe let's try making min_dist not volatile?
-        Arm::min_dist = SONAR_MAX_RANGE + 1;
     }
 
     void state_armHomeSetup() {

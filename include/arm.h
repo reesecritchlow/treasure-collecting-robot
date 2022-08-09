@@ -12,7 +12,7 @@ namespace Arm {
     extern bool see_idol_left;
     extern bool left_sonar_on;
     extern int pickup_count;
-    extern volatile int min_dist;
+    extern int min_dist;
 
     void setupArm();
     void setupSonars();

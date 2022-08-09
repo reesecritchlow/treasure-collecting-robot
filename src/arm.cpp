@@ -2,7 +2,7 @@
 #include "config.h"
 
 namespace Arm {
-    volatile int min_dist = SONAR_MAX_RANGE + 1;
+    int min_dist = SONAR_MAX_RANGE + 1;
     bool see_idol_right = false;
     bool see_idol_left = false;
     bool left_sonar_on = false;
@@ -95,7 +95,7 @@ namespace Arm {
         delayMicroseconds(10); // Added this line
         digitalWrite(trig_pin, LOW);
         duration = pulseIn(echo_pin, HIGH, 10000UL);
-        return((duration/2) / 29.1);
+        return((int) ( (double) duration / 2 ) / 29.1);
     }
 
     /**
@@ -116,15 +116,15 @@ namespace Arm {
         right_distance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
 
         //establishes max range for sonar
-        if(left_distance > SONAR_MAX_RANGE) {
+        if (left_distance > SONAR_MAX_RANGE) {
             left_distance = 0;
         }
-        if(right_distance > SONAR_MAX_RANGE) {
+        if (right_distance > SONAR_MAX_RANGE) {
             right_distance = 0;
         }
 
 
-        if(right_distance < min_dist && right_distance > 0 && left_sonar_on) {
+        if (right_distance < min_dist && right_distance > 0 && left_sonar_on) {
             min_dist = right_distance;
             see_idol_right = true;
         } else if(left_distance < min_dist && left_distance > 0) {
