@@ -103,13 +103,9 @@ namespace StateMachine {
 
     void state_chicken_wire_drive_straight() {
         Encoders::setStraightDestinationDistance(CHICKEN_WIRE_DISTANCE);
+        Drivetrain::startDrive();
         while (!Encoders::checkDestinationDistance()) {
-            Encoders::encoderDriveStraight();
-            cycleCounter++; // TODO: remove these (RC)
-
-            if (cycleCounter % PRINT_LOOP_COUNT) {
-                Display::displayEncoderMetrics();
-            }
+            // swag
         }
         Display::displayEncoderMetrics();
         Drivetrain::haltEncoders();
@@ -118,7 +114,7 @@ namespace StateMachine {
     }
 
     void state_tape_homing() {
-        double search_angle = 45.0;
+        double search_angle = 50.0;
         Drivetrain::speed_multiplier = 0.5;
         while (Tape::tapeLost) {
             delay(1000);
