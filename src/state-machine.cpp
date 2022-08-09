@@ -362,6 +362,9 @@ namespace StateMachine {
         Claw::rightGoUpperLimit();
         StateHandler = state_armHome;
         searching_for_idol = false;
+        if (chicken_wire_crossed){
+            StateHandler = state_armThruArch;
+        }
     }
 
     // =========== Arm movement states ============
@@ -371,6 +374,7 @@ namespace StateMachine {
         Claw::rightGoLowerLimit();
          
         Claw::close(SERVO_ANGLE_DIVISION);
+        StateHandler = state_armHome;
     }
 
     void state_armHome() {
