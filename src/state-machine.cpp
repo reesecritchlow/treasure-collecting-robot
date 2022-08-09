@@ -92,10 +92,10 @@ namespace StateMachine {
 
         Infrared::readRightSensor();
         //Infrared Sensed
-        // if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
-        //     StateHandler = state_infrared_homing;
-        //     Arm::left_sonar_on = true;
-        // }
+        if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
+            StateHandler = state_infrared_homing;
+            Arm::left_sonar_on = true;
+        }
 
     }
 
@@ -370,11 +370,11 @@ namespace StateMachine {
     // =========== Arm movement states ============
     void state_armThruArch() {
         Arm::goHome();
-        Claw::leftGoLowerLimit();
-        Claw::rightGoLowerLimit();
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
          
         Claw::close(SERVO_ANGLE_DIVISION);
-        StateHandler = state_armHome;
+        StateHandler = LastMainState;
     }
 
     void state_armHome() {
