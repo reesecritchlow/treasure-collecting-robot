@@ -298,12 +298,11 @@ namespace StateMachine {
         Claw::open();
         if (Arm::see_idol_right) {
             Claw::leftGoLowerLimit();
-            StateHandler = state_grabIdol;
         }
         if (Arm::see_idol_left) {
             Claw::rightGoLowerLimit();
-            StateHandler = state_grabIdol;
         }
+            StateHandler = state_grabIdol;
     }
 
     void state_grabIdol() {
