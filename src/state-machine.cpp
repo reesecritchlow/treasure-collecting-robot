@@ -136,6 +136,9 @@ namespace StateMachine {
                     Drivetrain::haltEncoders();
                     delay(1000);
                     searching_for_idol = true;
+                    if (Claw::magnetic_idol) {
+                        Claw::magnetic_idol = false;
+                    }
                     StateHandler = state_tape_following;
                     break;
                 }
@@ -306,6 +309,8 @@ namespace StateMachine {
                 Claw::close(clawCounter);
                 clawCounter += 1;
             }
+
+            
         // } else {
         //     Display::display_handler.println("close");
         //     Claw::close(SERVO_ANGLE_DIVISION);

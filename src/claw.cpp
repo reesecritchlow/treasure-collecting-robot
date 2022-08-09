@@ -80,7 +80,6 @@ namespace Claw {
         delay(1000);
 
         if (digitalRead(MAGNET_INTERRUPT_PIN) < 1) {
-
             magnetic_idol = true;
             detachInterrupt(MAGNET_INTERRUPT_PIN);
             Claw::seen_magnet = true;
