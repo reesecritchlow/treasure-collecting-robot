@@ -114,7 +114,6 @@ namespace Arm {
         int right_distance;
         left_distance = getDistance(L_TRIG_PIN, L_ECHO_PIN);
         right_distance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
-
         //establishes max range for sonar
         if(left_distance > SONAR_MAX_RANGE) {
             left_distance = 0;
@@ -123,6 +122,7 @@ namespace Arm {
             right_distance = 0;
         }
 
+        return left_distance;
 
         if(right_distance < min_dist && right_distance > 0 && left_sonar_on) {
             min_dist = right_distance;

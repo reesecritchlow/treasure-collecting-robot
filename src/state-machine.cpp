@@ -96,6 +96,8 @@ namespace StateMachine {
 
     void state_sonarRead() {
         Display::display_handler.clearDisplay();
+	    Display::display_handler.setCursor(0, 0);
+
         Display::display_handler.println(Arm::senseForIdol());
         Display::display_handler.display();
     }
