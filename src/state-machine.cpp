@@ -97,8 +97,8 @@ namespace StateMachine {
         if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
             arch_mode = false;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
-            StateHandler = state_infrared_homing;
             Arm::left_sonar_on = true;
+            StateHandler = state_infrared_homing;
         }
 
     }
@@ -370,6 +370,10 @@ namespace StateMachine {
         searching_for_idol = false;
         if (chicken_wire_crossed){
             StateHandler = state_armThruArch;
+            Display::display_handler.clearDisplay();
+            Display::display_handler.println("bringing arms in");
+            Display::display_handler.display();
+            delay(500);
         }
     }
 
@@ -384,6 +388,9 @@ namespace StateMachine {
             Claw::close(SERVO_ANGLE_DIVISION);
             arch_mode = true;
             StateHandler = state_tape_homing;
+            Display::display_handler.clearDisplay();
+            Display::display_handler.println("arms in position for arch");
+            Display::display_handler.display();
         }
     }
 
