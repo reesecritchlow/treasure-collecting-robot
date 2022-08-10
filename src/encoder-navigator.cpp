@@ -26,6 +26,11 @@ namespace Encoders {
         Drivetrain::changeDrivePID(transformed_PID_value);
     }
 
+    void encoderDriveStraightBackwards() {
+        double transformed_PID_value = PID::computePID((right_count - left_count) * ENCODER_SCALING_VALUE);
+        Drivetrain::changeDrivePIDBackwards(transformed_PID_value);
+    }
+
     void encoderSpin(bool direction) {
         double transformed_PID_value = PID::computePID((right_count - left_count) * ENCODER_SCALING_VALUE);
         Drivetrain::changeDrivePIDSpin(transformed_PID_value, direction);

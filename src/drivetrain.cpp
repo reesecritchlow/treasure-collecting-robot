@@ -43,6 +43,19 @@ namespace Drivetrain {
         }
     }
 
+    void changeDrivePIDBackwards(double pid_modifier_value) {
+        right_speed = (DRIVETRAIN_BASE_SPEED + pid_modifier_value) * speed_multiplier;
+        left_speed = (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
+
+        pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+        pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
+        right_direction = false;
+
+        pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+        pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
+        left_direction = false;
+    }
+
     void changeDrivePIDSpin(double pid_modifier_value, bool direction) {
         // True = clockwise, false = counterclockwise
         left_speed = (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
@@ -129,7 +142,7 @@ namespace Drivetrain {
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095, PWM_SIGNAL_RESOLUTION);
             pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
-        delay(60);
+        delay(65);
         killDrive();
     }
 }

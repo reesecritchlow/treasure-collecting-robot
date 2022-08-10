@@ -17,6 +17,7 @@ namespace Drivetrain {
     void changeDrivePIDSpin(double pid_modifier_value, bool direction);
     void killDrive();
     void changeDriveMultiplier(double drive_multiplier);
+    void changeDrivePIDBackwards(double pid_modifier_value);
     void haltEncoders();
     void haltFirstIdol();
 }

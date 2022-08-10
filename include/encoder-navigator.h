@@ -20,6 +20,7 @@ namespace Encoders {
     void rightEncoderInterrupt();
     void leftEncoderInterrupt();
 
+    void encoderDriveStraightBackwards();
     void resetEncoderCounts();
 
     void setupEncoders();

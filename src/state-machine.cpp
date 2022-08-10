@@ -21,13 +21,15 @@ namespace StateMachine {
     void test_encoders();
     void state_armHome();
     void state_clawLoop();
+    void state_infrared_tracking();
+    
 
     // Initial State
     void (*StateHandler)() = state_armHome;
     void (*QueuedState)();
-    void (*LastMainState)() = state_tape_following;
+    void (*LastMainState)() = state_infrared_tracking;
 
-    void state_infrared_tracking();
+    
     void state_drive_straight();
     void state_do_nothing();
     void state_moveToIdol();
@@ -46,6 +48,7 @@ namespace StateMachine {
     void state_armHomeSetup();
     void state_magneticField();
     void state_temp_drive_straight();
+    void state_temp_drive_backwards();
 
     void state_tape_following() {
         // Loop Operations
@@ -81,13 +84,13 @@ namespace StateMachine {
             Display::display_handler.display();
             digitalWrite(PB2, LOW);
             Arm::pickup_count++;
-            Drivetrain::haltFirstIdol();
+            Drivetrain::killDrive();
             delay(2000);
             Arm::wake();
-            Encoders::setStraightDestinationDistance(5.0);
+            Encoders::setStraightDestinationDistance(6.0);
             QueuedState = state_moveToIdol;
-            StateHandler = state_temp_drive_straight;
-            LastMainState = state_tape_following;
+            StateHandler = state_moveToIdol;
+            LastMainState = state_temp_drive_backwards;
         }
 
         Infrared::readRightSensor();
@@ -99,6 +102,30 @@ namespace StateMachine {
 
     }
 
+    void drive_straight_search_for_idol() { 
+        Encoders::setStraightDestinationDistance(125.0);
+        while (!Encoders::checkDestinationDistance()) {
+            Encoders::encoderDriveStraight();
+            Arm::idol_position = Arm::senseForIdol();
+            if (Arm::idol_position != 0) {
+                Display::display_handler.clearDisplay();
+                Display::display_handler.setCursor(0,0);
+                Display::display_handler.print("Arm Position: ");
+                Display::display_handler.print(Arm::idol_position);
+                Display::display_handler.display();
+                digitalWrite(PB2, LOW);
+                Arm::pickup_count++;
+                Drivetrain::killDrive();
+                delay(2000);
+                Arm::wake();
+                Encoders::setStraightDestinationDistance(6.0);
+                QueuedState = state_moveToIdol;
+                StateHandler = state_temp_drive_straight;
+                LastMainState = state_do_nothing;
+            }
+        }
+    }
+
     void state_temp_drive_straight() {
         while (!Encoders::checkDestinationDistance()) {
             Encoders::encoderDriveStraight();
@@ -106,6 +133,15 @@ namespace StateMachine {
         Drivetrain::haltEncoders();
         StateHandler = QueuedState;
     }
+
+     void state_temp_drive_backwards() {
+        Encoders::setStraightDestinationDistance(8.0);
+        while (!Encoders::checkDestinationDistance()) {
+            Encoders::encoderDriveStraightBackwards();
+        }
+        Drivetrain::haltEncoders();
+        StateHandler = state_tape_following;
+     }
 
     void state_chicken_wire_drive_straight() {
         Encoders::setStraightDestinationDistance(CHICKEN_WIRE_DISTANCE);
@@ -232,8 +268,10 @@ namespace StateMachine {
     }
 
     void state_infrared_tracking() {
-        following_tape = false;
         Infrared::runPIDCycle();
+        if (cycleCounter % 100 == 0) {
+            Display::displayInfraredMetrics();
+        }
     }
 
     void state_do_nothing() {

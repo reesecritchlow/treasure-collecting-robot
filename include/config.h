@@ -35,8 +35,8 @@
 #define TUNER_TWO_PIN PB0
 #define TUNER_ONE_PIN PB1
 
-#define INFRARED_LEFT_SENSOR_PIN PA7        // Left infrared sensor pin (3v3 analog input)
-#define INFRARED_RIGHT_SENSOR_PIN PA6       // Right infrared sensor pin (3v3 analog input)
+#define INFRARED_LEFT_SENSOR_PIN PA6        // Left infrared sensor pin (3v3 analog input)
+#define INFRARED_RIGHT_SENSOR_PIN PA7       // Right infrared sensor pin (3v3 analog input)
 
 #define TAPE_RIGHT_SENSOR_PIN PA5           // Right tape reflectance sensor pin (5V analog input)
 #define TAPE_MIDDLE_SENSOR_PIN PA4          // Middle tape reflectance sensor pin (5V analog input)
@@ -81,9 +81,9 @@
 #define INFRARED_KI 65.0
 #define INFRARED_KD 0.0
 
-#define TAPE_KP 350.0
+#define TAPE_KP 250.0
 #define TAPE_KI 0.0
-#define TAPE_KD 250.0
+#define TAPE_KD 300.0
 
 #define ENCODER_KP 750.0
 #define ENCODER_KI 65.0
@@ -142,7 +142,7 @@
 #define SECOND_TAPE_STATE 2
 #define THIRD_TAPE_STATE 8
 
-#define CHICKEN_WIRE_THRESHOLD 250
+#define CHICKEN_WIRE_THRESHOLD 80
 
 // Arm 
 
