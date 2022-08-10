@@ -81,9 +81,9 @@
 #define INFRARED_KI 65.0
 #define INFRARED_KD 0.0
 
-#define TAPE_KP 500.0
+#define TAPE_KP 350.0
 #define TAPE_KI 0.0
-#define TAPE_KD 150.0
+#define TAPE_KD 250.0
 
 #define ENCODER_KP 750.0
 #define ENCODER_KI 65.0

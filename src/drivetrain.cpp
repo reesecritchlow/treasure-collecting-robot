@@ -103,40 +103,33 @@ namespace Drivetrain {
     }
 
     void haltFirstIdol() {
-        if (left_direction) {
+
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
-        } else {
-            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier, PWM_SIGNAL_RESOLUTION);
-            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-        }
-        if (right_direction) {
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095, PWM_SIGNAL_RESOLUTION);
+
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier * 1.3, PWM_SIGNAL_RESOLUTION);
-        } else {
-            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED * speed_multiplier * 1.3, PWM_SIGNAL_RESOLUTION);
-            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-        }
-        delay(BRAKING_TIME * 0.75);
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095 * 0.95, PWM_SIGNAL_RESOLUTION);
+
+        delay(60);
         killDrive();
     }
 
     void haltEncoders() {
         if (left_direction) {
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095, PWM_SIGNAL_RESOLUTION);
         } else {
-            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095, PWM_SIGNAL_RESOLUTION);
             pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
         if (right_direction) {
             pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
-            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095, PWM_SIGNAL_RESOLUTION);
         } else {
-            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, right_speed, PWM_SIGNAL_RESOLUTION);
+            pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 4095, PWM_SIGNAL_RESOLUTION);
             pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
         }
-        delay(BRAKING_TIME * 0.75);
+        delay(60);
         killDrive();
     }
 }
