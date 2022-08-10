@@ -317,7 +317,6 @@ namespace StateMachine {
     }
 
     void state_grabIdol() {
-        // if (!Claw::seen_magnet) {
         while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
             Claw::close(clawCounter);
             clawCounter += 1;
@@ -379,8 +378,8 @@ namespace StateMachine {
 
     // =========== Arm movement states ============
     void state_armThruArch() {
-        Arm::goHome();
-
+        Arm::move_distance = 0;
+        Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(400);
             Claw::leftGoMiddle();
