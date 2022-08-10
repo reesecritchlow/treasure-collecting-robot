@@ -374,6 +374,9 @@ namespace StateMachine {
             StateHandler = state_grabIdol;
         }
         if (Claw::magnetic_idol) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.println("magnet on lower");
+            Display::display_handler.display();
             StateHandler = state_armHome;
             return;
         }
@@ -386,6 +389,9 @@ namespace StateMachine {
         }
 
         if (Claw::magnetic_idol) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.println("magnet on grab");
+            Display::display_handler.display();
             StateHandler = state_armHome;
             return;
         }
@@ -462,12 +468,15 @@ namespace StateMachine {
         Arm::move_distance = 0;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.println("arm home");
+            Display::display_handler.display();
             delay(1000);
             Arm::min_dist = SONAR_MAX_RANGE + 1;  
             if (chicken_wire_crossed) {
                 StateHandler = state_armThruArch;
                 Display::display_handler.clearDisplay();
-                Display::display_handler.println("bringing arms in");
+                Display::display_handler.println("arm thru arch state");
                 Display::display_handler.display();
                 return;
             }
