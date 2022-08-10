@@ -69,9 +69,10 @@ namespace StateMachine {
             Display::display_handler.print("Infrared Detected");
             Display::display_handler.display();
             arch_mode = false;
-            searching_for_idol = true;
+            searching_for_idol = false;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
             Arm::left_sonar_on = true;
+            Encoders::setStraightDestinationDistance(20.0);
             StateHandler = state_infrared_tracking;
             return;
         }
@@ -122,10 +123,19 @@ namespace StateMachine {
     }
 
     void state_temp_drive_straight() {
+        Arm::setupSecondScan();
         while (!Encoders::checkDestinationDistance()) {
             Encoders::encoderDriveStraight();
+            Arm::secondScanLoop();
         }
         Drivetrain::haltEncoders();
+        delay(1000);
+        Arm::secondScanLoop();
+        Arm::setSecondDistance();
+        Display::getDisplayReady();
+        Display::display_handler.print("Second Scan: ");
+        Display::display_handler.println(Arm::idol_position);
+        Display::display_handler.display();
         StateHandler = QueuedState;
     }
 
@@ -266,9 +276,12 @@ namespace StateMachine {
         }
         Infrared::runPIDCycle();
         if (Encoders::checkDestinationDistance()) {
-            Arm::min_dist = SONAR_MAX_RANGE + 1;
+            searching_for_idol = true;
         }
-        if (Encoders::checkDestinationDistance() && searching_for_idol && Arm::idol_position != 0) {
+        if (searching_for_idol) {
+            Arm::idol_position = Arm::senseForIdol();
+        }
+        if (searching_for_idol && Arm::idol_position != 0) {
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
             Display::display_handler.print("Arm Position: ");

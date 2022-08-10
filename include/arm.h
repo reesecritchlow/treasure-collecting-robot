@@ -27,6 +27,12 @@ namespace Arm {
     int senseForIdol();
 
     int getDistanceToGo();
+
+    void setSecondDistance();
+
+    void secondScanLoop();
+
+    void setupSecondScan();
 }
 
 #endif

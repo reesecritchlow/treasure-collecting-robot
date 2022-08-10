@@ -1,5 +1,6 @@
 #include "arm.h"
 #include "config.h"
+#include "display-manager.h"
 
 namespace Arm {
     int min_dist = SONAR_MAX_RANGE + 1;
@@ -158,5 +159,38 @@ namespace Arm {
 
     void sleep() {
         digitalWrite(SLP_PIN, LOW);
+    }
+
+    int min_second_dist;
+    int max_second_dist;
+
+    void setupSecondScan() {
+        max_second_dist = idol_position;
+        min_second_dist = idol_position;
+    }
+
+    void secondScanLoop() {
+        int currentDistance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
+        if (currentDistance < min_second_dist && currentDistance >= SECOND_SCAN_TOLERANCE) {
+            min_second_dist = currentDistance;
+        }
+        if (currentDistance > max_second_dist && currentDistance <= SONAR_MAX_RANGE && currentDistance <= idol_position + SECOND_SCAN_TOLERANCE) {
+            max_second_dist = currentDistance;
+        }
+    }
+
+    void setSecondDistance() {
+        if (max_second_dist > idol_position && max_second_dist - idol_position <= SECOND_SCAN_VARIANCE) {
+            idol_position = max_second_dist;
+        } else if (min_second_dist < idol_position && idol_position - min_second_dist <= SECOND_SCAN_VARIANCE) {
+            idol_position = min_second_dist;
+        }
+        Display::getDisplayReady();
+        Display::display_handler.print("Max Second: ");
+        Display::display_handler.println(max_second_dist);
+        Display::display_handler.print("Min Second: ");
+        Display::display_handler.print(min_second_dist);
+        Display::display_handler.display();
+        delay(1000);
     }
 }

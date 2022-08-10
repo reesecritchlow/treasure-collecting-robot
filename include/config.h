@@ -162,6 +162,10 @@
 #define BIN_DIST 10
 #define SONAR_OFFSET 9
 
+#define SECOND_SCAN_TOLERANCE 7
+
+#define SECOND_SCAN_VARIANCE 4
+
 // Claw
 
 
