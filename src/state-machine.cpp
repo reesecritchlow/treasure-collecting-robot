@@ -47,6 +47,7 @@ namespace StateMachine {
     void state_armHomeSetup();
     void state_magneticField();
     void state_temp_drive_straight();
+    void janky_push();
 
     void state_tape_following() {
         // Loop Operations
@@ -72,6 +73,7 @@ namespace StateMachine {
             Arm::min_dist = SONAR_MAX_RANGE + 1;
             Arm::left_sonar_on = true;
             StateHandler = state_infrared_tracking;
+            return;
         }
         // Loss of Tape
         if (Tape::tapeLost) {
@@ -109,6 +111,14 @@ namespace StateMachine {
 
         
 
+    }
+
+    void janky_push() {
+        Drivetrain::killDrive();
+        Drivetrain::startDrive();
+        delay(1000);
+        Drivetrain::killDrive();
+        StateHandler = state_infrared_homing;
     }
 
     void state_temp_drive_straight() {
@@ -255,7 +265,10 @@ namespace StateMachine {
             Display::displayInfraredMetrics();
         }
         Infrared::runPIDCycle();
-        if (searching_for_idol && Arm::idol_position != 0) {
+        if (Encoders::checkDestinationDistance()) {
+            Arm::min_dist = SONAR_MAX_RANGE + 1;
+        }
+        if (Encoders::checkDestinationDistance() && searching_for_idol && Arm::idol_position != 0) {
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
             Display::display_handler.print("Arm Position: ");
@@ -269,7 +282,7 @@ namespace StateMachine {
             Encoders::setStraightDestinationDistance(5.0);
             QueuedState = state_moveToIdol;
             StateHandler = state_temp_drive_straight;
-            LastMainState = state_tape_following;
+            LastMainState = state_infrared_tracking;
         }
 
     }
