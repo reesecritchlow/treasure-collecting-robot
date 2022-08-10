@@ -163,20 +163,39 @@ namespace Arm {
 
     int min_second_dist;
     int max_second_dist;
+    int prior_distance;
+    int greater_count;
+    int lesser_count;
 
     void setupSecondScan() {
         max_second_dist = SECOND_SCAN_VARIANCE;
         min_second_dist = SECOND_SCAN_VARIANCE + SONAR_MAX_RANGE;
+        prior_distance = idol_position;
+        greater_count = 0;
+        lesser_count = 0;
     }
+
+    
+
+    
 
     void secondScanLoop() {
         int currentDistance = getDistance(L_TRIG_PIN, L_ECHO_PIN);
-        if (currentDistance < min_second_dist && currentDistance >= SECOND_SCAN_TOLERANCE) {
-            min_second_dist = currentDistance;
+        if (prior_distance > currentDistance) {
+            
+            if (currentDistance > max_second_dist && currentDistance <= SONAR_MAX_RANGE + SECOND_SCAN_VARIANCE && currentDistance <= idol_position + SECOND_SCAN_TOLERANCE) {
+                greater_count++;
+                max_second_dist = currentDistance;
+            }
         }
-        if (currentDistance > max_second_dist && currentDistance <= SONAR_MAX_RANGE + SECOND_SCAN_VARIANCE && currentDistance <= idol_position + SECOND_SCAN_TOLERANCE) {
-            max_second_dist = currentDistance;
+        if (currentDistance < prior_distance) {
+            
+            if (currentDistance < min_second_dist && currentDistance >= SECOND_SCAN_VARIANCE) {
+                lesser_count++;
+                min_second_dist = currentDistance;
+            }
         }
+        prior_distance = currentDistance;
     }
 
     void setSecondDistance() {
@@ -184,13 +203,25 @@ namespace Arm {
         Display::display_handler.print("Max Second: ");
         Display::display_handler.println(max_second_dist);
         Display::display_handler.print("Min Second: ");
-        Display::display_handler.print(min_second_dist);
+        Display::display_handler.println(min_second_dist);
+        Display::display_handler.print("Greater Count: ");
+        Display::display_handler.println(greater_count);
+        Display::display_handler.print("Lesser Count: ");
+        Display::display_handler.print(lesser_count);
         Display::display_handler.display();
         delay(2000);
-        if (max_second_dist > idol_position && max_second_dist - idol_position <= SECOND_SCAN_VARIANCE) {
-            idol_position = max_second_dist;
-        } else if (min_second_dist < idol_position && idol_position - min_second_dist <= SECOND_SCAN_VARIANCE) {
-            idol_position = min_second_dist;
+        int filtered_max = idol_position;
+        int filtered_min = idol_position;
+        if (max_second_dist > idol_position && max_second_dist - idol_position <= SECOND_SCAN_TOLERANCE) {
+            filtered_max = max_second_dist;
+        } 
+        if (min_second_dist < idol_position && idol_position - min_second_dist <= SECOND_SCAN_TOLERANCE) {
+            filtered_min = min_second_dist;
+        }
+        if (greater_count > lesser_count) {
+            idol_position = filtered_max;
+        } else {
+            idol_position = filtered_min;
         }
     }
 }

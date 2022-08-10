@@ -99,8 +99,8 @@
 #define ON 1
 #define OFF 0
 
-#define DEFAULT_RIGHT_INFRARED_THRESHOLD 100
-#define DEFAULT_LEFT_INFRARED_THRESHOLD 100
+#define DEFAULT_RIGHT_INFRARED_THRESHOLD 150
+#define DEFAULT_LEFT_INFRARED_THRESHOLD 150
 
 #define CAP_DELAY 1000
 #define READ_DELAY 1000
@@ -162,9 +162,9 @@
 #define BIN_DIST 10
 #define SONAR_OFFSET 9
 
-#define SECOND_SCAN_TOLERANCE 7
+#define SECOND_SCAN_TOLERANCE 8 // Maximal difference between first and second reads
 
-#define SECOND_SCAN_VARIANCE 4
+#define SECOND_SCAN_VARIANCE 4 // Floor/Ceiling Offset
 
 // Claw
 

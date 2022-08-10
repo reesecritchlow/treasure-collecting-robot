@@ -33,6 +33,8 @@ namespace Arm {
     void secondScanLoop();
 
     void setupSecondScan();
+
+    int getDistance(uint8_t trig_pin, uint8_t echo_pin);
 }
 
 #endif
