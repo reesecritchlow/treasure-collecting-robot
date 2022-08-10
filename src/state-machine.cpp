@@ -59,8 +59,23 @@ namespace StateMachine {
 
         // Conditional Exits
 
+        Infrared::readRightSensor();
+        Infrared::readLeftSensor();
+        //Infrared Sensed
+        if (Infrared::right_signal >= INFRARED_TRANSITION_RIGHT_THRESHOLD || Infrared::left_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.setCursor(0,0);
+            Display::display_handler.print("Infrared Detected");
+            Display::display_handler.display();
+            arch_mode = false;
+            searching_for_idol = true;
+            Arm::min_dist = SONAR_MAX_RANGE + 1;
+            Arm::left_sonar_on = true;
+            StateHandler = state_infrared_tracking;
+        }
         // Loss of Tape
         if (Tape::tapeLost) {
+            Display::getDisplayReady();
             if (!chicken_wire_crossed) {
                 Display::displayState();
                 Drivetrain::killDrive();
@@ -92,14 +107,7 @@ namespace StateMachine {
             LastMainState = state_tape_following;
         }
 
-        Infrared::readRightSensor();
-        //Infrared Sensed
-        if (Infrared::right_signal >= INFRARED_TRANSITION_LEFT_THRESHOLD) {
-            arch_mode = false;
-            Arm::min_dist = SONAR_MAX_RANGE + 1;
-            Arm::left_sonar_on = true;
-            StateHandler = state_infrared_homing;
-        }
+        
 
     }
 
@@ -239,8 +247,31 @@ namespace StateMachine {
     }
 
     void state_infrared_tracking() {
-        following_tape = false;
+        Display::getDisplayReady();
+        Display::display_handler.print("infrared tracking");
+        Display::display_handler.display();
+
+        if (cycleCounter % 100 == 0) {
+            Display::displayInfraredMetrics();
+        }
         Infrared::runPIDCycle();
+        if (searching_for_idol && Arm::idol_position != 0) {
+            Display::display_handler.clearDisplay();
+            Display::display_handler.setCursor(0,0);
+            Display::display_handler.print("Arm Position: ");
+            Display::display_handler.print(Arm::idol_position);
+            Display::display_handler.display();
+            digitalWrite(PB2, LOW);
+            Arm::pickup_count++;
+            Drivetrain::haltFirstIdol();
+            delay(2000);
+            Arm::wake();
+            Encoders::setStraightDestinationDistance(5.0);
+            QueuedState = state_moveToIdol;
+            StateHandler = state_temp_drive_straight;
+            LastMainState = state_tape_following;
+        }
+
     }
 
     void state_do_nothing() {
@@ -406,7 +437,7 @@ namespace StateMachine {
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
             Arm::min_dist = SONAR_MAX_RANGE + 1;  
-            if (chicken_wire_crossed){
+            if (chicken_wire_crossed) {
                 StateHandler = state_armThruArch;
                 Display::display_handler.clearDisplay();
                 Display::display_handler.println("bringing arms in");

@@ -35,8 +35,8 @@
 #define TUNER_TWO_PIN PB0
 #define TUNER_ONE_PIN PB1
 
-#define INFRARED_LEFT_SENSOR_PIN PA7        // Left infrared sensor pin (3v3 analog input)
-#define INFRARED_RIGHT_SENSOR_PIN PA6       // Right infrared sensor pin (3v3 analog input)
+#define INFRARED_LEFT_SENSOR_PIN PA6        // Left infrared sensor pin (3v3 analog input)
+#define INFRARED_RIGHT_SENSOR_PIN PA7       // Right infrared sensor pin (3v3 analog input)
 
 #define TAPE_RIGHT_SENSOR_PIN PA5           // Right tape reflectance sensor pin (5V analog input)
 #define TAPE_MIDDLE_SENSOR_PIN PA4          // Middle tape reflectance sensor pin (5V analog input)
@@ -93,8 +93,8 @@
 
 // (these are technically main constants but)
 
-#define INFRARED_TRANSITION_RIGHT_THRESHOLD 50.0
-#define INFRARED_TRANSITION_LEFT_THRESHOLD 50.0
+#define INFRARED_TRANSITION_RIGHT_THRESHOLD 25.0
+#define INFRARED_TRANSITION_LEFT_THRESHOLD 25.0
 
 #define ON 1
 #define OFF 0

@@ -264,13 +264,9 @@ namespace Display {
         display_handler.drawBitmap(0, 0, epd_bitmap_Bitmap, 128, 64, WHITE);
         display_handler.display();
 
-        delay(2000);
-
         display_handler.clearDisplay();
         display_handler.drawBitmap(0, 0, epd_bitmap_le_monke, 128, 64, WHITE);
         display_handler.display();
-
-        delay(2000);
 
         display_handler.clearDisplay();
         display_handler.setTextSize(1);
@@ -278,8 +274,6 @@ namespace Display {
         display_handler.setCursor(0, 0);
         display_handler.println("monkeOS");
         display_handler.display();
-
-        delay(500);
 	}
 
     void displayTuners(double counter, double tuner1, double tuner2) {
@@ -303,6 +297,11 @@ namespace Display {
         display_handler.println(Tape::tapeLost);
         display_handler.display();
     }
+
+	void getDisplayReady() {
+		display_handler.clearDisplay();
+		display_handler.setCursor(0, 0);
+	}
 }
 
 

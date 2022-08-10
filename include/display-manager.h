@@ -10,6 +10,7 @@ namespace Display {
     void displayEncoderMetrics();
     void displayTuners(double counter, double tuner1, double tuner2);
     void displayState();
+    void getDisplayReady();
     extern Adafruit_SSD1306 display_handler;
 }
 
