@@ -57,7 +57,7 @@
 
 // State Machine
 
-#define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
+#define INFRARED_ARCH_ALIGNMENT_THRESHOLD 70
 #define CHICKEN_WIRE_DISTANCE 22.5 // (centimeters)
 
 
@@ -93,8 +93,8 @@
 
 // (these are technically main constants but)
 
-#define INFRARED_TRANSITION_RIGHT_THRESHOLD 60.0
-#define INFRARED_TRANSITION_LEFT_THRESHOLD 75.0
+#define INFRARED_TRANSITION_RIGHT_THRESHOLD 50.0
+#define INFRARED_TRANSITION_LEFT_THRESHOLD 50.0
 
 #define ON 1
 #define OFF 0
@@ -181,7 +181,7 @@
 #define RIGHT_LOWER_ANGLE 55 // lowered
 #define RIGHT_UPPER_ANGLE 140  // raised
 #define RIGHT_DUTY_DROP 183
-#define SERVO_WAIT_TIME 500
+#define SERVO_WAIT_TIME 250
 #define SERVO_ANGLE_DIVISION 8
 
 #endif
