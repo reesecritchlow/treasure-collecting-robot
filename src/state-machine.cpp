@@ -138,20 +138,21 @@ namespace StateMachine {
                 }
                 if ((Tape::current_pid_multiplier == 0 ||
                     Tape::current_pid_multiplier == FIRST_TAPE_STATE ||
-                    Tape::current_pid_multiplier == SECOND_TAPE_STATE ||
-                    Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE ||
-                    Tape::current_pid_multiplier == -1 * SECOND_TAPE_STATE)
+                    /*Tape::current_pid_multiplier == SECOND_TAPE_STATE ||*/
+                    Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE /*||
+                    Tape::current_pid_multiplier == -1 * SECOND_TAPE_STATE*/)
                     && !Tape::tapeLost) {
                     PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
                     Tape::tapeLost = false;
                     Drivetrain::haltEncoders();
                     delay(1000);
-                    searching_for_idol = true;
                     if (Claw::magnetic_idol) {
                         Claw::magnetic_idol = false;
                     }
                     if (!arch_mode) {
                         Arm::min_dist = SONAR_MAX_RANGE + 1;
+                        searching_for_idol = true;
+
                     }
                     StateHandler = state_tape_following;
                     break;
@@ -313,6 +314,10 @@ namespace StateMachine {
         if (Arm::see_idol_left) {
             Claw::rightGoLowerLimit();
             StateHandler = state_grabIdol;
+        }
+        if (Claw::magnetic_idol) {
+            StateHandler = state_armHome;
+            return;
         }
     }
 

@@ -93,7 +93,7 @@
 
 // (these are technically main constants but)
 
-#define INFRARED_TRANSITION_RIGHT_THRESHOLD 75.0
+#define INFRARED_TRANSITION_RIGHT_THRESHOLD 60.0
 #define INFRARED_TRANSITION_LEFT_THRESHOLD 75.0
 
 #define ON 1
@@ -160,7 +160,7 @@
 #define ACCEL 300
 
 #define BIN_DIST 10
-#define SONAR_OFFSET 8
+#define SONAR_OFFSET 9
 
 // Claw
 
@@ -181,7 +181,7 @@
 #define RIGHT_LOWER_ANGLE 55 // lowered
 #define RIGHT_UPPER_ANGLE 140  // raised
 #define RIGHT_DUTY_DROP 183
-#define SERVO_WAIT_TIME 1000
+#define SERVO_WAIT_TIME 500
 #define SERVO_ANGLE_DIVISION 8
 
 #endif
