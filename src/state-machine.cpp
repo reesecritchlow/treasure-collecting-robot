@@ -367,43 +367,46 @@ namespace StateMachine {
         Claw::rightGoUpperLimit();
         StateHandler = state_armHome;
         searching_for_idol = false;
-        if (chicken_wire_crossed){
-            StateHandler = state_armThruArch;
-            Display::display_handler.clearDisplay();
-            Display::display_handler.println("bringing arms in");
-            Display::display_handler.display();
-            delay(500);
-        }
+        // if (chicken_wire_crossed){
+        //     StateHandler = state_armThruArch;
+        //     Display::display_handler.clearDisplay();
+        //     Display::display_handler.println("bringing arms in");
+        //     Display::display_handler.display();
+        //     delay(500);
+        //     return;
+        // }
     }
 
     // =========== Arm movement states ============
     void state_armThruArch() {
-        Arm::move_distance = 0;
-        Arm::goTo();
-        if(Arm::getDistanceToGo() == 0) {
-            delay(400);
-            Claw::leftGoMiddle();
-            Claw::rightGoMiddle();
-            Claw::close(SERVO_ANGLE_DIVISION);
-            arch_mode = true;
-            StateHandler = state_tape_homing;
-            Display::display_handler.clearDisplay();
-            Display::display_handler.println("arms in position for arch");
-            Display::display_handler.display();
-        }
+        // Arm::move_distance = 0;
+        // Arm::goTo();
+        // if(Arm::getDistanceToGo() == 0) {
+        delay(400);
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
+        Claw::close(SERVO_ANGLE_DIVISION);
+        arch_mode = true;
+        StateHandler = state_tape_homing;
+        Display::display_handler.clearDisplay();
+        Display::display_handler.println("arms in position for arch");
+        Display::display_handler.display();
+        // }
     }
 
-    void state_armHome() {
-        // Arm::goHome();
-        // if (Arm::getDistanceToGo() == 0) {
-        //     StateHandler = LastMainState;   
-        // }
-        
+    void state_armHome() {   
         Arm::move_distance = 0;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
             delay(1000);
-            Arm::min_dist = SONAR_MAX_RANGE + 1;
+            Arm::min_dist = SONAR_MAX_RANGE + 1;  
+            if (chicken_wire_crossed){
+                StateHandler = state_armThruArch;
+                Display::display_handler.clearDisplay();
+                Display::display_handler.println("bringing arms in");
+                Display::display_handler.display();
+                return;
+            }
             StateHandler = state_armHomeSetup;
         }
     }
