@@ -71,8 +71,8 @@ namespace StateMachine {
             arch_mode = false;
             searching_for_idol = false;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
-            Arm::left_sonar_on = true;
-            Encoders::setStraightDestinationDistance(20.0);
+            Arm::left_sonar_on = false;
+            Encoders::setStraightDestinationDistance(30.0);
             StateHandler = state_infrared_tracking;
             return;
         }
@@ -277,6 +277,7 @@ namespace StateMachine {
         Infrared::runPIDCycle();
         if (Encoders::checkDestinationDistance()) {
             searching_for_idol = true;
+            Arm::min_dist = SONAR_MAX_RANGE + 1;
         }
         if (searching_for_idol) {
             Arm::idol_position = Arm::senseForIdol();
