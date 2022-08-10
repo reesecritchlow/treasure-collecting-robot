@@ -62,7 +62,7 @@ namespace Display {
 	display_handler.print(PID::kp);
 	display_handler.print(" ");
 	display_handler.println(PID::kd);
-	display_handler.print(Tape::last_pid_multiplier);
+	display_handler.println(Tape::last_pid_multiplier);
 
 	display_handler.display();
 	}

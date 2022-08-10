@@ -43,10 +43,11 @@ namespace StateMachine {
     void state_armHomeSetup();
     void state_magneticField();
     void state_temp_drive_straight();
+    void state_infrared_tracking_no_idol_search();
 
     void state_tape_following() {
         // Loop Operations
-        Arm::idol_position = Arm::senseForIdol();
+        
         Tape::runPIDCycle();
 
         if (cycleCounter % PRINT_LOOP_COUNT == 0) {
@@ -67,10 +68,12 @@ namespace StateMachine {
             searching_for_idol = false;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
             Arm::left_sonar_on = false;
-            Encoders::setStraightDestinationDistance(30.0);
-            StateHandler = state_infrared_tracking;
+            Encoders::setStraightDestinationDistance(50.0);
+            StateHandler = state_infrared_tracking_no_idol_search;
             return;
         }
+        
+        Arm::idol_position = Arm::senseForIdol();
         // Loss of Tape
         if (Tape::tapeLost) {
             Display::getDisplayReady();
@@ -104,9 +107,6 @@ namespace StateMachine {
             StateHandler = state_temp_drive_straight;
             LastMainState = state_tape_following;
         }
-
-        
-
     }
 
     void state_temp_drive_straight() {
@@ -167,7 +167,6 @@ namespace StateMachine {
                     if (!arch_mode) {
                         Arm::min_dist = SONAR_MAX_RANGE + 1;
                         searching_for_idol = true;
-
                     }
                     StateHandler = state_tape_following;
                     break;
@@ -201,23 +200,21 @@ namespace StateMachine {
         }
     }
 
-    void state_infrared_tracking() {
-        Display::getDisplayReady();
-        Display::display_handler.print("infrared tracking");
-        Display::display_handler.display();
-
+    void state_infrared_tracking_no_idol_search() {
         if (cycleCounter % 100 == 0) {
             Display::displayInfraredMetrics();
         }
         Infrared::runPIDCycle();
         if (Encoders::checkDestinationDistance()) {
-            searching_for_idol = true;
+            StateHandler = state_infrared_tracking;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
         }
-        if (searching_for_idol) {
-            Arm::idol_position = Arm::senseForIdol();
-        }
-        if (searching_for_idol && Arm::idol_position != 0) {
+    }
+
+    void state_infrared_tracking() {
+        Arm::idol_position = Arm::senseForIdol();
+        Infrared::runPIDCycle();
+        if (Arm::idol_position != 0) {
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
             Display::display_handler.print("Arm Position: ");
@@ -228,12 +225,11 @@ namespace StateMachine {
             Drivetrain::haltFirstIdol();
             delay(2000);
             Arm::wake();
-            Encoders::setStraightDestinationDistance(5.0);
+
             QueuedState = state_moveToIdol;
-            StateHandler = state_temp_drive_straight;
+            StateHandler = state_moveToIdol;
             LastMainState = state_infrared_tracking;
         }
-
     }
 
     void state_do_nothing() {
@@ -270,23 +266,6 @@ namespace StateMachine {
         Encoders::setStraightDestinationDistance(10.0);
         StateHandler = state_drive_straight_again;
     }
-
-    void state_drive_straight() {
-        if (cycleCounter % PRINT_LOOP_COUNT == 0) {
-            Display::displayEncoderMetrics();
-        }
-
-        if (Encoders::left_count < Encoders::left_destination_count || Encoders::right_count < Encoders::right_destination_count) {
-            Encoders::encoderDriveStraight();
-            return;
-        }
-        Display::displayEncoderMetrics();
-        Drivetrain::haltEncoders();
-        digitalWrite(INTERNAL_LED, HIGH);
-        Encoders::setSpinDestinationDistance(45.0);
-        StateHandler = state_spin;
-    }
-
 
     // ============== Sensed Idol States ===============
     void state_moveToIdol() {
@@ -371,14 +350,6 @@ namespace StateMachine {
         Claw::rightGoUpperLimit();
         StateHandler = state_armHome;
         searching_for_idol = false;
-        // if (chicken_wire_crossed){
-        //     StateHandler = state_armThruArch;
-        //     Display::display_handler.clearDisplay();
-        //     Display::display_handler.println("bringing arms in");
-        //     Display::display_handler.display();
-        //     delay(500);
-        //     return;
-        // }
     }
 
     // =========== Arm movement states ============

@@ -165,16 +165,16 @@ namespace Arm {
     int max_second_dist;
 
     void setupSecondScan() {
-        max_second_dist = idol_position;
-        min_second_dist = idol_position;
+        max_second_dist = SECOND_SCAN_VARIANCE;
+        min_second_dist = SECOND_SCAN_VARIANCE + SONAR_MAX_RANGE;
     }
 
     void secondScanLoop() {
-        int currentDistance = getDistance(R_TRIG_PIN, R_ECHO_PIN);
+        int currentDistance = getDistance(L_TRIG_PIN, L_ECHO_PIN);
         if (currentDistance < min_second_dist && currentDistance >= SECOND_SCAN_TOLERANCE) {
             min_second_dist = currentDistance;
         }
-        if (currentDistance > max_second_dist && currentDistance <= SONAR_MAX_RANGE && currentDistance <= idol_position + SECOND_SCAN_TOLERANCE) {
+        if (currentDistance > max_second_dist && currentDistance <= SONAR_MAX_RANGE + SECOND_SCAN_VARIANCE && currentDistance <= idol_position + SECOND_SCAN_TOLERANCE) {
             max_second_dist = currentDistance;
         }
     }
