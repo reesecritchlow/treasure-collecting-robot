@@ -29,7 +29,6 @@ namespace StateMachine {
     void (*LastMainState)() = state_tape_following;
 
     void state_infrared_tracking();
-    void state_drive_straight();
     void state_do_nothing();
     void state_moveToIdol();
     void state_grabIdol();
@@ -38,16 +37,12 @@ namespace StateMachine {
     void state_raiseForDrop();
     void state_dropIdol();
     void state_armThruArch();
-    void state_search_for_infrared_at_arch();
-    void state_spin_for_third_idol();
-    void state_drive_to_third_idol();
     void state_chicken_wire_drive_straight();
     void state_tape_homing();
     void state_infrared_homing();
     void state_armHomeSetup();
     void state_magneticField();
     void state_temp_drive_straight();
-    void janky_push();
 
     void state_tape_following() {
         // Loop Operations
@@ -112,14 +107,6 @@ namespace StateMachine {
 
         
 
-    }
-
-    void janky_push() {
-        Drivetrain::killDrive();
-        Drivetrain::startDrive();
-        delay(1000);
-        Drivetrain::killDrive();
-        StateHandler = state_infrared_homing;
     }
 
     void state_temp_drive_straight() {
@@ -212,58 +199,6 @@ namespace StateMachine {
             search_direction = !search_direction;
             search_angle *= 2;
         }
-    }
-
-    void test_encoders() {
-        Encoders::encoderDriveStraight();
-        if (cycleCounter % PRINT_LOOP_COUNT == 0) {
-            Display::displayEncoderMetrics();
-        }
-
-        if (Encoders::left_count > Encoders::left_destination_count ||
-            Encoders::right_count > Encoders::right_destination_count) {
-            Drivetrain::haltEncoders();
-            StateHandler = state_do_nothing;
-        }
-    }
-
-    void state_search_for_infrared_at_arch() {
-        Encoders::encoderSpin(COUNTER_CLOCKWISE);
-        Infrared::readRightSensor();
-        Infrared::readLeftSensor();
-        if (
-                Infrared::left_signal < INFRARED_ARCH_ALIGNMENT_THRESHOLD ||
-                Infrared::right_signal < INFRARED_ARCH_ALIGNMENT_THRESHOLD ||
-                !Encoders::checkDestinationDistance()
-                ) {
-            return;
-        }
-        Drivetrain::haltEncoders();
-        Encoders::setStraightDestinationDistance(10.0);
-    }
-
-    void state_push_out_of_arch() {
-        if (Encoders::checkDestinationDistance()) {
-            StateHandler = state_spin_for_third_idol;
-            Encoders::setSpinDestinationDistance(30.0);
-        }
-        Encoders::encoderDriveStraight();
-    }
-
-    void state_spin_for_third_idol() {
-        if (Encoders::checkDestinationDistance()) {
-            Encoders::setStraightDestinationDistance(20.0);
-            StateHandler = state_drive_to_third_idol;
-            return;
-        }
-        Encoders::encoderSpin(COUNTER_CLOCKWISE);
-    }
-
-    void state_drive_to_third_idol() {
-        if (Encoders::checkDestinationDistance()) {
-            StateHandler = state_do_nothing;
-        }
-        Encoders::encoderDriveStraight();
     }
 
     void state_infrared_tracking() {
@@ -482,11 +417,5 @@ namespace StateMachine {
         Arm::see_idol_right = false;
         PID::resetPID();
         StateHandler = LastMainState;
-    }
-
-    void state_clawLoop() {
-        Claw::leftGoUpperLimit();
-        // delay(1000);
-        Claw::leftGoLowerLimit();
     }
 }
