@@ -387,6 +387,7 @@ namespace StateMachine {
         Claw::rightGoMiddle();
         Claw::close(SERVO_ANGLE_DIVISION);
         arch_mode = true;
+        Tape::tapeLost = true;
         StateHandler = state_tape_homing;
         Display::display_handler.clearDisplay();
         Display::display_handler.println("arms in position for arch");

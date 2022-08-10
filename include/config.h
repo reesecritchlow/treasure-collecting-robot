@@ -58,7 +58,7 @@
 // State Machine
 
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 100
-#define CHICKEN_WIRE_DISTANCE 30.0 // (centimeters)
+#define CHICKEN_WIRE_DISTANCE 22.5 // (centimeters)
 
 
 // Display Manager
@@ -160,7 +160,7 @@
 #define ACCEL 300
 
 #define BIN_DIST 10
-#define SONAR_OFFSET 7
+#define SONAR_OFFSET 8
 
 // Claw
 
