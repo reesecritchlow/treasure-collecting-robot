@@ -58,7 +58,7 @@
 // State Machine
 
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 70
-#define CHICKEN_WIRE_DISTANCE 22.5 // (centimeters)
+#define CHICKEN_WIRE_DISTANCE 25 // (centimeters)
 
 #define IDOL_PICKUP_OFFSET 4.0
 
@@ -100,8 +100,8 @@
 #define ON 1
 #define OFF 0
 
-#define DEFAULT_RIGHT_INFRARED_THRESHOLD 50
-#define DEFAULT_LEFT_INFRARED_THRESHOLD 50
+#define DEFAULT_RIGHT_INFRARED_THRESHOLD 40
+#define DEFAULT_LEFT_INFRARED_THRESHOLD 40
 
 #define CAP_DELAY 1000
 #define READ_DELAY 1000
@@ -143,7 +143,7 @@
 #define SECOND_TAPE_STATE 2
 #define THIRD_TAPE_STATE 8
 
-#define CHICKEN_WIRE_THRESHOLD 80
+#define CHICKEN_WIRE_THRESHOLD 65
 
 // Arm 
 
@@ -163,9 +163,9 @@
 #define BIN_DIST 10
 #define SONAR_OFFSET 9
 
-#define SECOND_SCAN_TOLERANCE 8 // Maximal difference between first and second reads
+#define SECOND_SCAN_TOLERANCE 15 // Maximal difference between first and second reads (last was 8)
 
-#define SECOND_SCAN_VARIANCE 4 // Floor/Ceiling Offset
+#define SECOND_SCAN_VARIANCE 3 // Floor/Ceiling Offset
 
 // Claw
 
@@ -180,8 +180,8 @@
 
 #define SERVO_CLOSE_ANGLE 65 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
-#define LEFT_LOWER_ANGLE 95 // lowered
-#define LEFT_UPPER_ANGLE 10  // raised
+#define LEFT_LOWER_ANGLE 115 // lowered
+#define LEFT_UPPER_ANGLE 30  // raised
 #define LEFT_DUTY_DROP 73
 #define RIGHT_LOWER_ANGLE 55 // lowered
 #define RIGHT_UPPER_ANGLE 140  // raised

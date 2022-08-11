@@ -22,6 +22,7 @@ namespace StateMachine {
     void test_encoders();
     void state_armHome();
     void state_clawLoop();
+    void state_tape_tracking_encoded_chicken();
 
     // Initial State
     void (*StateHandler)() = state_armHome;
@@ -68,7 +69,7 @@ namespace StateMachine {
             searching_for_idol = false;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
             Arm::left_sonar_on = false;
-            Encoders::setStraightDestinationDistance(50.0);
+            Encoders::setStraightDestinationDistance(115.0);
             StateHandler = state_infrared_tracking_no_idol_search;
             return;
         }
@@ -86,7 +87,6 @@ namespace StateMachine {
             }
             Drivetrain::haltEncoders();
             StateHandler = state_infrared_homing;
-            StateHandler = state_do_nothing;
             return;
         }
 
@@ -157,7 +157,7 @@ namespace StateMachine {
                     Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE /*||
                     Tape::current_pid_multiplier == -1 * SECOND_TAPE_STATE*/)
                     && !Tape::tapeLost) {
-                    PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
+                    PID::newPIDSystem(TAPE_KP + 40.0, TAPE_KI, TAPE_KD + 80.0);
                     Tape::tapeLost = false;
                     Drivetrain::haltEncoders();
                     delay(1000);

@@ -3,6 +3,7 @@
 #include "drivetrain.h"
 #include "infrared-navigator.h"
 #include "config.h"
+#include "encoder-navigator.h"
 
 namespace Tape {
 
@@ -31,6 +32,9 @@ namespace Tape {
             right_reflectance > CHICKEN_WIRE_THRESHOLD) {
             current_pid_multiplier = 0;
             tapeLost = true;
+            if (!Encoders::checkDestinationDistance()) {
+                tapeLost = false;
+            }
             return;
         }
 
