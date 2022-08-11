@@ -266,9 +266,12 @@ namespace StateMachine {
             digitalWrite(PB2, LOW);
             Arm::pickup_count++;
             Drivetrain::haltFirstIdol();
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+            delay(32);
+            pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             delay(2000);
             Arm::wake();
-            Encoders::setStraightDestinationDistance(IDOL_PICKUP_OFFSET);
+            Encoders::setStraightDestinationDistance(IDOL_PICKUP_OFFSET + 2);
             QueuedState = state_moveToIdol;
             StateHandler = state_temp_drive_straight;
             LastMainState = state_infrared_tracking;

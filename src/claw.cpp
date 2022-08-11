@@ -36,10 +36,10 @@ namespace Claw {
     }
 
     void close(int angle) {
-        if (!magnetic_idol) {
+
             GrabServo::write(SERVO_CLOSE_ANGLE/SERVO_ANGLE_DIVISION * angle);
             delay(SERVO_WAIT_TIME/4);
-        }
+
     }
 
     //FOUDN IT
