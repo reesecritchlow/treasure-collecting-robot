@@ -68,7 +68,7 @@ namespace StateMachine {
             searching_for_idol = false;
             Arm::min_dist = SONAR_MAX_RANGE + 1;
             Arm::left_sonar_on = false;
-            Encoders::setStraightDestinationDistance(50.0);
+            Encoders::setStraightDestinationDistance(118.0);
             StateHandler = state_infrared_tracking_no_idol_search;
             return;
         }
@@ -130,23 +130,49 @@ namespace StateMachine {
         Encoders::setStraightDestinationDistance(CHICKEN_WIRE_DISTANCE);
         Drivetrain::startDrive();
         while (!Encoders::checkDestinationDistance()) {
-            // swag
+            if ((Tape::current_pid_multiplier == 0 ||
+                    Tape::current_pid_multiplier == FIRST_TAPE_STATE ||
+                    /*Tape::current_pid_multiplier == SECOND_TAPE_STATE ||*/
+                    Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE /*||
+                    Tape::current_pid_multiplier == -1 * SECOND_TAPE_STATE*/)
+                    && !Tape::tapeLost) {
+                    PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
+                    Tape::tapeLost = false;
+                    Drivetrain::haltEncoders();
+                    delay(1000);
+                    if (Claw::magnetic_idol) {
+                        Claw::magnetic_idol = false;
+                    }
+                    if (!arch_mode) {
+                        Arm::min_dist = SONAR_MAX_RANGE + 1;
+                        searching_for_idol = true;
+                    }
+                    StateHandler = state_tape_following;
+                break;
+            }
         }
         Display::displayEncoderMetrics();
         Drivetrain::haltEncoders();
         chicken_wire_crossed = true;
+        search_direction = true;
         StateHandler = state_tape_homing;
     }
 
     void state_tape_homing() {
-        double search_angle = 30.0;
+        double search_angle = 150.0;
         Drivetrain::speed_multiplier = 1.0;
         while (Tape::tapeLost) {
             delay(1000);
             Encoders::setSpinDestinationDistance(search_angle);
+            if (search_direction) {
+                pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+                pwm_start(LEFT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED / 3, PWM_SIGNAL_RESOLUTION);
+            } else {
+                pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+                pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED / 3, PWM_SIGNAL_RESOLUTION);
+            }
             while (!Encoders::checkDestinationDistance()) {
                 cycleCounter++;
-                Encoders::encoderSpin(search_direction);
                 Tape::calculateTapePIDMultiplier();
                 if (cycleCounter % PRINT_LOOP_COUNT) {
                     Display::displayEncoderMetrics();
@@ -171,6 +197,17 @@ namespace StateMachine {
                     StateHandler = state_tape_following;
                     break;
                 }
+            }
+            if (search_direction) {
+                pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+                pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+                delay(0.5 * BRAKING_TIME);
+                pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+            } else {
+                pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
+                pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
+                delay(0.5 * BRAKING_TIME);
+                pwm_start(RIGHT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             }
             search_direction = !search_direction;
             search_angle *= 1.5;

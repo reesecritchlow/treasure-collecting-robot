@@ -84,7 +84,7 @@
 
 #define TAPE_KP 500.0
 #define TAPE_KI 0.0
-#define TAPE_KD 150.0
+#define TAPE_KD 250.0
 
 #define ENCODER_KP 750.0
 #define ENCODER_KI 65.0
@@ -137,11 +137,11 @@
 
 // Tape Following Constants
 
-#define TAPE_REFLECTANCE_THRESHOLD 60
+#define TAPE_REFLECTANCE_THRESHOLD 80
 
 #define FIRST_TAPE_STATE 1
 #define SECOND_TAPE_STATE 2
-#define THIRD_TAPE_STATE 8
+#define THIRD_TAPE_STATE 5
 
 #define CHICKEN_WIRE_THRESHOLD 80
 

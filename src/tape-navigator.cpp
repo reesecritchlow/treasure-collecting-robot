@@ -67,9 +67,11 @@ namespace Tape {
             return;
         } else if (!left && mid && right) {
             current_pid_multiplier = -FIRST_TAPE_STATE;
+            tapeLost = false;
             return;
         } else if (left && mid && !right) {
             current_pid_multiplier = FIRST_TAPE_STATE;
+            tapeLost = false;
             return;
         }
         tapeLost = false;
