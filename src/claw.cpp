@@ -40,6 +40,13 @@ namespace Claw {
             GrabServo::write(SERVO_CLOSE_ANGLE/SERVO_ANGLE_DIVISION * angle);
             delay(SERVO_WAIT_TIME/4);
         }
+    }
+
+    //FOUDN IT
+
+    void closeNoMagnet(int angle) {
+        GrabServo::write(SERVO_CLOSE_ANGLE/SERVO_ANGLE_DIVISION * angle);
+        delay(SERVO_WAIT_TIME/4);
     } 
 
     void leftGoMiddle() {
@@ -68,7 +75,6 @@ namespace Claw {
 
     void setupHallSensor() {
         pinMode(MAGNET_INTERRUPT_PIN, INPUT_PULLUP);
-        attachInterrupt(digitalPinToInterrupt(MAGNET_INTERRUPT_PIN), handleMagneticField, FALLING);
     }
 
     /**
@@ -88,5 +94,27 @@ namespace Claw {
             StateMachine::searching_for_idol = false;
             return;            
         }
+    }
+
+    bool searchForMagneticField() {
+        if (digitalRead(MAGNET_INTERRUPT_PIN) < 1) {
+            magnetic_idol = true;
+            Claw::seen_magnet = true;
+            Claw::open();
+            Claw::leftGoMiddle();
+            Claw::rightGoMiddle();
+
+            int clawCounter = 0;
+
+            while(clawCounter <= SERVO_ANGLE_DIVISION) {
+                Claw::closeNoMagnet(clawCounter);
+                clawCounter += 1;
+            }
+
+            StateMachine::searching_for_idol = false;
+            StateMachine::StateHandler = StateMachine::state_armHome;
+            return true;
+        }
+        return false;
     }
 }

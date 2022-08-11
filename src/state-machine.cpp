@@ -85,8 +85,7 @@ namespace StateMachine {
                 return;
             }
             Drivetrain::haltEncoders();
-            StateHandler = state_infrared_homing;
-            StateHandler = state_do_nothing;
+            StateHandler = state_infrared_tracking;
             return;
         }
 
@@ -159,7 +158,7 @@ namespace StateMachine {
     }
 
     void state_tape_homing() {
-        double search_angle = 150.0;
+        double search_angle = 175.0;
         Drivetrain::speed_multiplier = 1.0;
         while (Tape::tapeLost) {
             delay(1000);
@@ -215,6 +214,7 @@ namespace StateMachine {
         }
         Drivetrain::speed_multiplier = 1.0;
         digitalWrite(INTERNAL_LED, HIGH);
+        StateHandler = state_tape_following;
     }
 
     void state_infrared_homing() {
@@ -316,6 +316,9 @@ namespace StateMachine {
 
     void state_lowerArmForIdol() {
         Claw::open();
+        if (Claw::searchForMagneticField()) {
+            return;
+        }
         if (Arm::see_idol_right) {
             Claw::leftGoLowerLimit();
             StateHandler = state_grabIdol;
@@ -324,27 +327,17 @@ namespace StateMachine {
             Claw::rightGoLowerLimit();
             StateHandler = state_grabIdol;
         }
-        if (Claw::magnetic_idol) {
-            Display::display_handler.clearDisplay();
-            Display::display_handler.println("magnet on lower");
-            Display::display_handler.display();
-            StateHandler = state_armHome;
-            return;
-        }
+        Claw::searchForMagneticField();
     }
 
     void state_grabIdol() {
+        bool field = false;
         while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
+            if (Claw::searchForMagneticField()) {
+                return;
+            }
             Claw::close(clawCounter);
             clawCounter += 1;
-        }
-
-        if (Claw::magnetic_idol) {
-            Display::display_handler.clearDisplay();
-            Display::display_handler.println("magnet on grab");
-            Display::display_handler.display();
-            StateHandler = state_armHome;
-            return;
         }
         // } else {
         //     Display::display_handler.println("close");
