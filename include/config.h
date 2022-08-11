@@ -60,6 +60,7 @@
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 70
 #define CHICKEN_WIRE_DISTANCE 22.5 // (centimeters)
 
+#define IDOL_PICKUP_OFFSET 4.0
 
 // Display Manager
 

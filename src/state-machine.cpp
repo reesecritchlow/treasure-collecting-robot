@@ -102,7 +102,7 @@ namespace StateMachine {
             Drivetrain::haltFirstIdol();
             delay(2000);
             Arm::wake();
-            Encoders::setStraightDestinationDistance(5.0);
+            Encoders::setStraightDestinationDistance(IDOL_PICKUP_OFFSET);
             QueuedState = state_moveToIdol;
             StateHandler = state_temp_drive_straight;
             LastMainState = state_tape_following;
@@ -225,9 +225,9 @@ namespace StateMachine {
             Drivetrain::haltFirstIdol();
             delay(2000);
             Arm::wake();
-
+            Encoders::setStraightDestinationDistance(IDOL_PICKUP_OFFSET);
             QueuedState = state_moveToIdol;
-            StateHandler = state_moveToIdol;
+            StateHandler = state_temp_drive_straight;
             LastMainState = state_infrared_tracking;
         }
     }
