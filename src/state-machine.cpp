@@ -379,20 +379,23 @@ namespace StateMachine {
             Display::display_handler.display();
             delay(1000);
             Arm::min_dist = SONAR_MAX_RANGE + 1;  
-            if (chicken_wire_crossed) {
-                StateHandler = state_armThruArch;
-                Display::display_handler.clearDisplay();
-                Display::display_handler.println("arm thru arch state");
-                Display::display_handler.display();
-                return;
-            }
+            // if (chicken_wire_crossed) {
+            //     StateHandler = state_armThruArch;
+            //     Display::display_handler.clearDisplay();
+            //     Display::display_handler.println("arm thru arch state");
+            //     Display::display_handler.display();
+            //     return;
+            // }
             StateHandler = state_armHomeSetup;
         }
     }
 
     void state_armHomeSetup() {
-        Claw::leftGoUpperLimit();
-        Claw::rightGoUpperLimit();
+        // Claw::leftGoUpperLimit();
+        // Claw::rightGoUpperLimit(); changed for arch prep
+        Claw::leftGoMiddle();
+        Claw::rightGoMiddle();
+        Claw::close(SERVO_ANGLE_DIVISION);
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
         PID::resetPID();
