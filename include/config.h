@@ -60,7 +60,7 @@
 #define INFRARED_ARCH_ALIGNMENT_THRESHOLD 70
 #define CHICKEN_WIRE_DISTANCE 22.5 // (centimeters)
 
-#define IDOL_PICKUP_OFFSET 3.5
+#define IDOL_PICKUP_OFFSET 2.75
 
 // Display Manager
 
@@ -82,7 +82,7 @@
 #define INFRARED_KI 65.0
 #define INFRARED_KD 0.0
 
-#define TAPE_KP 500.0
+#define TAPE_KP 450.0
 #define TAPE_KI 0.0
 #define TAPE_KD 250.0
 

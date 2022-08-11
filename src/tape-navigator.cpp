@@ -14,6 +14,9 @@ namespace Tape {
     double transformed_PID = 0.0;
     bool tapeLost = false;
 
+    int third_tape_state = THIRD_TAPE_STATE;
+    int second_tape_state = SECOND_TAPE_STATE;
+
     void setupTapeTracking() {
         pinMode(TAPE_RIGHT_SENSOR_PIN, INPUT);
         pinMode(TAPE_MIDDLE_SENSOR_PIN, INPUT);
@@ -54,10 +57,10 @@ namespace Tape {
             current_pid_multiplier = 0;
             return;
         } else if (!left && !right && !mid && last_pid_multiplier > 0) {
-            current_pid_multiplier = THIRD_TAPE_STATE;
+            current_pid_multiplier = third_tape_state;
             return;
         } else if (!left && !right && !mid && last_pid_multiplier < 0) {
-            current_pid_multiplier = -THIRD_TAPE_STATE;
+            current_pid_multiplier = -third_tape_state;
             return;
         } else if (!left && !mid && right) {
             current_pid_multiplier = -SECOND_TAPE_STATE;

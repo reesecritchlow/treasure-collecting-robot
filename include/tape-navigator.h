@@ -16,6 +16,9 @@ namespace Tape {
     extern double transformed_PID;
     extern bool tapeLost;
 
+    extern int third_tape_state;
+    extern int second_tape_state;
+
     void calculateTapePIDMultiplier();
 
     void setupTapeTracking();

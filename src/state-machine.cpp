@@ -106,6 +106,10 @@ namespace StateMachine {
             QueuedState = state_moveToIdol;
             StateHandler = state_temp_drive_straight;
             LastMainState = state_tape_following;
+            if (chicken_wire_crossed) {
+                Tape::third_tape_state = THIRD_TAPE_STATE + 2;
+                Tape::second_tape_state = SECOND_TAPE_STATE + 1;
+            }
         }
     }
 
