@@ -180,8 +180,8 @@
 
 #define SERVO_CLOSE_ANGLE 65 // closed grabbed
 #define SERVO_OPEN_ANGLE 0   // released open
-#define LEFT_LOWER_ANGLE 95 // lowered
-#define LEFT_UPPER_ANGLE 10  // raised
+#define LEFT_LOWER_ANGLE 115 // lowered
+#define LEFT_UPPER_ANGLE 30  // raised
 #define LEFT_DUTY_DROP 73
 #define RIGHT_LOWER_ANGLE 55 // lowered
 #define RIGHT_UPPER_ANGLE 140  // raised
