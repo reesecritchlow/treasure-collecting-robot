@@ -212,12 +212,12 @@ namespace Arm {
         delay(2000);
         int filtered_max = idol_position;
         int filtered_min = idol_position;
-        if (max_second_dist > idol_position && max_second_dist - idol_position <= SECOND_SCAN_TOLERANCE) {
+        //if (max_second_dist > idol_position && max_second_dist - idol_position <= SECOND_SCAN_TOLERANCE) {
             filtered_max = max_second_dist;
-        } 
-        if (min_second_dist < idol_position && idol_position - min_second_dist <= SECOND_SCAN_TOLERANCE) {
+        //} 
+        //if (min_second_dist < idol_position && idol_position - min_second_dist <= SECOND_SCAN_TOLERANCE) {
             filtered_min = min_second_dist;
-        }
+        //}
         if (greater_count > lesser_count) {
             idol_position = filtered_max;
         } else {

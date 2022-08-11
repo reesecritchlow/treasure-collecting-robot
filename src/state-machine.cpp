@@ -91,6 +91,7 @@ namespace StateMachine {
 
         // Idol Sensed
         if (searching_for_idol && Arm::idol_position != 0) {
+            idol_count++;
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
             Display::display_handler.print("Arm Position: ");
@@ -252,6 +253,7 @@ namespace StateMachine {
         Arm::idol_position = Arm::senseForIdol();
         Infrared::runPIDCycle();
         if (Arm::idol_position != 0) {
+            idol_count++;
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
             Display::display_handler.print("Arm Position: ");

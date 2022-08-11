@@ -8,6 +8,7 @@ namespace StateMachine {
     extern void state_armHome();
     extern volatile bool searching_for_idol;
     void state_armHome();
+    extern int idol_count;
 }
 
 #endif

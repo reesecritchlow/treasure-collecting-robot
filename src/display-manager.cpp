@@ -63,6 +63,8 @@ namespace Display {
 	display_handler.print(" ");
 	display_handler.println(PID::kd);
 	display_handler.println(Tape::last_pid_multiplier);
+	display_handler.print("Idol Count: ");
+	display_handler.print(StateMachine::idol_count);
 
 	display_handler.display();
 	}
