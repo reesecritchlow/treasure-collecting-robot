@@ -16,6 +16,9 @@ namespace StateMachine {
     bool search_direction = true;
     bool arch_mode = false;
     int idol_count = 0;
+    bool first_idol = false;
+    bool chicken_mode_baby = false;
+    bool virgin = true;
     volatile bool searching_for_idol = true; // Determines whether the current state should be searching for an idol or not with sonars
 
     void state_tape_following();
@@ -92,6 +95,7 @@ namespace StateMachine {
 
         // Idol Sensed
         if (searching_for_idol && Arm::idol_position != 0) {
+            virgin = false;
             Display::display_handler.clearDisplay();
             Display::display_handler.setCursor(0,0);
             Display::display_handler.print("Arm Position: ");
@@ -132,9 +136,12 @@ namespace StateMachine {
         while (!Encoders::checkDestinationDistance()) {
             // swag
         }
+        chicken_mode_baby = false;
+        Tape::third_tape_state = THIRD_TAPE_STATE;
         Display::displayEncoderMetrics();
         Drivetrain::haltEncoders();
         chicken_wire_crossed = true;
+        PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
         StateHandler = state_tape_homing;
     }
 
@@ -269,6 +276,7 @@ namespace StateMachine {
 
     // ============== Sensed Idol States ===============
     void state_moveToIdol() {
+        idol_count++;
         Arm::move_distance = Arm::idol_position + SONAR_OFFSET;
         Arm::goTo();
         if(Arm::getDistanceToGo() == 0) {
@@ -399,6 +407,12 @@ namespace StateMachine {
         Arm::see_idol_left = false;
         Arm::see_idol_right = false;
         PID::resetPID();
+        if (!virgin) {
+            PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
+            chicken_mode_baby = true;
+            Encoders::setStraightDestinationDistance(4.0);
+            Tape::third_tape_state = 5;
+        }
         StateHandler = LastMainState;
     }
 }

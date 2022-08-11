@@ -20,6 +20,8 @@ namespace Tape {
 
     void setupTapeTracking();
     void runPIDCycle();
+
+    extern int third_tape_state;
 }
 
 #endif

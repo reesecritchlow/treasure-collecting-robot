@@ -4,6 +4,7 @@
 #include "infrared-navigator.h"
 #include "config.h"
 #include "encoder-navigator.h"
+#include "state-machine.h"
 
 namespace Tape {
 
@@ -14,6 +15,8 @@ namespace Tape {
     int current_pid_multiplier = DEFAULT_PID_STATE;
     double transformed_PID = 0.0;
     bool tapeLost = false;
+
+    int third_tape_state = THIRD_TAPE_STATE;
 
     void setupTapeTracking() {
         pinMode(TAPE_RIGHT_SENSOR_PIN, INPUT);
@@ -32,7 +35,7 @@ namespace Tape {
             right_reflectance > CHICKEN_WIRE_THRESHOLD) {
             current_pid_multiplier = 0;
             tapeLost = true;
-            if (!Encoders::checkDestinationDistance()) {
+            if (!StateMachine::chicken_mode_baby || !Encoders::checkDestinationDistance()) {
                 tapeLost = false;
             }
             return;
@@ -58,10 +61,10 @@ namespace Tape {
             current_pid_multiplier = 0;
             return;
         } else if (!left && !right && !mid && last_pid_multiplier > 0) {
-            current_pid_multiplier = THIRD_TAPE_STATE;
+            current_pid_multiplier = third_tape_state;
             return;
         } else if (!left && !right && !mid && last_pid_multiplier < 0) {
-            current_pid_multiplier = -THIRD_TAPE_STATE;
+            current_pid_multiplier = -third_tape_state;
             return;
         } else if (!left && !mid && right) {
             current_pid_multiplier = -SECOND_TAPE_STATE;
