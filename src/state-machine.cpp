@@ -267,7 +267,7 @@ namespace StateMachine {
             Arm::pickup_count++;
             Drivetrain::haltFirstIdol();
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, DRIVETRAIN_BASE_SPEED, PWM_SIGNAL_RESOLUTION);
-            delay(32);
+            delay(40);
             pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
             delay(2000);
             Arm::wake();
