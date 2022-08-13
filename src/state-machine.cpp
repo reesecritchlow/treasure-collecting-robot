@@ -85,7 +85,8 @@ namespace StateMachine {
                 return;
             }
             Drivetrain::haltEncoders();
-            StateHandler = state_infrared_tracking;
+            Encoders::setStraightDestinationDistance(118.0);
+            StateHandler = state_infrared_tracking_no_idol_search;
             return;
         }
 
