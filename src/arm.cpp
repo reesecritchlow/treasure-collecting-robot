@@ -175,10 +175,6 @@ namespace Arm {
         lesser_count = 0;
     }
 
-    
-
-    
-
     void secondScanLoop() {
         int currentDistance = getDistance(L_TRIG_PIN, L_ECHO_PIN);
         if (prior_distance > currentDistance) {

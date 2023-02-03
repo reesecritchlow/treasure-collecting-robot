@@ -18,9 +18,22 @@
   <component name="ChangeListManager">
     <list default="true" id="cf95610b-eb67-4d38-89f0-fe6cf265a9f1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-bluepill_f103c8/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/display-manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/display-manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/drivetrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/drivetrain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/encoder-navigator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/encoder-navigator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/infrared-navigator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/infrared-navigator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/pid-system.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/pid-system.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/sonar-manager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/state-machine.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/state-machine.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/tape-navigator.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/tape-navigator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/arm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/arm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/display-manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/display-manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/claw.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/claw.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drivetrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drivetrain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sonar-manager.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state-machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/state-machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tape-navigator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape-navigator.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +122,8 @@
       <workItem from="1659909578591" duration="105000" />
       <workItem from="1659911666749" duration="41000" />
       <workItem from="1660162765383" duration="1640000" />
+      <workItem from="1673807909064" duration="384000" />
+      <workItem from="1675458675701" duration="73000" />
     </task>
     <servers />
   </component>

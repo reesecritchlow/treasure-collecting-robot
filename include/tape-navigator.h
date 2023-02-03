@@ -16,12 +16,27 @@ namespace Tape {
     extern double transformed_PID;
     extern bool tapeLost;
 
-    extern int third_tape_state;
     extern int second_tape_state;
+    extern int third_tape_state;
 
-    void calculateTapePIDMultiplier();
+    /**
+     * @brief Calculates the current state of the tape tracker, modifies the current_pid_multiplier
+     * variable to contain the current error state.
+     * 
+     */
+    void calculateTapeError();
 
+    /**
+     * @brief Sets up pins for the reflectance sensors.
+     * 
+     */
     void setupTapeTracking();
+
+    /**
+     * @brief Changes drive speed/direction of the robot based on the 
+     * current state of the tape tracking system.
+     * 
+     */
     void runPIDCycle();
 }
 

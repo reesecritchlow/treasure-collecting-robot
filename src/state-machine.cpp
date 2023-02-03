@@ -25,6 +25,7 @@ namespace StateMachine {
 
     // Initial State
     void (*StateHandler)() = state_armHome;
+    // QueuedState: For some states, a state after is selected by the prior function to control determinacy. 
     void (*QueuedState)();
     void (*LastMainState)() = state_tape_following;
 
@@ -45,6 +46,12 @@ namespace StateMachine {
     void state_temp_drive_straight();
     void state_infrared_tracking_no_idol_search();
 
+    /**
+     * @brief Standard tape following state. Keeps the robot on a line with a difference reflectance from
+     * its surroundings. Reads data from the tape reflectance sensors and uses a PID control 
+     * loop to send an appropriate signal to the motors. 
+     * 
+     */
     void state_tape_following() {
         // Loop Operations
         
@@ -114,6 +121,11 @@ namespace StateMachine {
         }
     }
 
+    /**
+     * @brief Drives the robot in a straight line until the distance(s) contained in the Encoders
+     * namespace has been reached.
+     * 
+     */
     void state_temp_drive_straight() {
         Arm::setupSecondScan();
         while (!Encoders::checkDestinationDistance()) {
@@ -131,15 +143,18 @@ namespace StateMachine {
         StateHandler = QueuedState;
     }
 
+    /**
+     * @brief Special case of temp_drive_straight. Drives the robot over the chicken
+     * wire in a straight line and sets chicken_wire_crossed. Sends the robot into
+     * state_tape_homing when finished.      * 
+     */
     void state_chicken_wire_drive_straight() {
         Encoders::setStraightDestinationDistance(CHICKEN_WIRE_DISTANCE);
         Drivetrain::startDrive();
         while (!Encoders::checkDestinationDistance()) {
             if ((Tape::current_pid_multiplier == 0 ||
                     Tape::current_pid_multiplier == FIRST_TAPE_STATE ||
-                    /*Tape::current_pid_multiplier == SECOND_TAPE_STATE ||*/
-                    Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE /*||
-                    Tape::current_pid_multiplier == -1 * SECOND_TAPE_STATE*/)
+                    Tape::current_pid_multiplier == -1 * FIRST_TAPE_STATE)
                     && !Tape::tapeLost) {
                     PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
                     Tape::tapeLost = false;
@@ -163,6 +178,10 @@ namespace StateMachine {
         StateHandler = state_tape_homing;
     }
 
+    /**
+     * @brief Rotates the robot in alternating CCW/CW rotations, with angle increasing by 2 each direction change.
+     * Looks for the tape using the reflectance sensors exits when the reflectance sensors identify the tape again.     * 
+     */
     void state_tape_homing() {
         double search_angle = 175.0;
         Drivetrain::speed_multiplier = 1.0;
@@ -178,7 +197,7 @@ namespace StateMachine {
             }
             while (!Encoders::checkDestinationDistance()) {
                 cycleCounter++;
-                Tape::calculateTapePIDMultiplier();
+                Tape::calculateTapeError();
                 if (cycleCounter % PRINT_LOOP_COUNT) {
                     Display::displayEncoderMetrics();
                 }
@@ -223,6 +242,13 @@ namespace StateMachine {
         StateHandler = state_tape_following;
     }
 
+    /**
+     * @brief Finds the infrared signal if it has been lost. 
+     * Rotates the robot in alternating CCW/CW direction, with angle 45 degrees initially,
+     * increasing angle by 2 each rotation direction alternation. Once a signal is 
+     * found by the infrared sensors, the state exits.
+     * 
+     */
     void state_infrared_homing() {
         double search_angle = 45.0;
         bool infrared_lost = true;
@@ -243,6 +269,10 @@ namespace StateMachine {
         }
     }
 
+    /**
+     * @brief Follows the infrared signal based on PID, but disables the sonar
+     * sensors such that other obstacles do not get recognized as idols.  
+     */
     void state_infrared_tracking_no_idol_search() {
         if (cycleCounter % 100 == 0) {
             Display::displayInfraredMetrics();
@@ -254,6 +284,10 @@ namespace StateMachine {
         }
     }
 
+    /**
+     * @brief Follows the infrared signal and moves the robot in an adjustment sequence to 
+     * pickup an idol if seen.  
+     */
     void state_infrared_tracking() {
         Arm::idol_position = Arm::senseForIdol();
         Infrared::runPIDCycle();
@@ -279,42 +313,19 @@ namespace StateMachine {
         }
     }
 
+    /**
+     * @brief Does nothing.
+     * 
+     */
     void state_do_nothing() {
     
     }
 
-    void state_drive_straight_again() {
-        if (cycleCounter % PRINT_LOOP_COUNT == 0) {
-            Display::displayEncoderMetrics();
-        }
-
-        if (Encoders::left_count < Encoders::left_destination_count || Encoders::right_count < Encoders::right_destination_count) {
-            Encoders::encoderDriveStraight();
-            return;
-        }
-        Display::displayEncoderMetrics();
-        Drivetrain::haltEncoders();
-        digitalWrite(INTERNAL_LED, HIGH);
-
-        StateHandler = state_do_nothing;
-    }
-
-    void state_spin() {
-        if (cycleCounter % PRINT_LOOP_COUNT == 0) {
-            Display::displayEncoderMetrics();
-        }
-        if (Encoders::left_count < Encoders::left_destination_count || Encoders::right_count < Encoders::right_destination_count) {
-            Encoders::encoderSpin(CLOCKWISE);
-            return;
-        }
-        Display::displayEncoderMetrics();
-        Drivetrain::haltEncoders();
-        digitalWrite(INTERNAL_LED, LOW);
-        Encoders::setStraightDestinationDistance(10.0);
-        StateHandler = state_drive_straight_again;
-    }
-
     // ============== Sensed Idol States ===============
+    /**
+     * @brief Moves out arm towards the idol.
+     * 
+     */
     void state_moveToIdol() {
         Arm::move_distance = Arm::idol_position + SONAR_OFFSET;
         Arm::goTo();
@@ -324,6 +335,10 @@ namespace StateMachine {
         }
     }
 
+    /**
+     * @brief Lowers the claw to pickup an idol.
+     * 
+     */
     void state_lowerArmForIdol() {
         Claw::open();
         if (Claw::searchForMagneticField()) {
@@ -340,6 +355,11 @@ namespace StateMachine {
         Claw::searchForMagneticField();
     }
 
+    /**
+     * @brief Executes a grab sequence for the idol. Aborts if the hall-effect sensor
+     * senses a magnetic idol.
+     * 
+     */
     void state_grabIdol() {
         bool field = false;
         while(!(Claw::magnetic_idol) && (clawCounter <= SERVO_ANGLE_DIVISION)) {
@@ -349,10 +369,6 @@ namespace StateMachine {
             Claw::close(clawCounter);
             clawCounter += 1;
         }
-        // } else {
-        //     Display::display_handler.println("close");
-        //     Claw::close(SERVO_ANGLE_DIVISION);
-        // }
         Display::display_handler.clearDisplay();
         Display::display_handler.println("grab complete");
         Display::display_handler.display();
@@ -360,6 +376,10 @@ namespace StateMachine {
         StateHandler = state_raiseForDrop;
     }
 
+    /**
+     * @brief Raises the claws after the idol is grabbed.
+     * 
+     */
     void state_raiseForDrop() {
         Display::display_handler.clearDisplay();
         Display::display_handler.println("raise for drop");
@@ -369,6 +389,10 @@ namespace StateMachine {
         StateHandler = state_goToBin;
     }
 
+    /**
+     * @brief Moves the robot arm to center it over top of the bin.
+     * 
+     */
     void state_goToBin() {
         if (Arm::idol_position > 0) {
             Arm::move_distance = -BIN_DIST;
@@ -381,6 +405,10 @@ namespace StateMachine {
         }
     }
 
+    /**
+     * @brief Releases the robot from the claw.
+     * 
+     */
     void state_dropIdol() {
         delay(1000);
         Claw::leftGoMiddle();
@@ -393,10 +421,11 @@ namespace StateMachine {
     }
 
     // =========== Arm movement states ============
+    /**
+     * @brief Closes the robot's claws and tilts them upwards to fit inside an arch.
+     * 
+     */
     void state_armThruArch() {
-        // Arm::move_distance = 0;
-        // Arm::goTo();
-        // if(Arm::getDistanceToGo() == 0) {
         delay(400);
         Claw::leftGoMiddle();
         Claw::rightGoMiddle();
@@ -407,9 +436,12 @@ namespace StateMachine {
         Display::display_handler.clearDisplay();
         Display::display_handler.println("arms in position for arch");
         Display::display_handler.display();
-        // }
     }
 
+    /**
+     * @brief Moves the robot's arms into the "home" position.
+     * 
+     */
     void state_armHome() {   
         Arm::move_distance = 0;
         Arm::goTo();
@@ -419,20 +451,16 @@ namespace StateMachine {
             Display::display_handler.display();
             delay(1000);
             Arm::min_dist = SONAR_MAX_RANGE + 1;  
-            // if (chicken_wire_crossed) {
-            //     StateHandler = state_armThruArch;
-            //     Display::display_handler.clearDisplay();
-            //     Display::display_handler.println("arm thru arch state");
-            //     Display::display_handler.display();
-            //     return;
-            // }
+
             StateHandler = state_armHomeSetup;
         }
     }
 
+    /**
+     * @brief Sets up the robot's claws and arms before starting a course trial.
+     * 
+     */
     void state_armHomeSetup() {
-        // Claw::leftGoUpperLimit();
-        // Claw::rightGoUpperLimit(); changed for arch prep
         Claw::leftGoMiddle();
         Claw::rightGoMiddle();
         Claw::close(SERVO_ANGLE_DIVISION);

@@ -42,8 +42,6 @@ namespace Claw {
 
     }
 
-    //FOUDN IT
-
     void closeNoMagnet(int angle) {
         GrabServo::write(SERVO_CLOSE_ANGLE/SERVO_ANGLE_DIVISION * angle);
         delay(SERVO_WAIT_TIME/4);

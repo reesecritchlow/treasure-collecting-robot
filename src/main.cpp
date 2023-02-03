@@ -10,6 +10,7 @@
 
 
 void setup() {
+  // Turn on the internal LED to indicate life.
   pinMode(PB2, OUTPUT);
   Tape::setupTapeTracking();
   Infrared::setupInfrared();

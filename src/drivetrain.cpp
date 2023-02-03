@@ -16,7 +16,6 @@ namespace Drivetrain {
         pwm_start(LEFT_FORWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, left_speed, PWM_SIGNAL_RESOLUTION);
     }
 
-    // Changes drive speeds based on PID modifier value produced from a Navigator object
     void changeDrivePID(double pid_modifier_value) {
         if ((DRIVETRAIN_BASE_SPEED + pid_modifier_value) * speed_multiplier > 0) {
             pwm_start(RIGHT_BACKWARD_MOTOR_PIN, PWM_CLOCK_FREQUENCY, 0, PWM_SIGNAL_RESOLUTION);
@@ -44,7 +43,6 @@ namespace Drivetrain {
     }
 
     void changeDrivePIDSpin(double pid_modifier_value, bool direction) {
-        // True = clockwise, false = counterclockwise
         left_speed = (DRIVETRAIN_BASE_SPEED - pid_modifier_value) * speed_multiplier;
         right_speed = (DRIVETRAIN_BASE_SPEED + pid_modifier_value) * speed_multiplier;
 
@@ -71,7 +69,6 @@ namespace Drivetrain {
         right_direction = false;
     }
 
-    // Changes overall speed multiplier
     void changeDriveMultiplier(double drive_multiplier) {
         speed_multiplier = drive_multiplier;
         right_speed = right_speed * drive_multiplier;

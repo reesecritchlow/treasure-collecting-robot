@@ -23,7 +23,7 @@ namespace Tape {
         pinMode(TAPE_LEFT_SENSOR_PIN, INPUT);
     }
 
-    void calculateTapePIDMultiplier() {
+    void calculateTapeError() {
         last_pid_multiplier = current_pid_multiplier;
         right_reflectance = analogRead(TAPE_RIGHT_SENSOR_PIN);
         middle_reflectance = analogRead(TAPE_MIDDLE_SENSOR_PIN);
@@ -82,7 +82,7 @@ namespace Tape {
     }
 
     void runPIDCycle() {
-        calculateTapePIDMultiplier();
+        calculateTapeError();
         transformed_PID = PID::computePID(current_pid_multiplier);
         Drivetrain::changeDrivePID(transformed_PID);
     }

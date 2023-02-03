@@ -124,16 +124,16 @@
 
     // Straight Line Constants
 
-    #define STEPS_PER_ROTATION 1441.0
-    #define PI 3.14159265359
-    #define DISTANCE_CM_PER_STEP 0.143 // Hardcoded, because cpp loves you.
+#define STEPS_PER_ROTATION 1441.0
+#define PI 3.14159265359
+#define DISTANCE_CM_PER_STEP 0.143 // Hardcoded, because cpp loves you.
 
-    // Spinning Constants
+// Spinning Constants
 
-    #define SPIN_RADIUS 10.82  // (Half the track width)
+#define SPIN_RADIUS 10.82  // (Half the track width)
 
-    #define CLOCKWISE true
-    #define COUNTER_CLOCKWISE false
+#define CLOCKWISE true
+#define COUNTER_CLOCKWISE false
 
 // Tape Following Constants
 
@@ -168,7 +168,6 @@
 #define SECOND_SCAN_VARIANCE 4 // Floor/Ceiling Offset
 
 // Claw
-
 
 #define CUSTOM_SERVO_MINIMUM_RANGE 36
 #define CUSTOM_SERVO_MAXIMUM_RANGE 256
