@@ -79,7 +79,7 @@ namespace Arm {
         stepper.run();
     }
 
-    int currPos() {
+    int getCurrPos() {
         return stepper.currentPosition();
     }
 
@@ -192,32 +192,5 @@ namespace Arm {
             }
         }
         prior_distance = currentDistance;
-    }
-
-    void setSecondDistance() {
-        Display::getDisplayReady();
-        Display::display_handler.print("Max Second: ");
-        Display::display_handler.println(max_second_dist);
-        Display::display_handler.print("Min Second: ");
-        Display::display_handler.println(min_second_dist);
-        Display::display_handler.print("Greater Count: ");
-        Display::display_handler.println(greater_count);
-        Display::display_handler.print("Lesser Count: ");
-        Display::display_handler.print(lesser_count);
-        Display::display_handler.display();
-        delay(2000);
-        int filtered_max = idol_position;
-        int filtered_min = idol_position;
-        //if (max_second_dist > idol_position && max_second_dist - idol_position <= SECOND_SCAN_TOLERANCE) {
-            filtered_max = max_second_dist;
-        //} 
-        //if (min_second_dist < idol_position && idol_position - min_second_dist <= SECOND_SCAN_TOLERANCE) {
-            filtered_min = min_second_dist;
-        //}
-        if (greater_count > lesser_count) {
-            idol_position = filtered_max;
-        } else {
-            idol_position = filtered_min;
-        }
     }
 }
