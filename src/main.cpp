@@ -12,6 +12,8 @@
 void setup() {
   // Turn on the internal LED to indicate life.
   pinMode(PB2, OUTPUT);
+
+  // Setup functions
   Tape::setupTapeTracking();
   Infrared::setupInfrared();
   Display::setupDisplay();
@@ -22,6 +24,7 @@ void setup() {
 	Display::display_handler.setCursor(0, 0);
   Claw::setupServos();
   
+  // Setup arm
   Display::display_handler.println("servos");
   Display::display_handler.display();
   Arm::setupArm();
@@ -40,6 +43,8 @@ void setup() {
   Display::display_handler.clearDisplay();
   Display::display_handler.println("home");
   Display::display_handler.display();
+
+  //Setup PID
   PID::newPIDSystem(TAPE_KP, TAPE_KI, TAPE_KD);
 }
 
