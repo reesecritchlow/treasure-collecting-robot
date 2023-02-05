@@ -83,7 +83,7 @@ namespace Arm {
     int getDistanceToGo();
 
     /**
-     * @brief set the second distance of the 
+     * @brief set the second distan
      * 
      */
     void setSecondDistance();
