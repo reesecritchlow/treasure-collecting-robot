@@ -123,7 +123,8 @@ namespace StateMachine {
 
     /**
      * @brief Drives the robot in a straight line until the distance(s) contained in the Encoders
-     * namespace has been reached.
+     * namespace has been reached. Re-calibrates the sensed idol distance
+     * based on a secondary reading.
      * 
      */
     void state_temp_drive_straight() {
