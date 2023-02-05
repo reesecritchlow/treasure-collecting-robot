@@ -83,22 +83,40 @@ namespace Arm {
     int getDistanceToGo();
 
     /**
-     * @brief set the second distan
+     * @brief Resets max/min values for a "secondary scan" for 
+     * and idol. Zeroes a count for "greater" and "lesser" readings
+     * (those that are either higher or lower than the original).
+     * Caches the original scan distance.
+     * 
+     * A "secondary scan" involves the robot moving forwards in 
+     * a straight line by a specified distance by the encoders, and 
+     * takes readings from the sonar every loop, adjusting a floor/ceiling
+     * value for the sonar reading. If the readings from the sonar
+     * on the secondary scan are consistently higher/lower, then later 
+     * functions will select either the ceiling or floor as the new 
+     * distance to an idol, thus decreasing the amount of error in 
+     * the sonar readings.
+     * 
+     */
+    void setupSecondScan();
+
+    /**
+     * @brief Selects whether the robot should select the greater 
+     * distance or the lesser distance for an idol pickup.
      * 
      */
     void setSecondDistance();
 
     /**
-     * @brief 
+     * @brief Takes a sonar reading and increments the "greater" or 
+     * "lesser" counts for a second scan based on the sonar reading.
+     * Updates max/min values for a second scan. Changes the cached
+     * original scan distance to the current scan distance for 
+     * consecutive scans.
      * 
      */
     void secondScanLoop();
 
-    /**
-     * @brief 
-     * 
-     */
-    void setupSecondScan();
 
     /**
      * @brief get distance of object in CM from a sonar sensor.
